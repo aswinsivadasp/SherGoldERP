@@ -1,0 +1,647 @@
+
+input:focus{
+  outline: none;
+}
+input[type=radio]:checked {
+  background-color: green; /* Change the selection color to green */
+}
+
+select:focus{
+  outline: none;
+
+  
+}
+.regmodal-overlay {
+   
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* width: 800px;
+  height: 450px; */
+  .regmodal {
+    background-color: white;
+    font-family:normal;
+    width: 60%;
+    height: 80%;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: absolute;
+    
+  }
+  
+ 
+ .regmodal {
+    /* your existing styles */
+    transition: all 0.3s;
+  }
+  
+  .regmodal.minimized {
+    height: 40px;
+    width: 20%; /* Adjust this height as needed */
+  }
+  .regmodal.expanded {
+    height: 100vh; /* or any height you want to set for expanded state */
+  }
+
+  /* ///nav//// */
+
+
+
+.schemeReg_navbar {
+    width: 100%;
+    height: 7%;
+    flex-shrink: 0;
+    background: #026CC3;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    
+   
+
+}
+
+.schemeNav_items {
+    height: 100%;
+    width: 63px;
+    display: flex;
+    color: #FFF;
+
+
+    font-size: 10px;
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4px;
+    
+
+}
+
+.schemeReg_buttonImage {
+    width: 23px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    border: 1px solid #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.schemeReg_arrowButtons {
+    width: 15%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.schemeReg_arrowButtonImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+    height: 24px;
+    flex-shrink: 0;
+    border: 1px solid #FFF;
+}
+/* ///////// */
+
+.schemecontrolls{
+  width: 100%;
+  height: 8%;
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+}
+.schemeReg_pageHead{
+  color: black;
+}
+.schemereg_headerLogo_Div{
+  display: flex;
+  gap: 1%;
+  width: 50%;
+  margin-left: 2.5%;
+}
+
+.schemeRegBody{
+
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.schemeRegBodyData{
+ 
+  height: 96%;
+  width: 95%;
+ 
+}
+.schemeRegBodyDatapart1{
+  width: 100%;
+  height: 36%;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.schemeRegBodyDataRows{
+  /* background-color: #026CC3; */
+  width: 100%;
+  height: 20%;
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
+
+}
+.schemeReglines{
+  width: 100%;
+  height: 0%;
+  display: flex;
+  gap: 4%;
+  margin-top: 2%;
+  border: none;
+}
+.schemeReglinesparts{
+  width: 48%;
+  height: 100%;
+  border-top: .5px solid rgb(0, 0, 0);
+}
+.schemeRegBodyDatapart2{
+  width: 100%;
+  height: 36%;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+
+.schemeRegBodyDataRowspart1 label{
+  color: rgb(0, 0, 0);
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: left;
+width: 24%;
+margin-right: 2%;
+}
+.schemeRegBodyDataRowspart1 input{
+  height: 80%;
+  width: 40%;
+  box-sizing: border-box;
+border: 1px solid rgb(74, 74, 74);
+}
+.schemeRegBodyDataRowspart1{
+  width: 50%;
+  height: 100%;
+  border:none;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.schemeRegBodyDataRowspart2 label{
+  color: rgb(0, 0, 0);
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: center;
+width: 24%;
+margin-right: 2%;
+}
+.schemeRegBodyDataRowspart2 input{
+  height: 80%;
+  width: 40%;
+  box-sizing: border-box;
+border: 1px solid rgb(74, 74, 74);
+}
+.schemeRegBodyDataRowspart2{
+  width: 50%;
+  height: 100%;
+  border:none;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.accNameLabel{
+  color: rgb(0, 0, 0);
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: left;
+width: 12%;
+margin-right: 1%;
+}
+.accNameinput{
+  width: 35%;
+
+  height: 80%;
+}
+.accNameinputClass{
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+}
+/* .accNameinputClass:focus{
+  outline: none;
+} */
+.durationdiv{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  /* align-items: center; */
+
+}
+.Durationlabel{
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 36.5%;
+  margin-right: 3%; 
+  display: flex;
+  align-items: center;
+}
+.Durationinput{
+  width: 30%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 7.5%;
+}
+
+.schemeRegBodyDatapercinput{
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%;
+  width: 10%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.schemeRegBodyDataperclabel{
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+ width: 5%;
+  margin-right: 3%; 
+  display: flex;
+  align-items: center;
+}
+.Durationinput::placeholder {
+ 
+}
+.accNodiv{
+  display: flex;
+  align-items: center;
+  width: 63%;
+  margin-left: 4%; 
+  height: 100%;
+}
+.accountNumberInputdiv{
+  width: 74%;
+  height: 100%;
+  margin-left: 2.5%;
+  display: flex;
+  align-items: center;
+ 
+}
+.accNolabelDiv{
+  height: 100%;
+  display: flex;
+  width: 100%;
+ 
+
+}
+.accountNumberlabel{
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 23%;
+ 
+}
+.accountNumberInput{
+  width: 80%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%; 
+ 
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.accountNumbersearchbutton{
+  height: 80%; 
+  box-sizing: border-box;
+border: 1px solid rgb(0, 0, 0);
+border-radius: 10px;
+
+background: rgb(188, 192, 193);
+width: 17.5%;
+text-align: center;
+margin-left: 2.5%;
+margin-top: auto;
+margin-bottom: auto;
+}
+
+.schemeRegBodyDatapart2label1{
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 12%;
+  margin-right: 1%; 
+}
+.schemeRegBodyDatapart2input1{
+  width: 35%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%; 
+}
+.schemeRegBodyDatapart2label2{
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 12%;
+  margin-right: 1%; 
+  margin-left: 4%;
+}
+.schemeRegBodyDatapart2input2{
+  width: 35%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%; 
+}
+
+/* .schemeRegBodyDataRows{
+  width: 100%;
+  height: 20%;
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
+
+} */
+
+.schemeRegBodyDatapart3{
+  position: relative;
+  width: 100%;
+  height: 18%;
+  margin-top: 1%;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+
+}
+
+.schemeRegBodyDatapart3narration{
+  width: 100%;
+  height: 50%; 
+  display: flex;
+  align-items: center;
+  /* background-color: black; */
+ 
+  
+}
+
+.schemeRegBodyDatapart3Rows{
+  width: 100%;
+  height: 40%;
+  margin-top: .5%;
+  display: flex;
+  align-items: center;
+  /* background-color:black; */
+}
+.schemeReglinesparts1{
+  height: 100%;
+  width: 100%;
+  border-top: .5px solid rgb(0, 0, 0); 
+}
+.schemeRegBodyDatapart3narration label{
+  width: 12%;
+  color: rgb(0, 0, 0);
+
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: left;
+margin-right: 1%;
+}
+
+.schemeRegBodyDatapart3narration input{
+  width: 87%;
+  height: 90%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+
+}
+.schemeRegBodyDatapart3narration input:focus{
+  outline: none;
+}
+.schemeRegBodyDatapart3Rowslabel{
+  width: 12%;
+  color: rgb(0, 0, 0);
+
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0%;
+text-align: left;
+margin-right: 1%;
+}
+.schemeRegBodyDatapart3Rowsinput{
+  width: 20%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  height: 80%; 
+}
+.close-icon{
+  position: absolute;
+  right: 2%;
+  width: 15px;
+  height: auto;
+}
+/* @media screen and (max-width: 768px) {
+  .regmodal {
+    width: 100%;
+    height: 100%;
+}
+
+
+.schemeNav_items {
+ display: none;
+}
+.schemeReg_arrowButtons{
+  display: none;
+}
+.schemeRegBodyDataRowspart1{
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+ 
+  
+  
+}
+.entrynodiv{
+  width: 49%;
+}
+.schemeRegBodyDataRowspart1 label{
+ width: 100%;
+ text-align: left;
+
+}
+.schemeRegBodyDataRowspart1 input{
+  height: 80%;
+  width: 100%;
+  box-sizing: border-box;
+border: 1px solid rgb(74, 74, 74);
+}
+
+.schemeRegBodyDataRowspart2 label{
+ text-align: left;
+width: 100%;
+margin-right: 2%;
+}
+.schemeRegBodyDataRowspart2 input{
+  height: 80%;
+  width: 100%;
+  box-sizing: border-box;
+border: 1px solid rgb(74, 74, 74);
+}
+.schemeRegBodyDataRowspart2{
+  width: 49%;
+  height: 100%;
+  border:none;
+  display: flex;
+ flex-direction: column;
+ gap: 1%;
+}
+
+.accNameLabel{
+
+text-align: left;
+width: 12%;
+margin-right: 1%;
+}
+.accNameinput{
+  width: 100%;
+
+  height: 80%;
+}
+.schemeRegBodyDataRows{
+  width: 100%;
+}
+.schemeRegBodyDatapart1{
+width: 98%;
+
+background-color: white;
+}
+.schemeRegBody{
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SchAccName{
+  display: flex;
+  flex-direction: column;
+}
+.accNameLabel{
+  width: 100%;
+}
+.durationdiv{
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  width: 100%;
+  
+}
+.Durationlabel{
+  width: 100%;
+  margin-right: 0%;
+
+}
+.Durationinput{
+  width: 50%;
+}
+.accNodiv{
+  width: 100%;
+  margin-left: 0;
+}
+.accNolabelDiv{
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  margin-left: 0;
+}
+.accountNumberlabel{
+  width: 100%;
+
+ 
+}
+.accountNumberInput{
+  margin-left: 0;
+  width: 98%;
+}
+.part1row{
+  height: 20%;
+  display: flex;
+  gap: 2%;
+
+}
+.accountNumberInputdiv{
+  width: 100%;
+  margin-left: 0;
+}
+.schemeReglinesparts{
+  display: none;
+}
+.schemeRegBodyDatapart2{
+  height: 40;
+}
+} */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .regmodal {
+ 
+    width: 98%;
+    height:45%;
+  }
+}

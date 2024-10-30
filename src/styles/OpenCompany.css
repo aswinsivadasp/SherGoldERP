@@ -1,0 +1,259 @@
+
+.openCompanyRoot {
+    width: 600px;
+    height: 350px;
+    background-color: white;
+    font-family: normal;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+   
+  }
+  .opencompanyhead {
+    background-color: #FEFAEF;
+    display: flex;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 12%;
+    width: 100%;
+  }
+  .opencompanyHeadpart {
+    display: flex;
+    color: white;
+  }
+  
+  .opencompanyHeadpart {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    gap: 1%;
+    align-items: center;
+  }
+  
+  .opencompanyHeadpart {
+    margin-left: 1%;
+  }
+  
+  .opencompanyHeadpart label {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  
+  .opencompanyHeadControlls {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1%;
+    gap: 2%;
+  }
+  
+  .opcontrollbutton {
+    border-radius: 3px;
+  
+    background: #D9D9D9 !important;
+    margin-right: 2% !important;
+
+  }
+  .opcontrollbutton img {
+    height: 13px;
+    width: 13px;
+  }
+
+  .opencmpnavbar {
+    top: 1.5%;
+    width: 100%;
+    height: 55px;
+    align-items: center;
+    display: flex;
+    gap: 1%;
+  
+    /* background-color: #09125b;
+    padding: .5% 0 .5% 0; */
+  }
+  .opencmpnavbarBtn {
+    margin-top: 1%;
+    width: 155px;
+    height: 80%;
+    background-color: azure;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 3%;
+  
+    font-family: Times New Roman;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+    text-wrap: nowrap;
+    cursor:pointer;
+    padding: .2%;
+  }
+  
+  .opencmpnavbarBtn:hover {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .opencmpnavbarBtn img {
+    height: 28px;
+    width: auto;
+  }
+  .opencmpselectrow{
+    width: 98%;
+    height: 10%;
+    display: flex;
+    gap: 5%;
+    padding: 0 1% 0 1%;
+    align-items: center;
+
+    /* background-color: black; */
+
+  }
+  .opencmpselectrow label{
+    width: 20%;
+    
+  }
+  .selectcmpCombo{
+    width: 50%;
+    height: 25px;
+    
+  }
+
+  .companylistTableDiv{
+    width: 98%;
+    height:53% ;
+    /* background-color: aqua; */
+    border: 0.97px solid #4A4A4A;
+    overflow: auto;
+  
+  }
+
+  .companylistTableDiv table {
+    width: 100%;
+  }
+  .companylistTableHead {
+    width: 100%;
+    background: rgb(2, 108, 195);
+    height: 4vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .companylistTable tr th {
+    color: rgb(255, 255, 255);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: center;
+    height: 20%;
+  }
+  
+  .companylistTableBodyStyletr {
+    height: 3vh;
+  }
+  
+  .companylistTableDataBox {
+    height: 17px;
+    width: 98%;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .dataBox {
+    border: none;
+  }
+  
+  /* Add this CSS to your agentReport.css file */
+  
+  /* Style for table rows */
+  /* .companylistTableBodyStyletr {
+    border: 1px solid #E8E8E8;
+  background: #FFF; 
+  } */
+  
+  /* Style for table cells */
+  .companylistTableDataBoxSlno,
+  .companylistTableDataBoxcode,
+  .companylistTableDataBoxname,
+  .companylistTableDataBoxyear
+  {
+    border-bottom: 0.1px solid #e8e8e8;
+    border-right: 0.4px solid #e8e8e8;
+    background: #eeeeee;
+    font-family: Inter;
+    font-size: 13px;
+
+
+    
+   
+  }
+  .companylistTableHeadslno {
+    width: 10%; /* Adjust width as per your need */
+  }
+  
+  .companylistTableHeadcode {
+    width: 25%; /* Adjust width as per your need */
+  }
+  
+  .companylistTableHeadname {
+    width: 35%; /* Adjust width as per your need */
+  }
+  
+  .companylistTableHeadyear {
+    width: 30%; /* Adjust width as per your need */
+  }
+  
+  /* Apply the same to the body cells */
+  .companylistTableDataBoxSlno {
+    width: 10%;
+    padding: 0 5px 0 5px;
+
+  }
+  
+  .companylistTableDataBoxcode {
+    width: 25%;
+    padding: 0 5px 0 5px;
+
+  }
+  
+  .companylistTableDataBoxname {
+    width: 35%;
+    padding: 0 5px 0 5px;
+
+  }
+  
+  .companylistTableDataBoxyear {
+    width: 30%;
+    padding: 0 5px 0 5px;
+  }
+  
+  /* .highlighted {
+    background-color: #ffcccb; 
+  }
+   */
+
+
+   .companylistTableBodyStyletr.highlighted td {
+    background-color: #ffcccb; /* Highlight color for the entire row */
+}

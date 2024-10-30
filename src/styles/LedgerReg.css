@@ -1,0 +1,1269 @@
+.ledger_regmodal {
+  background-color: white;
+  font-family: normal;
+  width: 60%;
+  height: 80%;
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: absolute;
+}
+
+.ledgerReg-tab {
+  margin-top: 1%;
+}
+
+tab {
+  font-size: larger;
+}
+
+.ledger-reg-name-form-label {
+  width: 13%;
+}
+
+.ledger-reg-name-form-control {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+.ledger-reg-name-input-div {
+  width: 50%;
+}
+
+.ledger-reg-name-options {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1;
+  margin-top: 2px;
+}
+
+.ledger-reg-name-options {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ledger-reg-name-options-select:hover {
+  background-color: #f5f5f5;
+}
+
+.ledger-reg-under-form-label {
+  width: 13%;
+}
+
+.ledger-reg-under-form-control {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+.ledger-reg-under-input-div {
+  width: 50%;
+}
+
+.ledger-reg-under-options {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1;
+  margin-top: 2px;
+}
+
+.ledger-reg-under-options {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ledger-reg-under-options-select:hover {
+  background-color: #f5f5f5;
+}
+
+/* /////////////////////////////////////////////////// */
+
+.ledger-reg-address-tab {
+}
+
+.ledger-reg-form-pair {
+  margin-bottom: 1%;
+}
+
+.ledgerReg-root-div {
+}
+
+.ledgerReg-tab {
+}
+
+.ledgerReg-tab-content {
+}
+
+.ledger-reg-form-div {
+}
+/* .ledger-reg-name-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ledger-reg-under-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+
+.ledger-reg-address-form-label {
+  width: 13%;
+}
+
+.ledger-reg-address-form-control {
+  width: 50%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-city-form-label {
+  width: 13%;
+}
+
+.ledger-reg-city-form-input {
+  width: 50%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-pincode-form-label {
+  width: 13%;
+}
+
+.ledger-reg-pincode-form-input {
+  width: 18.5%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-contact-person-form-label {
+  width: 13%;
+}
+
+.ledger-reg-contact-person-form-input {
+  width: 50%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-email-form-label {
+  width: 13%;
+}
+
+.ledger-reg-email-form-input {
+  width: 50%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-salesman-form-label {
+  width: 13%;
+  padding-left: 2%;
+}
+
+.ledger-reg-salesman-form-input {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-telno-form-label {
+  width: 13%;
+}
+
+.ledger-reg-telno-form-input {
+  width: 18.5%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-res-form-label {
+  width: 13%;
+  padding-left: 2%;
+}
+
+.ledger-reg-res-form-input {
+  width: 18.5%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-mobile-form-label {
+  width: 13%;
+}
+
+.ledger-reg-mobile-form-input {
+  width: 45.5%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+.ledger-reg-gst-form-input {
+  width: 18.5%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #000;
+}
+
+/* //////////////////////////////// */
+.ledger-opening-balance {
+  display: flex;
+  margin-bottom: 1%;
+}
+.ledger-opening-balance-head {
+  text-decoration: underline;
+}
+
+.debit-div {
+  width: 25%;
+}
+.credit-div {
+  width: 24%;
+}
+.ledger-reg-debit-form-input {
+  width: 95%;
+  border-radius: 5px;
+  height: 35px;
+}
+.ledger-reg-credit-form-input {
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.opening-date {
+  width: 100%;
+  border-radius: 5px;
+}
+.ledger-date {
+  width: 24.3%;
+  margin-left: 15.5%;
+}
+
+.ledgerReg-tab .nav-link {
+  font-size: 18px !important;
+  color: #000 !important;
+}
+
+.ledger-reg-form {
+  width: 100%;
+}
+.ledger-reg-div {
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  padding-left: 3%;
+}
+
+.ledger-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.ledger-dropdown-option {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ledger-dropdown-option:hover {
+  background-color: #f2f2f2;
+}
+
+.ledger-reg-salesman-input-div {
+  width: 18.5%;
+}
+.ledger-salesman-dropdown {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.ledger-name-dropdown {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 100001;
+}
+
+.ledger-dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ledger-dropdown-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Styles for the Under dropdown */
+.ledger-under-dropdown {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.ledger-dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ledger-dropdown-option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Add the following styles to your CSS file */
+
+.ledger-name-dropdown,
+.ledger-under-dropdown,
+.ledger-salesman-dropdown {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.ledger-dropdown-option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.ledger-reg-name-input-div,
+.ledger-reg-under-input-div,
+.ledger-reg-salesman-input-div {
+  position: relative;
+}
+
+/* Adjust the top property based on your layout */
+.ledger-reg-name-input-div .ledger-name-dropdown {
+  top: 40px; /* Adjust this value as needed */
+}
+
+.ledger-reg-under-input-div .ledger-under-dropdown {
+  top: 40px; /* Adjust this value as needed */
+}
+
+.ledger-reg-salesman-input-div .ledger-salesman-dropdown {
+  top: 40px; /* Adjust this value as needed */
+}
+
+.ledger-reg-openingbalance-form-label {
+  width: 13%;
+  margin-left: 2.5%;
+}
+
+.ledger-reg-gst-form-control {
+  width: 45.5%;
+  border-radius: 5px;
+  height: 35px;
+}
+.ledger-reg-gst-form-label {
+  width: 13%;
+}
+
+/* Add this to your CSS file */
+.ledger-dropdown-option.selected {
+  background-color: #007bff; /* You can customize the selected option styling */
+  color: #fff;
+}
+
+.ledger-search-button {
+  margin-left: 10px;
+  height: 100%;
+  height: 35px;
+}
+
+@media only screen and (max-width: 600px) {
+  .ledger-reg-name-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-name-form-control {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+  .ledger-reg-name-input-div {
+    width: 70%;
+  }
+
+  .ledger-reg-name-options {
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    margin-top: 2px;
+  }
+
+  .ledger-reg-name-options {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .ledger-reg-name-options-select:hover {
+    background-color: #f5f5f5;
+  }
+
+  .ledger-reg-under-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-under-form-control {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+  .ledger-reg-under-input-div {
+    width: 70%;
+  }
+
+  .ledger-reg-under-options {
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    margin-top: 2px;
+  }
+
+  .ledger-reg-under-options {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .ledger-reg-under-options-select:hover {
+    background-color: #f5f5f5;
+  }
+
+  /* /////////////////////////////////////////////////// */
+
+  .ledger-reg-address-tab {
+  }
+
+  .ledger-reg-form-pair {
+    margin-bottom: 1%;
+  }
+
+  .ledger-reg-address-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-address-form-control {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-city-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-city-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-pincode-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-pincode-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-contact-person-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-contact-person-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-email-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-email-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-salesman-form-label {
+    width: 20%;
+    padding-left: 2%;
+  }
+
+  .ledger-reg-salesman-form-input {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-telno-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-telno-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-res-form-label {
+    width: 20%;
+    padding-left: 2%;
+  }
+
+  .ledger-reg-res-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-mobile-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-mobile-form-input {
+    width: 59%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-gst-form-input {
+    width: 18.5%;
+
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .debit-div {
+    width: 35%;
+  }
+  .credit-div {
+    width: 34%;
+  }
+  .ledger-reg-debit-form-input {
+    width: 95%;
+    border-radius: 5px;
+    height: 35px;
+  }
+  .ledger-reg-credit-form-input {
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  .opening-date {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .ledger-date {
+    width: 33%;
+    margin-left: 27.5%;
+  }
+
+  .ledgerReg-tab .nav-link {
+    font-size: 18px !important;
+    color: #000 !important;
+  }
+
+  .ledger-reg-form {
+    width: 100%;
+  }
+  .ledger-reg-div {
+    /* display: flex;
+        justify-content: center;
+        align-items: center; */
+    padding-left: 3%;
+  }
+
+  .ledger-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f2f2f2;
+  }
+
+  .ledger-reg-salesman-input-div {
+    width: 25%;
+  }
+  .ledger-salesman-dropdown {
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-name-dropdown {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100001;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Styles for the Under dropdown */
+  .ledger-under-dropdown {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Add the following styles to your CSS file */
+
+  .ledger-name-dropdown,
+  .ledger-under-dropdown,
+  .ledger-salesman-dropdown {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .ledger-reg-name-input-div,
+  .ledger-reg-under-input-div,
+  .ledger-reg-salesman-input-div {
+    position: relative;
+  }
+
+  /* Adjust the top property based on your layout */
+  .ledger-reg-name-input-div .ledger-name-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-under-input-div .ledger-under-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-salesman-input-div .ledger-salesman-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-openingbalance-form-label {
+    width: 25%;
+    margin-left: 3%;
+  }
+
+  .ledger-reg-gst-form-label {
+    width: 25%;
+  }
+  .ledger-reg-gst-form-control {
+    width: 59%;
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  /* Add this to your CSS file */
+  .ledger-dropdown-option.selected {
+    background-color: #007bff; /* You can customize the selected option styling */
+    color: #fff;
+  }
+
+  .ledger-search-button {
+    margin-left: 1.5%;
+    height: 35px;
+    width: 10%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .ledger-reg-name-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-name-form-control {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+  .ledger-reg-name-input-div {
+    width: 70%;
+  }
+
+  .ledger-reg-name-options {
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    margin-top: 2px;
+  }
+
+  .ledger-reg-name-options {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .ledger-reg-name-options-select:hover {
+    background-color: #f5f5f5;
+  }
+
+  .ledger-reg-under-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-under-form-control {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+  .ledger-reg-under-input-div {
+    width: 70%;
+  }
+
+  .ledger-reg-under-options {
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    margin-top: 2px;
+  }
+
+  .ledger-reg-under-options {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .ledger-reg-under-options-select:hover {
+    background-color: #f5f5f5;
+  }
+
+  /* /////////////////////////////////////////////////// */
+
+  .ledger-reg-address-tab {
+  }
+
+  .ledger-reg-form-pair {
+    margin-bottom: 1%;
+  }
+
+  .ledger-reg-address-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-address-form-control {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-city-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-city-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-pincode-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-pincode-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-contact-person-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-contact-person-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-email-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-email-form-input {
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-salesman-form-label {
+    width: 20%;
+    padding-left: 2%;
+  }
+
+  .ledger-reg-salesman-form-input {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-telno-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-telno-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-res-form-label {
+    width: 20%;
+    padding-left: 2%;
+  }
+
+  .ledger-reg-res-form-input {
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-mobile-form-label {
+    width: 25%;
+  }
+
+  .ledger-reg-mobile-form-input {
+    width: 59%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .ledger-reg-gst-form-input {
+    width: 18.5%;
+
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #000;
+  }
+
+  .debit-div {
+    width: 35%;
+    padding-left: 1.3%;
+  }
+  .credit-div {
+    width: 34%;
+  }
+  .ledger-reg-debit-form-input {
+    width: 95%;
+    border-radius: 5px;
+    height: 35px;
+  }
+  .ledger-reg-credit-form-input {
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  .opening-date {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .ledger-date {
+    width: 33%;
+    margin-left: 27.5%;
+  }
+  .ledger-reg-openingbalance-form-label {
+    width: 23%;
+    margin-left: 3%;
+  }
+
+  .ledger-date {
+    width: 24.3%;
+    margin-left: 27.2%;
+  }
+
+  .ledgerReg-tab .nav-link {
+    font-size: 18px !important;
+    color: #000 !important;
+  }
+
+  .ledger-reg-form {
+    width: 100%;
+  }
+  .ledger-reg-div {
+    /* display: flex;
+        justify-content: center;
+        align-items: center; */
+    padding-left: 3%;
+  }
+
+  .ledger-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f2f2f2;
+  }
+
+  .ledger-reg-salesman-input-div {
+    width: 25%;
+  }
+  .ledger-salesman-dropdown {
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-name-dropdown {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100001;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Styles for the Under dropdown */
+  .ledger-under-dropdown {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ledger-dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Add the following styles to your CSS file */
+
+  .ledger-name-dropdown,
+  .ledger-under-dropdown,
+  .ledger-salesman-dropdown {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .ledger-dropdown-option {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .ledger-reg-name-input-div,
+  .ledger-reg-under-input-div,
+  .ledger-reg-salesman-input-div {
+    position: relative;
+  }
+
+  /* Adjust the top property based on your layout */
+  .ledger-reg-name-input-div .ledger-name-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-under-input-div .ledger-under-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-salesman-input-div .ledger-salesman-dropdown {
+    top: 40px; /* Adjust this value as needed */
+  }
+
+  .ledger-reg-gst-form-label {
+    width: 25%;
+  }
+  .ledger-reg-gst-form-control {
+    width: 59%;
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  /* Add this to your CSS file */
+  .ledger-dropdown-option.selected {
+    background-color: #007bff; /* You can customize the selected option styling */
+    color: #fff;
+  }
+
+  .ledger-search-button {
+    margin-left: 1.5%;
+    height: 35px;
+    width: 10%;
+  }
+}
+
+/* */
+@media only screen and (min-width: 1025px) {
+}
+
+/* ///////////////////////////////////////////ledgerModel//////////////////////////////////// */
+
+.ledgerRegBody {
+  width: 100%;
+
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5%;
+}
+
+.ledgerRegBodyRow {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  /* background-color: #007bff; */
+  margin-top: 1%;
+}
+.ledgerRegBodyRowCol {
+  width: 50%;
+  height: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4%;
+}
+
+.ledgerRegBodyRowCol label {
+  width: 30%;
+}
+.ledgerRegBodyRowCol input {
+  width: 60%;
+  height: 3vh;
+}
+.ledgerRegBodyRowCol button {
+  height: 3.8vh;
+  width: 9%;
+  margin-left: 1%;
+}
+.ledgerRegBodyRowCol input:focus {
+  outline: none;
+}
+
+.ledgerRegBodyRowLines {
+  width: 40%;
+  height: 0%;
+  border: 0.838px solid #4a4a4a;
+}
+.comboClass {
+  width: 62%;
+  height: 3.5vh;
+}
+input {
+  border-width: 1;
+}
+/* input:focus{
+   outline: none;
+} */
+

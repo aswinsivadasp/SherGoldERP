@@ -1,0 +1,368 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; 
+} */
+
+.SchemeCashReceiptMobnavBartoggle {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  left: 0.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+label {
+  color: rgb(0, 0, 0);
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.SchemeCashReceiptMobRoot {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+.SchemeCashReceiptMobnavBar {
+  width: 100%;
+  height: 7.5%;
+  background: rgb(0, 8, 169);
+  display: flex;
+  position: relative;
+}
+
+.scherecmobnavitems{
+  display: flex;
+  width: 50vw;
+
+}
+
+.SchemeRecMobnavBaritemsbuttons{
+background-color: transparent;
+border: none;
+height: 100%;
+width: 25%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.SchemeRecMobbuttonimg{
+  width: 65%;
+}
+
+.schemeMobshesofttag{
+  margin-left: 20%;
+}
+.schemeRecMobBody {
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2%;
+}
+
+.schemeRecMobBodySec1 {
+  width: 95vw;
+  height: 30vh;
+  margin-top: 2%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.schemeRecMobBodySec2 {
+  width: 95vw;
+  height: 60%;
+  background-color: rgb(256,256,256);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.schemeRecMobBodySec1Row {
+  width: 100%;
+  height: 25%;
+  /* background-color: brown; */
+  margin-top: 1.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.schemeRecMobBodySec1Row input {
+  width: 95%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.scheRecMobCashAccCombo {
+  width: 96.3%;
+  height: 4vh;
+}
+.schemeRecMobBodySec1Row label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  width: 95%;
+}
+
+.schemeRecMobBodySec1Rowtop {
+  width: 100%;
+  height: 25%;
+  /* background-color: brown; */
+  margin-top: 1.5%;
+  display: flex;
+}
+
+.schemeRecMobBodySec2Rowamount {
+  margin-top: 1.5%;
+  /* background-color: blueviolet; */
+  width: 100%;
+  height: 13%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schemeRecMobBodySec2Rowcol1 {
+  height: 100%;
+  width: 36%;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+}
+.schemeRecMobBodySec2Rowcol1 input {
+  width: 94%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.schemeRecMobBodySec2Rowcol1 label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  width: 94%;
+}
+
+.schemeRecMobBodySec2Rowcol2 {
+  height: 100%;
+  width: 35%;
+  /* background-color: chartreuse; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  margin-left: 5%;
+}
+.schemeRecMobBodySec2Rowcol2 input {
+  width: 92%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.schemeRecMobBodySec2Rowcol2 label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  width: 92%;
+}
+.schemeRecMobBodySec2Rowcol3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  gap: 4%;
+  padding-top: 3vh;
+}
+.schemeRecMobBodySec2Rowcol3 label {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  /* background-color:blue; */
+  width: auto;
+}
+.schemeRecMobBodySec2Rowcol3 input {
+}
+.schemeRecMobBodySec2Row {
+  margin-top: 1.5%;
+  /* background-color: blueviolet; */
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.schemeRecMobBodySec2Row label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  width: 95%;
+}
+.schemeRecMobBodySec2Row input {
+  width: 95%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.schemeRecMobBodySec2Row2 {
+  margin-top: 1.5%;
+  /* background-color: blueviolet; */
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.schemeRecMobBodySec2Row2 input {
+  width: 95%;
+  height: 8vh !important;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.schemeRecMobBodySec2Row2 label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 157.143% */
+  width: 95%;
+}
+.schemeRecMobBodySec1RowCol {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.schemeRecMobBodySec1RowCol label {
+  color: #000;
+  text-align: left;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 157.143% */
+  width: 90%;
+}
+.schemeRecMobBodySec1RowCol input {
+  width: 90%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.dateinput {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+/*
+.datelabel {
+  padding-left: 12% !important;
+} */
+
+.SchemeCashReceiptMobRoot input {
+  border-radius: 3px;
+  border: 1px solid #000;
+  height: 4vh;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.find_dialog_scheRecMob {
+  width: 92vw;
+  height: 15vh;
+  /* background-color: rgb(207, 207, 207); */
+  /* background: rgb(0, 8, 169); */
+  border-radius: 10px;
+  background: #f8f9f9;
+  border: 1px solid rgb(74, 74, 74);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  top: 15.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.find_dialog_scheRecMob input {
+  height: 4vh;
+  width: 60%;
+}
+.find_dialog_scheRecMob button {
+  height: 4vh;
+  width: 20%;
+  border-radius: 5px;
+  background: rgba(0, 8, 180, 0.73);
+  color: #fff;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.comboInputPadding {
+  box-sizing: border-box;
+  padding: 0 10px !important;
+}
+.findCloseDiv{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+}

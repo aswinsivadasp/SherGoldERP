@@ -1,0 +1,575 @@
+.HomeRoot {
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url("../images/background.png"); */
+  background-image: url("../assets/images/background.webp");
+
+  /* background-image: url("https://i.postimg.cc/4yFB92Rf/background.png"); */
+
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+}
+
+.homeBody {
+  width: 45%;
+  height: 60%;
+
+  display: flex;
+  flex-direction: column;
+}
+.homeBodyrows {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 33.33%;
+  gap: 3.33%;
+}
+.homeBodycols {
+  width: 30%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  background-color: transparent;
+  border: none;
+
+}
+.homeBodycols:hover {
+  border: solid 2px;
+}
+.homeBodycols img {
+  width: 25%;
+  height: auto;
+}
+.homeBodycols label {
+  color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23px;
+  letter-spacing: 2%;
+  text-align: center;
+}
+.shergoldheaddiv {
+  width: 25%;
+  height: 20%;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+}
+.shergoldhead {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 2%;
+  text-align: left;
+}
+.shergoldtag {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 9%;
+  text-align: left;
+}
+
+.shersoftdiv {
+  display: flex;
+  width: 32%;
+  height: 22%;
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  gap: 1%;
+}
+.shersoftdivimg {
+  width: 26%;
+  height: 100%;
+}
+.shersoftdivimg img {
+  height: 100%;
+  width: auto;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  bottom: 1%;
+  right: 2%;
+  width: 25%;
+  height: 30%;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  animation: slide-up 0.8s ease;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.close {
+  color: red; /* Change color to red */
+  float: right;
+  font-size: 28px;
+  font-weight: bold; /* Make it bolder */
+  border: none;
+  background-color: transparent;
+}
+.alertContentdiv {
+  width: 90%;
+  height: 80%;
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.shersoftdivcontents {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5%;
+  width: 74%;
+  height: 100%;
+}
+.shersoftdivcontentHead {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: auto;
+  letter-spacing: 8%;
+  text-align: left;
+}
+.softcmpny {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 20px;
+  font-weight: 320;
+  line-height: auto;
+  letter-spacing: 9%;
+}
+.companysite {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 20px;
+  font-weight: 320;
+  line-height: 23px;
+  letter-spacing: 6%;
+}
+.mobNumber {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 20px;
+  font-weight: 320;
+  line-height: 20px;
+  letter-spacing: 6%;
+}
+.ssMailId {
+  color: rgb(255, 255, 255);
+  font-family: Times New Roman;
+  font-size: 20px;
+  font-weight: 320;
+  line-height: 20px;
+  letter-spacing: 6%;
+}
+@media screen and (max-width: 768px) {
+  .shersoftdivimg img {
+    height: auto;
+    width: 100%;
+  }
+}
+.alertContentdivdata {
+  color: rgb(36, 133, 36);
+  font-family: Times New Roman;
+  font-size: 20px;
+  font-weight: 320;
+  line-height: 20px;
+  letter-spacing: 6%;
+}
+
+@media screen and (min-width: 1024px) {
+  .shersoftdivimg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+  }
+
+  .shersoftdivimg img {
+    height: auto;
+    width: 100%;
+  }
+  .shersoftdivcontents {
+    max-width: 65%;
+    margin-left: 1.5%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .shersoftdivcontentHead {
+  }
+  .softcmpny {
+  }
+  .companysite {
+  }
+  .mobNumber {
+  }
+  .ssMailId {
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .shergoldheaddiv {
+    width: auto;
+    height: 20%;
+  }
+
+  .modal {
+    /* width: 50%;
+  height: 20%;
+  bottom: 5%; */
+    display: none;
+  }
+
+  .shersoftdiv {
+    width: 50%;
+    height: 15%;
+  }
+  .shersoftdivimg {
+    width: 26%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .shersoftdivimg img {
+  }
+  .shersoftdivcontents {
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+    padding-left: 2%;
+  }
+}
+
+.report_dialog {
+  width: 45vw;
+  height: 65vh;
+  background-color: #ffffff;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.report_dialogHead {
+  width: 100%;
+  height: 10%;
+  background-color: #0008a9;
+  display: flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.report_dialogHeadpart {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  gap: 1%;
+  align-items: center;
+}
+.report_dialogHeadpart {
+  margin-left: 1%;
+}
+.report_dialogHeadpart label {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.report_dialogHeadControlls {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 1%;
+  gap: 2%;
+}
+
+.controllsbuttons {
+  height: 3.5vh;
+  width: 1.7vw;
+  border: none;
+  border-radius: 3px;
+
+  background: rgb(217, 217, 217);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.xbutton {
+  border-radius: 3px;
+
+  background: rgb(251, 59, 23) !important;
+}
+.controllsbuttons img {
+  /* width: 100%;
+  height: 100%; */
+}
+.report_dialogBody {
+  height: 85%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+.report_dialogBodypart1 {
+  width: 98%;
+  height: 15%;
+  margin-left: 1%;
+  margin-top: 1%;
+  box-sizing: border-box;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  display: flex;
+  gap: 1%;
+  align-items: center;
+}
+.report_dialogBodypart1sec {
+  width: 33.33%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+}
+.report_dialogBodypart1sec label {
+  color: rgb(0, 0, 0);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.report_dialogBodypart1sec input {
+  width: 65%;
+  height: 60%;
+  margin-left: 2%;
+  box-sizing: border-box;
+  border: 1px solid rgb(135, 135, 135);
+  border-radius: 3px;
+}
+
+.report_dialogBodypart2 {
+  box-sizing: border-box;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  width: 98%;
+  height: 70%;
+  margin-left: 1%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1%;
+}
+.report_dialogBodypart2sec {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2%;
+  justify-content: center;
+}
+.report_dialogBodypart2sec label {
+  color: rgb(0, 0, 0);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-left: 1%;
+  width: 41vw;
+}
+.sec2combo {
+  background: rgb(255, 255, 255);
+  height: 4.7vh;
+  width: 41vw;
+  margin-left: 1%;
+  font-family: Inter;
+}
+.selectcombo {
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.selectcombo:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #ccc; /* Set the border color to a lighter shade */
+  /* You can also set other styles like border-width or box-shadow here */
+}
+
+.report_dialogBodypart2sec input {
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 3px;
+
+  background: rgb(255, 255, 255);
+  height: 4.7vh;
+  width: 41vw;
+  margin-left: 1%;
+}
+
+.report_dialogBodypart3 {
+  width: 100%;
+  height: 15%;
+
+  display: flex;
+  gap: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
+.report_dialogBodypart3buttons {
+  width: 17%;
+  height: 80%;
+  border-radius: 5px;
+
+  background: rgb(0, 8, 169);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+.report_dialogBodypart3buttons label {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.hommeToggleButton {
+  position: absolute;
+  top: 2vh;
+
+  right: 2vw;
+}
+
+.toggleImg {
+  width: 100%;
+  height: 100%;
+}
+/* HomePage.css */
+
+/* HomePage.css */
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: -850px; /* Sidebar is initially hidden on the right */
+  width: 250px;
+  height: 50%;
+  background: #ffffff; /* Sidebar background color */
+  transition: all 0.6s ease;
+}
+
+.sidebar.active {
+  top: 0; /* Slide in the sidebar when active */
+}
+
+.mainContent {
+  /* Add styles for main content area */
+}
+
+.toggleButton {
+  /* Add styles for toggle button */
+}
+
+
+ .subDropdownMenu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  color: black;
+  min-width: 220px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+/* WebKit scrollbar styles */
+.subDropdownMenu::-webkit-scrollbar,.categoryReorder::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+}
+
+.subDropdownMenu::-webkit-scrollbar-track,.categoryReorder::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.subDropdownMenu::-webkit-scrollbar-thumb,.categoryReorder::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.subDropdownMenu::-webkit-scrollbar-thumb:hover,.categoryReorder::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the thumb on hover */
+}
+
+
+.subDropdownMenu {
+  top: 0;
+  left: 100%;
+}
+
+ .subDropdownItem {
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+  cursor: pointer;
+  min-height: 35px;
+  padding-left: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownItem:hover, .subDropdownItem:hover, .dropdownItem.selected {
+  background-color: #e9ecef;
+}
+
+.dropdownItem.active {
+  background-color: #007bff;
+  /* color: white; */
+}
+
+.arrow {
+position: absolute;
+  right: 10px;
+  height: 20px;
+}

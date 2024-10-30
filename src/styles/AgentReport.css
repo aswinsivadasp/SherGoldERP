@@ -1,0 +1,162 @@
+.agentreportmodal {
+    width: 1000px;
+    height: 500px;
+  }
+  
+  #order-main {
+    width: 95%;
+  }
+  
+  .agentRepTablebody {
+    width: 100%;
+    height: 90%;
+  }
+  
+  /* ////////////////table styles///////////// */
+  .agRepDataTable {
+    width: 100%;
+    height: 95%;
+    /* background-color: aqua; */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    overflow: auto;
+   
+  }
+  .agRepDataTable table {
+    width: 100%;
+  }
+  .agRepDataTableHead {
+    width: 100%;
+    background: rgb(2, 108, 195);
+    height: 4vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .agRepDataTableHead tr th {
+    color: rgb(255, 255, 255);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: center;
+    height: 20%;
+  }
+  
+  .agRepDataTableBodyStyletr {
+    height: 3vh;
+  }
+  
+  .agRepDataTableDataBox {
+    height: 17px;
+    width: 98%;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .dataBox {
+    border: none;
+  }
+  
+  /* Add this CSS to your agentReport.css file */
+  
+  /* Style for table rows */
+  /* .agRepDataTableBodyStyletr {
+    border: 1px solid #E8E8E8;
+  background: #FFF; 
+  } */
+  
+  /* Style for table cells */
+  .agRepDataTableDataBoxAccNo,
+  .agRepDataTableDataBoxCustomer,
+  .agRepDataTableDataBoxDate,
+  .agRepDataTableDataBoxEntryno,
+  .agRepDataTableDataBoxType,
+  .agRepDataTableDataBoxRate,
+  .agRepDataTableDataBoxAmount,
+  .agRepDataTableDataBoxWeight,
+  .agRepDataTableDataBoxRedeemRate,
+  .agRepDataTableDataBoxRedeemamt,
+  .agRepDataTableDataBoxRedeemwt,
+  .agRepDataTableDataBoxagentBal,
+  .agRepDataTableDataBoxPlwt,
+  .agRepDataTableDataBoxAgent,
+  .agRepDataTableDataBoxNarration ,
+  .agRepDataTableDataBoxinterest,
+  .agRepDataTableDataBoxintperc,
+  .agRepDataTableDataBoxdays{
+    border-bottom: 0.1px solid #e8e8e8;
+    border-right: 0.4px solid #e8e8e8;
+    background: #eeeeee;
+    
+   
+  }
+  .agRepDataTableDataBoxAccNo {
+    width: 5vw;
+  }
+  .agRepDataTableDataBoxCustomer {
+    width: 8vw;
+  }
+  .agRepDataTableDataBoxDate {
+    width: 5vw;
+  }
+  
+  .agRepDataTableDataBoxEntryno {
+    width: 2vw;
+  }
+  
+  .agRepDataTableDataBoxType {
+    width: 8vw;
+  }
+  .agRepDataTableDataBoxRate {
+    width: 5vw;
+  }
+  .agRepDataTableDataBoxAmount,
+  .agRepDataTableDataBoxWeight,
+  .agRepDataTableDataBoxRedeemRate,
+  .agRepDataTableDataBoxRedeemamt,
+  .agRepDataTableDataBoxRedeemwt,
+  .agRepDataTableDataBoxagentBal,
+  .agRepDataTableDataBoxPlwt,.agRepDataTableDataBoxNarration,.agRepDataTableDataBoxAgent ,.agRepDataTableDataBoxinterest{
+    width: 8vw;
+  }
+  
+  .agRepDataTableDataBoxdays,.agRepDataTableDataBoxintperc{
+    width: 2vw;
+  }
+  .redRow {
+    color: red;
+  }
+  .blueRow{
+    color: blue;
+  }
+  .no-scroll {
+    overflow: visible !important;
+  }
+  @media screen and (max-width: 768px) {
+    .agentreportmodal{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .reportnav{
+      margin-top: 1.5vh;
+    }
+    .agentcontrolls{
+      align-items: center;
+      height: 4vh;
+  
+    }
+    .controllsbuttons{
+      width: 25px;
+      height: 25px;
+    }
+  }
+  

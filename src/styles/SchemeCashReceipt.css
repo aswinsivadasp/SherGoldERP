@@ -1,0 +1,248 @@
+.schemeRecBody {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schemeRecBodyData {
+  height: 96%;
+  width: 95%;
+}
+.cashaccCombo {
+  width: 46.5%;
+  height: 55%;
+  /* box-sizing: border-box; */
+}
+
+.schRecTopdata {
+  width: 100%;
+  height: 15%;
+  /* background-color: blueviolet; */
+  display: flex;
+}
+.schRecTopdatasections {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.schRecsec1 {
+  width: 25%;
+}
+.schRecsec2 {
+  width: 50%;
+  padding-left: 3%;
+}
+
+.schRecsec3 {
+  width: 25%;
+}
+.sec3row input {
+  margin-left: 2%;
+}
+.sec3row {
+  margin-right: 0;
+}
+
+.schRecTopdatasectionsrows {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 3%;
+  align-items: center;
+}
+.schRecTopdatasectionsrows label {
+  color: rgb(0, 0, 0);
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 30%;
+}
+.schRecTopdatasectionsrows input {
+  width: 60%;
+  height: 53%;
+  /* box-sizing: border-box; */
+  border: 1px solid rgb(74, 74, 74);
+}
+
+/* ////////////////table styles///////////// */
+.schRecDataTable {
+  width: 100%;
+  height: 75%;
+  /* background-color: aqua; */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  overflow-y: auto;
+}
+.schRecDataTable table {
+  width: 100%;
+}
+.schRecDataTableHead {
+  width: 100%;
+  background: rgb(2, 108, 195);
+  height: 4vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.schRecDataTableHead tr th {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  height: 20%;
+}
+.schRecDataTableHeadslno,
+.schRecDataTableDataBoxSlno {
+  width: 4%;
+}
+.schRecDataTableHeadname,
+.schRecDataTableDataBoxname {
+  width: 14%;
+}
+.schRecDataTableHeadagent,
+.schRecDataTableDataBoxagent {
+  width: 14%;
+}
+.schRecDataTableHeadaccno,
+.schRecDataTableDataBoxaccno {
+  width: 16%;
+}
+.schRecDataTableHeadamount,
+.schRecDataTableDataBoxamount {
+  width: 15%;
+}
+.schRecDataTableHeadgm,
+.schRecDataTableDataBoxGm {
+  width: 13%;
+}
+.schRecDataTableHeadprintgm,
+.schRecDataTableDataBoxprintgm {
+  width: auto;
+}
+.schRecDataTableDataBoxprintgm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schRecDataTableHeadnarration,
+.schRecDataTableDataBoxStonenarration {
+  width: 20%;
+}
+.schRecDataTableBodyStyletr {
+  height: 3vh;
+}
+
+.schRecDataTableDataBox {
+  /* height: 17px; */
+    height: 3vh;
+
+  width: 100%;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.dataBox {
+  border: none;
+  width: 100%;
+}
+
+.schRecDataTablefootertotal {
+  width: 100%;
+  height: 20px;
+  background: rgb(2, 108, 195);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.oldwt{
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  gap: 2%;
+  left: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+
+  
+}
+.oldwt label{
+  height: 100%;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.oldwt input{
+  height: 80% !important;
+  width: 50%;
+
+}
+.schRecDataTablefootertotalamount {
+  width: 14%;
+  height: 80%;
+  border: none;
+  margin-left: 47%;
+}
+.schRecDataTablefootertotalGm {
+  width: 13%;
+  height: 80%;
+  border: none;
+  margin-left: 1.2px;
+}
+.find-dialog {
+  width: 30vw;
+  height: 15vh;
+  border-radius: 10px;
+  background: #f8f9f9;
+  border: 1px solid rgb(74, 74, 74);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+.find-dialog  input{
+  height: 3vh;
+  width: 60%;
+}
+.find-dialog  button{
+  height: 4vh;
+  width: 20%;
+  border-radius: 5px;
+  background: rgba(0, 8, 180, 0.73);
+  color: #fff;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+

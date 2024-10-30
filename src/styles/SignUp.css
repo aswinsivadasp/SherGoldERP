@@ -1,0 +1,148 @@
+.SignUpRoot{
+    height: 100vh;
+    width: 100vw;
+    /* background-image: url("../images/background.png"); */
+    /* background-image: url("https://i.postimg.cc/4yFB92Rf/background.png"); */
+    background-image: url("../assets/images/background.webp");
+
+  
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
+}
+
+.SignUpForm{
+    height: 38vh;
+    width: 26vw;
+    background-color: #ffffff;
+    border-radius: 5px;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+}
+
+.SignUpHead{
+   background-color: #ffffff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+
+}
+
+.SignUpHead img{
+   margin-left: 1%; 
+}
+
+.SignUpBody{
+    background-color: #0008A9;
+    width: 100%;
+    height: 85%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2.5%;
+    align-items: center;
+ justify-content: center;
+
+}
+.SignUpBodyRows{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}
+.SignUpBodyRows label{
+    margin-left: 1%;
+    font-weight: 500px;
+    line-height: 15px;
+    font-size: 15px;
+    width: 20%;
+    color: #ffffff;
+}
+.SignUpBodyRows input{
+
+    width: 60%;
+    height: 50%;
+}
+.SignUpBodyRows select{
+    width: 62.5%;
+    height: 60%;  
+}
+.SignUpBodyRowsButton{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}  
+
+
+.SignUpBodyRowsButton button{
+   width: 20%;
+   height: 70%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+}
+
+@media (max-width: 767px) { /* Adjust this value based on your requirement for mobile view */
+    .SignUpRoot{
+        background-image: url("../assets/images/homeImage_mob.webp");
+    }
+
+    .SignUpForm{
+        height: 50vh;
+        width: 85vw;}
+
+        .SignUpBodyRows{
+            width: 100%;
+            height: 15%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3%;
+        }
+
+        .SignUpBodyRows label{
+            margin-left: 1%;
+            font-weight: 500px;
+            line-height: 15px;
+            font-size: 15px;
+            width: 82%;
+            color: #ffffff;
+        }
+        .SignUpBodyRows input{
+        
+            width: 80%;
+            height: 50%;
+        }
+        .SignUpBodyRowsButton{
+            width: 100%;
+            height: 15%;
+            display: flex;
+            align-items: center;
+            gap: 3%;   
+        }
+        .SignUpBodyRowsButton button{
+            width: 38.5%;
+            height: 55%; 
+            border-radius: 10px;
+        }
+        .SignUpBodyRows select{
+            width: 82%;
+            height: 60%;  
+        }
+
+}

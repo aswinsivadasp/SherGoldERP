@@ -1,0 +1,452 @@
+.printRoot {
+  width: 190mm; /* A4 width */
+  height: 100%; /* A4 height */
+  margin: auto; /* Center the page */
+  border: 1px solid #000; /* Border for visibility */
+  box-sizing: border-box; /* I nclude padding and border in element's total width and height */
+  /* background-color: rgb(175, 175, 175); */
+
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  
+  background-color: #fff;
+  z-index: 1000000;
+}
+
+.printBody {
+  position: relative;
+  margin-top: 2.5%;
+  width: 90%;
+  height: 90%;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  /* background-color: aqua; */
+}
+.RecpdfDownloadButton{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 10px;
+  top: 10px;
+}
+.RecPrintButton{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 45px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+}
+.RecCloseButton{
+  position: absolute;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  right: 80px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.printHead {
+  margin-top: 0.5%;
+  width: 100%;
+  height: 12%;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  justify-content: center;
+}
+.receiptHead {
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+.receiptCompanyName {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+.printContent {
+  margin-top: 0.5%;
+  width: 100%;
+  height: 83%;
+  /* background-color: rgb(234, 191, 238); */
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  align-items: center;
+}
+.printContentBody {
+  width: 95%;
+  height: 85%;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  margin-top: 2.5%;
+}
+.printContentBodyRow1 {
+  width: 100%;
+  height: 10%;
+  /* background-color: bisque; */
+  display: flex;
+  align-items: center;
+}
+.printContentBodyRow1sec1 {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+.printContentBodyRow1sec2 {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  justify-content: right;
+  padding-right: 2%;
+}
+.printContentBodyRow1sec1 span {
+  width: 20%;
+}
+.printContentBodyRow2 {
+  width: 100%;
+  height: 10%;
+  /* background-color: bisque; */
+  display: flex;
+  align-items: center;
+}
+.printContentBodyRow2sec {
+  width: 50%;
+  height: 100%;
+}
+.printContentBodyRow2sec span {
+  margin-left: 20%;
+  width: 70%;
+}
+.printContentBodyRow2secAmnt {
+  margin-left: 20%;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  border: 0.92px solid #000;
+  background: #fff;
+}
+.printContentBodyRow2secAmntsec1 {
+  width: 20%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.printContentBodyRow2secAmntsec2 {
+  width: 80%;
+  height: 100%;
+  text-align: right;
+  padding: 0 3%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.printContentBodyRow2secspan2 {
+  width: 50%;
+}
+.pritnFooterData {
+  margin-left: 10%;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 500;
+}
+.printContentBodyfooter {
+  /* background-color: #000; */
+
+  width: 95%;
+  height: 8%;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: right; */
+  /* text-align: right; */
+}
+
+.printContentBodyfootersec{
+  width: 50%;
+  height: 100%;
+}
+.printContentBodyfootersec span{
+  margin-left: 20%;
+  width: 70%;}
+
+.gmspan {
+  margin-left: 0 !important;
+}
+.recMobdateSpan {
+  width: 40% !important;
+}
+.recMargin{
+  margin-left: 0 !important;
+
+}
+.rupeeSign {
+  width: auto !important;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  
+  .printRoot {
+    width: 100vw;
+    height: 100vh;
+  }
+  .printContentBodyRow2sec span {
+    margin-left: 10%;
+    width: 80%;
+  }
+  .printContentBodyRow2secAmnt {
+    margin-left: 10%;
+  }
+  .pritnFooterData {
+    margin-left: 5%;
+  }
+  .RecPrintfontsize{
+    font-size: .8em;
+  }
+  .recMargin{
+    /* margin-left: 10%!important; */
+  }
+  .Recboldfontsize{
+    font-weight: 400 !important;
+    font-size: .8em;
+  }
+  .printBody {
+    width: 95%;
+    height: 50%;
+   
+    /* background-color: aqua; */
+  }
+  .wordssize{
+    font-weight: 400 !important;
+    font-size: .5em;
+  }
+  .recMobdateSpan {
+    width: 60% !important;
+  }
+}
+
+@media print{
+  @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;600;700&display=swap');
+
+  .printRoot, .printBody, .printHead, .receiptHead, .receiptCompanyName, .printContent, .printContentBody, .printContentBodyRow1, .printContentBodyRow2 {
+      font-family: 'Arial', sans-serif !important;
+  }
+
+  .printRoot {
+    width: 57mm; /* Width of the thermal paper */
+    margin: auto; /* Center the content */
+    border: none; /* Remove border for printing */
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1000000;
+    font-family: Arial !important;
+
+    
+}
+
+.printBody {
+    width: 57mm; /* Use the full width */
+    height: 500px; /* Auto height for content */
+    border: none; /* Remove border for printing */
+    display: flex;
+    flex-direction: column;
+    gap: 3mm; /* Adjusted gap */
+    font-family: Arial !important;
+
+}
+
+.RecpdfDownloadButton,
+.RecPrintButton,.RecCloseButton,.recsig {
+    display: none; /* Hide buttons in print view */
+}
+
+.printHead {
+    width: 100%;
+    text-align: center;
+    font-family: Arial !important;
+
+}
+
+.receiptHead {
+    font-size: 15px; /* Adjust font size */
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial !important;
+
+}
+
+.receiptCompanyName{
+    font-size: 15px; /* Adjust font size */
+    font-weight: 600;
+    text-align: center;
+    font-family: Arial !important;
+
+}
+
+.printContent{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm; /* Adjust gap */
+    align-items: flex-start;
+    font-weight: 600 !important;
+    font-family: Arial !important;
+
+
+}
+
+.printContentBody{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    font-weight: 600 !important;
+    font-family: Arial !important;
+
+
+}
+
+.printContentBodyRow1,
+.printContentBodyRow2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px; /* Adjust font size */
+    font-weight: 600 !important;
+    font-family: Arial !important;
+
+}
+
+.printContentBodyRow2secAmnt{
+    width: 100%;
+    height: auto;
+    display: flex;
+    border: 0.5px solid #000;
+    background: #fff;
+    font-weight: 600 !important;
+    font-family: Arial !important;
+
+
+}
+
+.printContentBodyRow2secAmntsec1{
+    width: 20%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600 !important;
+    font-family: Arial !important;
+
+
+}
+
+.printContentBodyRow2secAmntsec2 {
+    width: 80%;
+    height: 100%;
+    text-align: right;
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-weight: 500 !important;
+    font-family: Arial !important;
+
+
+}
+
+.pritnFooterData {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 2mm;
+    text-align: center;
+    width: 100%;
+}
+
+.printContentBodyfooter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 10px;
+}
+
+.wordssize{
+  font-weight: 600 !important;
+  font-family: Arial !important;
+
+  font-size: 10px;
+}
+.Recboldfontsize{
+font-weight: 600 !important;
+font-family: Arial !important;
+
+
+}
+.printentryno{
+text-wrap: nowrap;
+}
+.sofrup{
+text-wrap: nowrap;
+}
+.printContentBodyRow2sec span {
+margin-left: 0;}
+
+.printContentBodyRow2secAmnt,.twt{
+margin-left: 0 !important;
+}
+.amntdiv{
+margin-top: 20px;
+}
+.printContentBodyfooter{
+margin-bottom: 20px;
+}
+.twt{
+  font-weight: 600 !important;
+  font-family: Arial !important; 
+  font-size: 12px;
+
+}
+.printContentBodyfootersecsign {
+  display: block;
+  width: 100%;
+  text-align: right;
+  margin-right: 20%;
+}
+.recMargin{
+  margin-left: 10% !important;
+}
+}

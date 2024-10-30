@@ -1,0 +1,74 @@
+/* Sidebar.css */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  color: #000000;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  padding-top: 20px;
+  z-index: 200;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  position: absolute;
+  right: 4%;
+  
+}
+.close-btn img {
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color:black;
+  text-align: left;
+  padding-left: 20%;
+}
+
+.sidebar-item img {
+  margin-right: 10px;
+}
+
+.sidebar-item:hover {
+  background-color: #dfdfdf;
+  color: white;
+}
+.sidebar-item img{
+  height: 40px;
+}
+
+.sidebarHead{
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+}
+.sidebarHead img{
+  margin-left: 3%;
+  height: 30px;
+}
+.sidebarHead span{
+  font-size: 20px;
+}
+

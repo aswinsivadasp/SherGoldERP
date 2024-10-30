@@ -1,0 +1,52 @@
+  const formatForThermalPrint = (receiptData, receiptInfo, totalWt) => {
+    let receiptText = "";
+    receiptText += `RECEIPT\n`;
+    receiptText += `CHUNDANGATHRA GOLD & DIAMONDS\n`;
+    receiptText += `------------------------\n`;
+    receiptText += `No.: ${receiptInfo.EntryNo} - ${receiptData[0].agent[1].substring(0, 3)}\n`;
+    receiptText += `Date: ${formatDate(receiptInfo.date)}\n`;
+    receiptText += `------------------------\n`;
+    receiptText += `Account Number: ${receiptData[0].accountNumber[1]}\n`;
+    receiptText += `Received From: ${receiptData[0].name[1]}\n`;
+    receiptText += `The sum of rupees: ${toWords.convert(receiptData[0].amount, { currency: false })}\n`;
+    receiptText += `By Cash / cheque/DD No: CASH\n`;
+    receiptText += `₹ ${receiptData[0].amount}\n`;
+    receiptText += `* All Cheque / DD are subject to realization\n`;
+    receiptText += `Rate/Gm: ₹ ${receiptInfo.rate}\n`;
+    if (receiptData[0].printgm === 1) {
+      receiptText += `Weight: ${receiptData[0].gm}gm\n`;
+      receiptText += `Total Weight: ${accumulatedWt || 0}gm\n`;
+    }
+    receiptText += `------------------------\n`;
+    receiptText += `Receiver Signature\n`;
+    return receiptText;
+  };
+  const print = () => {
+    const printContent = formatForThermalPrint(receiptData, receiptInfo, accumulatedWt);
+  
+    const printWindow = window.open("", "", "width=800,height=600");
+    
+    // Add CSS styles for font size, height, weight, and line gap
+    const styles = `
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          font-size: 16px; /* Adjust font size */
+          line-height: 1.6; /* Adjust line height */
+          font-weight: 500; /* Adjust font weight */
+          margin: 0;
+          padding: 0;
+        }
+        pre {
+          white-space: pre-wrap; /* Ensure content wraps properly */
+        }
+      </style>
+    `;
+  
+    printWindow.document.write("<html><head><title>Print</title>" + styles + "</head><body>");
+    printWindow.document.write("<pre>" + printContent + "</pre>");
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  };

@@ -1,0 +1,161 @@
+.schemereportmodal {
+  width: 98vw;
+  height: 95vh;
+}
+
+#order-main {
+  width: 95%;
+}
+
+.schemeRepTablebody {
+  width: 100%;
+  height: 90%;
+}
+
+/* ////////////////table styles///////////// */
+.schRepDataTable {
+  width: 100%;
+  height: 95%;
+  /* background-color: aqua; */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  overflow: auto;
+ 
+}
+.schRepDataTable table {
+  width: 100%;
+}
+.schRepDataTableHead {
+  width: 100%;
+  background: rgb(2, 108, 195);
+  height: 4vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.schRepDataTableHead tr th {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  height: 20%;
+}
+
+.schRepDataTableBodyStyletr {
+  height: 3vh;
+}
+
+.schRepDataTableDataBox {
+  height: 17px;
+  width: 98%;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.dataBox {
+  border: none;
+}
+
+/* Add this CSS to your SchemeReport.css file */
+
+/* Style for table rows */
+/* .schRepDataTableBodyStyletr {
+  border: 1px solid #E8E8E8;
+background: #FFF; 
+} */
+
+/* Style for table cells */
+.schRepDataTableDataBoxAccNo,
+.schRepDataTableDataBoxCustomer,
+.schRepDataTableDataBoxDate,
+.schRepDataTableDataBoxEntryno,
+.schRepDataTableDataBoxType,
+.schRepDataTableDataBoxRate,
+.schRepDataTableDataBoxAmount,
+.schRepDataTableDataBoxWeight,
+.schRepDataTableDataBoxRedeemRate,
+.schRepDataTableDataBoxRedeemamt,
+.schRepDataTableDataBoxRedeemwt,
+.schRepDataTableDataBoxSchemeBal,
+.schRepDataTableDataBoxPlwt,
+.schRepDataTableDataBoxAgent,
+.schRepDataTableDataBoxNarration ,
+.schRepDataTableDataBoxinterest,
+.schRepDataTableDataBoxintperc,
+.schRepDataTableDataBoxdays{
+  border-bottom: 0.1px solid #e8e8e8;
+  border-right: 0.4px solid #e8e8e8;
+  background: #eeeeee;
+  
+ 
+}
+.schRepDataTableDataBoxAccNo {
+  width: 5vw;
+}
+.schRepDataTableDataBoxCustomer {
+  width: 8vw;
+}
+.schRepDataTableDataBoxDate {
+  width: 5vw;
+}
+
+.schRepDataTableDataBoxEntryno {
+  width: 2vw;
+}
+
+.schRepDataTableDataBoxType {
+  width: 8vw;
+}
+.schRepDataTableDataBoxRate {
+  width: 5vw;
+}
+.schRepDataTableDataBoxAmount,
+.schRepDataTableDataBoxWeight,
+.schRepDataTableDataBoxRedeemRate,
+.schRepDataTableDataBoxRedeemamt,
+.schRepDataTableDataBoxRedeemwt,
+.schRepDataTableDataBoxSchemeBal,
+.schRepDataTableDataBoxPlwt,.schRepDataTableDataBoxNarration,.schRepDataTableDataBoxAgent ,.schRepDataTableDataBoxinterest{
+  width: 8vw;
+}
+
+.schRepDataTableDataBoxdays,.schRepDataTableDataBoxintperc{
+  width: 2vw;
+}
+.redRow {
+  color: red;
+}
+.blueRow{
+  color: blue;
+}
+.no-scroll {
+  overflow: visible !important;
+}
+@media screen and (max-width: 768px) {
+  .schemereportmodal{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .reportnav{
+    margin-top: 1.5vh;
+  }
+  .schemecontrolls{
+    align-items: center;
+    height: 4vh;
+
+  }
+  .controllsbuttons{
+    width: 25px;
+    height: 25px;
+  }
+}

@@ -1,0 +1,178 @@
+@media screen and (max-width: 1024px) {
+  .HomePageMobroot {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../assets/images/homeImage_mob.webp");
+   /* background-image: url('https://i.postimg.cc/FR2JDkWc/home-Image-mob.png');*/
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0;
+    padding: 0;
+  }
+
+  .homemob_headDiv {
+    position: absolute;
+    width: 70%;
+    height: 15%;
+    top: 3%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+   
+  }
+ 
+  .homemob_headDivhead {
+    color: rgb(255, 255, 255);
+    font-family: Times New Roman;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 2%;
+    text-align: left;
+  }
+  .homemob_headDivtag {
+    color: rgb(255, 255, 255);
+    font-family: Times New Roman;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 11px;
+    letter-spacing: 9%;
+    text-align: left;
+  }
+
+  .shersoftdivMob {
+    position: absolute;
+    width: 70%;
+    height: 15%;
+    left: 5%;
+    bottom: 4%;
+    display: flex;
+    gap: 1%;
+  }
+  .shersoftdivMobimg {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .shersoftdivMobimg img {
+    height: 100%;
+    width: 100%;
+  }
+  .shersoftdivMobcontents {
+    width: 70%;
+    height: 100%;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+  }
+  .shersoftdivMobcontentHead {
+    color: rgb(255, 255, 255);
+    font-family: Times New Roman;
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 5em;
+    letter-spacing: 8%;
+    text-align: left;
+  }
+  .softcmpnyMob {
+    color: rgb(255, 255, 255);
+    font-family: Times New Roman;
+    font-size: .7em;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 9%;
+    text-align: left;
+  }
+  .shersoftdivMobcontentsdiv {
+    width: 100%;
+    height: 17%;
+    display: flex;
+    align-items: center;
+  }
+  .homemob_bodyDiv{
+    width: 90%;
+    height: 65%;
+    /* background-color: black; */
+    margin-top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: .333%;
+  }
+  .homemob_bodyDivRows{
+    width: 100%;
+    height: 33%;
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+
+
+  }
+.homemob_bodyDivCol{
+    height: 70%;
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+
+}
+.homemob_bodyDivCol img{
+  width: 25%;
+  height: auto;
+}
+.homemob_bodyDivCol label{
+  color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 23px;
+  letter-spacing: 2%;
+  text-align: center;
+}
+.sec2combo1{
+  background: rgb(255, 255, 255);
+  height: 4.7vh;
+  width: 93.5vw;
+  margin-left: 1%;
+  font-family: Inter;
+}
+
+
+.schReportmoblabel{
+  width: 98% !important;
+  margin-left: 2%;
+}
+}
+/* HomePageMob.css */
+.toggle-btn {
+  position: absolute;
+  top: 6%;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+   /* Ensure the button is above other elements */
+}
+
+.toggle-btn img {
+  width: 30px;
+  height: 30px;
+}

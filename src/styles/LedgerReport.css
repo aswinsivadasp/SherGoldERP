@@ -1,0 +1,147 @@
+.ledgerreportmodal {
+    width: 98vw;
+    height: 95vh;
+  }
+  
+  #order-main {
+    width: 95%;
+  }
+  
+  .ledgerRepTablebody {
+    width: 100%;
+    height: 90%;
+  }
+  
+  /* ////////////////table styles///////////// */
+  .ledgerreportDataTable {
+    width: 100%;
+    height: 95%;
+    /* background-color: aqua; */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    overflow: auto;
+   
+  }
+  .ledgerreportDataTable table {
+    width: 100%;
+  }
+  .ledgerreportDataTableHead {
+    width: 100%;
+    background: rgb(2, 108, 195);
+    height: 4vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .ledgerreportDataTableHead tr th {
+    color: rgb(255, 255, 255);
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: center;
+    height: 20%;
+  }
+  
+  .ledgerreportDataTableBodyStyletr {
+    height: 3vh;
+  }
+  
+  .ledgerreportDataTableDataBox {
+    height: 17px;
+    width: 98%;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .dataBox {
+    border: none;
+  }
+  
+  /* Add this CSS to your SchemeReport.css file */
+  
+  /* Style for table rows */
+  /* .ledgerreportDataTableBodyStyletr {
+    border: 1px solid #E8E8E8;
+  background: #FFF; 
+  } */
+  
+  /* Style for table cells */
+  .ledgerreportDataTableDataBoxBalance,
+  .ledgerreportDataTableDataBoxParticulars,
+  .ledgerreportDataTableDataBoxDate,
+  .ledgerreportDataTableDataBoxEntryno,
+  .ledgerreportDataTableDataBoxDeb,
+  .ledgerreportDataTableDataBoxCred,
+  .ledgerreportDataTableDataBoxVoucher
+ 
+{    border-bottom: 0.1px solid #e8e8e8;
+    border-right: 0.4px solid #e8e8e8;
+    background: #eeeeee;
+    padding: 5px;
+    
+   
+  }
+  .ledgerreportDataTableDataBoxBalance{
+    width: 15vw;
+  }
+  .ledgerreportDataTableDataBoxParticulars {
+    width: 8vw;
+  }
+  .ledgerreportDataTableDataBoxDate {
+    width: 5vw;
+  }
+  
+  .ledgerreportDataTableDataBoxEntryno {
+    width: 2vw;
+  }
+  
+  .ledgerreportDataTableDataBoxType {
+    width: 8vw;
+  }
+  .ledgerreportDataTableDataBoxDeb {
+    width: 10vw;
+  }
+  .ledgerreportDataTableDataBoxCred{
+    width: 10vw;
+  }.ledgerreportDataTableDataBoxVoucher{
+    width: 10vw;
+  }
+ 
+  .ledgerredRow {
+    color: red;
+    font-size: 13px;
+  }
+  .blueRow{
+    color: blue;
+  }
+  .no-scroll {
+    overflow: visible !important;
+  }
+  @media screen and (max-width: 768px) {
+    .schemereportmodal{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .reportnav{
+      margin-top: 1.5vh;
+    }
+    .schemecontrolls{
+      align-items: center;
+      height: 4vh;
+  
+    }
+    .controllsbuttons{
+      width: 25px;
+      height: 25px;
+    }
+  }
+  

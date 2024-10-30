@@ -1,0 +1,81 @@
+.top_navbarMain {
+  background: rgba(4, 51, 180, 0.80);
+    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 3.5%;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 7.5vh;
+  padding-right: 15px;
+  padding-left: 15px;
+  
+  position: absolute;
+  top: 0;
+}
+
+.primaryNavitems{
+  text-align: center;
+  width: auto;
+  height: auto;
+
+  color: #FFF;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.top_navbarMain {
+  display: flex;
+}
+
+.primaryNavitems {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1;
+  color: black;
+  min-width: 220px;
+  height: auto;
+}
+
+.primaryNavitems.active .dropdownMenu {
+  display: block;
+}
+
+.dropdownItem {
+  text-align: left;
+  cursor: pointer;
+  min-height: 35px;
+  padding-left: 8%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  
+
+  white-space: nowrap;
+}
+
+.dropdownItem:hover,
+.dropdownItem.selected {
+  background-color: #f1f1f1;}
+  .top_navbarMain:focus {
+    outline: none; /* Remove outline on focus */
+  }
+  
+  .primaryNavitems:focus {
+    outline: none; /* Remove outline on focus */
+  }
+  

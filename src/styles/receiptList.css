@@ -1,0 +1,9 @@
+.receiptListRoot {
+  width: 45vw;
+  height: 65vh;
+  background-color: #ffffff;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}

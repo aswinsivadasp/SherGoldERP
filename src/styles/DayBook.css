@@ -1,0 +1,175 @@
+.daybookroot {
+  width: 35vw;
+  height: 35vh;
+  background-color: white;
+  font-family: normal;
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: absolute;
+  padding: 0;
+}
+
+.dayBookhead {
+  background-color: #0008a9;
+  display: flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 16%;
+  width: 100%;
+}
+.dayBook_dialogHeadpart {
+  display: flex;
+  color: white;
+}
+
+.dayBook_dialogHeadpart {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  gap: 1%;
+  align-items: center;
+}
+
+.dayBook_dialogHeadpart {
+  margin-left: 1%;
+}
+
+.dayBook_dialogHeadpart label {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.dayBook_dialogHeadControlls {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 1%;
+  gap: 2%;
+}
+
+.dayBookBody {
+  width: 100%;
+  height: 84%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+}
+
+.daybookDate {
+  width: 97%;
+  height: 20%;
+  margin-top: 2%;
+  border-radius: 5px;
+  border: 1px #e0e0e0 solid;
+  display: flex;
+}
+.daybookDate section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  gap: 2%;
+  align-items: center;
+}
+.daybookDate section label {
+  width: 20%;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.daybookDate section input {
+  width: 70%;
+  height: 60%;
+
+  border: 1px solid #000000;
+  outline: none;
+  border-radius: 5px;
+}
+.Dto {
+  justify-content: end;
+  margin-right: 1%;
+}
+.Dfrom {
+  margin-left: 1%;
+}
+
+.dayBookForms {
+  width: 97%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+}
+.dayBookForms section {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 2%;
+  align-items: center;
+}
+.dayBookForms section label {
+  width: 18%;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.branchinput {
+  width: 78%;
+  height: 70%;
+}
+
+.daybookButton {
+  width: 97%;
+  height: 25%;
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+  border: 1px #e0e0e0 solid;
+  align-items: center;
+  /* justify-content: center; */
+  /* gap: 25%; */
+}
+.daybookButton button {
+    width: 20%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+.daybookshowBtn{
+margin-left: 20%;
+}
+
+.daybookexitbtn{
+  position: absolute;
+  right: 1.5%;
+
+
+}
+.btnimg{
+    width: 30px;
+    height: auto;
+}
+
+

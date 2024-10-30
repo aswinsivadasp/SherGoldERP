@@ -1,0 +1,650 @@
+
+
+
+.staffreg-emp-id-div {
+    display: flex;
+    width: 70%;
+   
+}
+
+.staffreg-formlabel-employeeId {
+    margin-left: 1.5%;
+    width: 17.5%;
+}
+
+.staffreg-input-employeeId {
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px;
+    width: 35%;
+}
+
+
+
+.employeeId-div {
+    width: 35%;
+}
+
+.labelstyle-div {
+    width: 35%;
+
+}
+
+.staff-reg-employeeName {
+    width: 70%;
+    display: flex;
+}
+
+.formlabel-employeeName {
+    margin-left: 1.5%;
+    width: 17.5%;
+}
+
+.input-employeeName {
+    width: 65%;
+    height: 35px;
+    
+}
+
+
+.form-margin {
+    margin-bottom: 1%;
+}
+
+.employee-Rename-Button {
+    width: 15.5%;
+    height: 35px;
+    margin-left: .5%;
+    background-color: #f8f9fa;
+    color: black;
+    border: solid black 1px;
+    border-radius: 0%;
+   
+
+}
+
+.employee-Rename-Button:hover {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.staff-reg-emplyee-section {
+    width: 70%;
+    display: flex;
+}
+
+.formlabel-employeeSection {
+    margin-left: 1.5%;
+    width: 17.5%;
+}
+
+.input-employeeSection {
+    width: 81%;
+    height: 35px;
+    border-radius: 5px;
+  
+}
+
+.staff-reg-emplyee-genders {
+    width: 70%;
+    display: flex;
+}
+
+.formlabel-employeeGender {
+    margin-left: 1.5%;
+    width: 17.5%;
+}
+
+.gender-radio-buttons-div {
+    width: 50%;
+    border: solid black 1px;
+    display: flex;
+
+    align-items: center;
+    padding-left: 8px;
+   
+}
+
+.gender-radio-buttons-div label {
+    width: 30%;
+
+}
+
+.gender-radio-buttons-div label input {
+    margin: 2%;
+
+
+}
+
+.staff-reg-emplyee-Address {
+    width: 70%;
+}
+
+.formlabel-employeeAddress {
+    margin-left: 1.5%;
+    width: 17.5%;
+}
+
+.input-employeeAddress1
+ {
+    width: 81%;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px;  
+}
+.input-employeeAddress2{
+    width: 81%;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px; 
+    margin-left: 19%; 
+}
+
+.input-employeeAddress3{
+    width: 81%;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px; 
+    margin-left: 19%; 
+}
+.staff-reg-emplyee-Mobile{
+    width: 70%;
+}
+.formlabel-employeeMobile{
+    margin-left: 1.5%;
+    width: 17.5%;  
+}
+.input-employeeMobile{
+    width: 81%;
+    height: 35px;
+    border-radius: 5px;
+    border: solid 1px;   
+}
+
+.staff-reg-emplyee-Tabs{
+    width: 70%;
+}
+.staff-reg-tab{
+margin-left: 1.5%;
+}
+.staffreg-tab-line1,.staffreg-tab-line2,.staffreg-tab-line3,.staffreg-tab-line4,.staffreg-tab-line5{
+    display: flex;
+}
+.employeeType-div{
+    width: 50%;
+    display: flex;
+}
+.employeeDateofjoin-div{
+    width: 50%;
+}
+.formlabel-employeeType{
+    width: 35%;
+    margin-left: 2%;
+}
+.input-employeeType{
+    width: 60%;
+    height: 35px;
+    
+    
+}
+.no-border-radius {
+    border-radius: 0 !important;
+}
+.formlabel-employeeDateofjoin{
+    width: 35%;
+    margin-left: 5%;
+}
+.input-employeeDateofjoin{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;
+    
+}
+.employeeBasicSalary-div{
+    width: 50%;  
+}
+.formlabel-employeeBasicSalary{
+    width: 35%; 
+    margin-left: 2%;  
+}
+.input-employeeBasicSalary{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;   
+}
+.employeeOtRate-div{
+    width: 50%;  
+}
+.formlabel-employeeOtRate{
+    width: 35%; 
+    margin-left: 5%;
+    
+}
+
+.input-employeeOtRate{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;    
+}
+.employeeOtHour-div{
+    width: 50%;
+}
+
+.formlabel-employeeOtHour{
+    width: 35%; 
+    margin-left: 2%  
+}
+.input-employeeOtHour{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;     
+}
+.employeeLeaveDeduction-div{
+    width: 50%;
+}
+.formlabel-employeeLeaveDeduction{
+    width: 35%;
+    margin-left: 5%;
+
+}
+.input-employeeLeaveDeduction{
+    width:60%;
+    height: 35px;
+  border: solid black 1px; 
+}
+.employeeDailyAllowances-div{
+    width: 50%;
+}
+.formlabel-employeeDailyAllowances{
+    width: 35%; 
+    margin-left: 2%    
+}
+.input-employeeDailyAllowances{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;    
+}
+.employeeCasualLeave-div{
+    width: 50%;
+}
+.formlabel-employeeCasualLeave{
+    width: 35%; 
+    margin-left: 2%  
+}
+.input-employeeCasualLeave{
+    width:60%;
+    height: 35px;
+  border: solid black 1px;   
+}
+.employeeLeaveDeduction-div{
+    width: 50%;
+}
+.employeeBranch-div{
+    width: 50%;
+    display: flex;
+}
+.formlabel-employeeBranch{
+    width: 35%; 
+    margin-left: 5%;
+}
+.input-employeeBranch{
+    width:60%;
+    height: 35px;
+      
+}
+.employee-reg-checkBox{
+    margin-left: 40%;
+   
+   
+}
+.formlabel-employeeCommissionStatus{
+    width: 17.5%; 
+    margin-left: 1.5%;  
+}
+  .input-employeeCommissionStatus{
+    width:30%;
+    height: 35px;
+
+
+  }
+ .input-employeeCommissionStatusperc{
+    width:10%;
+    height: 35px;
+  border: solid black 1px;
+
+  
+ }
+ .formlabel-employeeCommissionStatusperc{
+  
+  margin-left: 1%;
+  padding-left: 3%;
+ }
+
+ .formlabel-employeePF{
+    width: 17.5%; 
+    margin-left: 1.5%; 
+ }
+
+ .input-employeePF{
+    width:30%;
+    height: 35px;
+  border: solid black 1px;   
+ }
+ .formlabel-employeeWorkingHours{
+    width: 17.5%; 
+    margin-left: 1.5%;
+ }
+ .input-employeeWorkingHours{
+    width:30%;
+    height: 35px;
+  border: solid black 1px;    
+ }
+ .formlabel-employeeLedger{
+    width: 17.5%; 
+    margin-left: 1.5%;  
+ }
+.employeeLedger-div{
+    display: flex;
+}
+ .input-employeeLedger{
+    width:50%;
+    height: 35px;
+   
+ }
+
+ .formlabel-employeeUserName{
+    width: 17.5%; 
+    margin-left: 1.5%; 
+ }
+
+ .input-employeeUserName{
+    width:50%;
+    height: 35px;
+  border: solid black 1px; 
+
+ }
+
+ .formlabel-employeePassword{
+    width: 17.5%; 
+    margin-left: 1.5%;  
+ }
+
+ .input-employeePassword{
+    width:50%;
+    height: 35px;
+  border: solid black 1px;
+ }
+
+/*   
+    vaadin-combo-box{
+    width: 30%;
+  }  */
+  
+  /* Apply a 1px bold black border to the ComboBox */
+  /* vaadin-combo-box::part(input-field) {
+    border: 1px solid black;
+    background-color: white;
+    height: 35px; */
+    /* border-radius: 0; */
+   
+    
+   
+  /* }
+  vaadin-combo-box:hover {
+  background-color: none;
+  color: none;
+  }
+  vaadin-combo-box > input{
+ 
+ border: none;
+  }
+  vaadin-combo-box[focused]::part(input-field) {
+
+  } */
+ .staffreg-employeeNameComboBox{
+width: 65%;
+
+height:35px ;
+
+
+ }
+ .staffreg_tabcomboinput{
+  
+border: solid black 1px;
+ }
+ .staffreg_comboinput{
+    border-radius: 5px;
+border: solid black 1px;
+ }
+ .staffreg-employeeSectionComboBox{
+    width: 81%;
+    height: 35px; 
+ }
+ .staffreg-employeeTypeComboBox{
+    width: 60%;
+    height: 35px; 
+ }
+ .staffreg-employeeBranchComboBox{
+    width: 60%;
+    height: 35px; 
+ }
+ .staffreg-employeeCommissionStatusComboBox{
+    width: 30%;
+    height: 35px; 
+ }
+ .staffreg-employeeLedgerComboBox{
+    width: 30%;
+    height: 35px; 
+ }
+ .formlabel-employeeDateofjoin-mobile {
+    width: 35%;
+    margin-left: 5%;
+    display: none; /* Show the label for mobile view */
+}
+
+
+
+ @media only screen and (max-width: 600px) {
+
+    .staffreg-emp-id-div{
+        width: 95%;
+    }
+
+    .staff-reg-employeeName {
+        width: 95%;
+       
+    }
+    .staff-reg-emplyee-section{
+        width: 95%;
+    }
+    .staff-reg-emplyee-genders{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Address{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Mobile{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Tabs{
+        width: 95%;
+    }  
+
+    .formlabel-employeeDateofjoin {
+        /* Add any specific styles for the label in mobile view */
+        display: none; /* Hide the label for larger screens */
+    }
+
+    /* Show the label for Date of Join as DOJ in mobile view */
+    .formlabel-employeeDateofjoin-mobile {
+        width: 35%;
+        margin-left: 5%;
+        display: inline-block; /* Show the label for mobile view */
+    }
+
+    .gender-radio-buttons-div{
+ width:60% ;
+    }
+    .formlabel-employeeBasicSalary{
+        flex-wrap: nowrap; 
+    }
+    .employee-Rename-Button {
+       
+        font-size: 13.5px; 
+        padding: 5px
+       
+      }
+ }
+
+ @media only screen and (min-width: 601px) and (max-width: 1024px) {
+
+    .staffreg-emp-id-div{
+        width: 95%;
+    }
+
+    .staff-reg-employeeName {
+        width: 95%;
+       
+    }
+    .staff-reg-emplyee-section{
+        width: 95%;
+    }
+    .staff-reg-emplyee-genders{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Address{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Mobile{
+        width: 95%;
+    }
+    .staff-reg-emplyee-Tabs{
+        width: 95%;
+    }
+    
+ 
+    
+ }
+/* ////////////////////////////////////////////staffReg Mod/////////////////// */
+
+.staffRegBody{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+/* .staffRegBody input{
+    height: 3vh !important;
+} */
+
+.staffRegBodyRows{
+    width: 100%;
+    display: flex;
+    height: 30px;
+    /* background-color: aqua; */
+    margin-top: 1%;
+    align-items: center;
+    gap: 3%;
+
+}
+.staffRegBodyRows label{
+    margin-left: 1%;
+    font-size: 15px;
+    font-weight: 500;
+    width: 20%;
+}
+.staffRegBodyRows input{
+    height: 60%;
+    border: solid black 1px;
+
+
+}
+.staffRegBodyRows input:focus{
+    /* background-color: 	#FFD700; */
+    outline: none !important;
+  }
+  .emplIdinput{
+    width: 20%;
+   
+  }
+  .emplnameinput{
+    width: 50%;
+    height: 58%;
+   
+  }
+  .staffomboinput{
+
+  }
+  .staffrenamebutton{
+    width: 15%;
+    height: 65%;
+    border: solid black 1px;
+
+
+  }
+  .staffsection{
+    width: 68%;
+    
+  }
+  .staffcashAccsection{
+    width: 68.7%;
+    height: 58%;
+  }
+  
+.gendersection{
+    width: 34%;
+    height: 60%;
+    border: solid black 1px;
+    display: flex;
+   
+    align-items: center;
+    gap: 2%;
+    
+}
+.gendersection input{
+    width: 20%;
+    height: 60%;
+}
+.gendersection{
+    width: 60%;
+    align-items: center;
+}
+.staffregTabSection{
+    /* background-color: #FFD700; */
+    width: 98%;
+    height: 55%;
+    margin-top: 2%;
+    margin: 0 1% 0 1%;
+
+}
+
+.staffregTabSectionButtonsDiv {
+    display: flex;
+    width: 100%;
+    height: clamp(25px, 6vh, 60px);
+  }
+  .staffregTabSectionButtonsDiv button {
+   /* flex: 1; */
+    height: 85%;
+    background: rgb(0, 8, 169);
+    color: white;
+    font-size: 10px;
+    font-weight: 200;
+  }
+  
+  .staffregTabSectionButtonsDiv .active-tab {
+    background: rgb(0, 7, 134);
+    font-weight: 500;
+    /* border-radius: 8px 8px 0 0; */
+  }
+  .staffregTab_dataBlock {
+    width: 100%; 
+    height: 83%;
+    display:flex ;
+    flex-direction: column;
+    gap: .5%;
+    /* background-color: aqua; */
+
+  }

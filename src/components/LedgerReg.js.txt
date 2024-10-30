@@ -1,0 +1,1046 @@
+import React, { useState, useEffect, useRef } from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Sidebar from "./Sidebar";
+import { Layout } from "antd";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from "axios";
+import { withSuccess } from "antd/es/modal/confirm";
+import "../styles/LedgerReg.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputGroup from "react-bootstrap/InputGroup";
+import Dropdown from "react-bootstrap/Dropdown";
+import { useNavigate } from "react-router-dom";
+
+const { Header, Content, Footer } = Layout;
+
+function LedgerReg() {
+  const navigate = useNavigate();
+
+  const [collapsed, setCollapsed] = useState(false);
+  const [debitAmount, setDebitAmount] = useState("");
+  const [creditAmount, setCreditAmount] = useState("");
+  const [selectedledgerName, setSelectedledgerName] = useState("");
+  const [selectedItemCode, setSelectedUnder] = useState("");
+  const ledgerNameOptions = ["Name 1", "Name 2", "Name 3"];
+  const ledgerUnderOptions = ["under 1", "under 2", "under 3"];
+  const ledgerSalesmanOptions = ["salesman 1", "salesman 2", "salesman 3"];
+  const [ledcode, setledcode] = useState("");
+  const [ledCodeValue, setLedCodeValue] = useState("");
+  const [lh_idValue, setlh_idValue] = useState("");
+  const [findSuccess, setFindSuccess] = useState(false);
+
+  const apiBaseUrl= process.env.REACT_APP_API_BASE_URL;
+
+  const [formData, setFormData] = useState({
+    lr_Name: "",
+    ledcode: "",
+    lr_Under: "",
+    lh_id: "",
+    lr_Address1: "",
+    lr_Address2: "",
+    lr_Address3: "",
+    lr_City: "",
+    lr_Pincode: "",
+    lr_Contactperson: "",
+    lr_Telno: "",
+    lr_Res: "",
+    lr_Mobile: "",
+    lr_Gstno: "",
+    lr_Email: "",
+    lr_SalesMan: "",
+    lr_debit: "",
+    lr_credit: "",
+    lr_date: "",
+  });
+  ////console.log(formData);
+  const toggleSidebar = () => {
+    setCollapsed(!collapsed);
+  };
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      if (window.innerWidth <= 768) {
+        setCollapsed(true);
+      } else {
+        setCollapsed(false);
+      }
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+  const handleSave = async () => {
+    // Check if either name or under field is empty
+    if (!formData.lr_Name || !formData.lr_Under) {
+      alert("Enter Data Correctly.");
+      return;
+    }
+
+    // Check if the entered ledger name already exists
+    if (ledgerNames.some((ledger) => ledger.LedName === formData.lr_Name)) {
+      alert("Duplicate entry! Ledger name already exists.");
+      return;
+    }
+
+    try {
+      // Your existing save logic
+      const response = await axios.post(
+       `${apiBaseUrl}/saveledger`,
+        formData
+      );
+      ////console.log(response.data);
+
+      // Handle success, e.g., show a success message or redirect
+      alert("Ledger Registered");
+      if (response.status === 200) {
+ navigate("/home")
+      }
+      window.location.reload();
+
+    } catch (error) {
+      console.error("Error saving data:", error.message);
+      // Handle error, e.g., show an error message
+    }
+  };
+
+  // Function to format date as "dd/mm/yyyy"
+  // Function to format date as "YYYY-MM-DD"
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const handleFind = async () => {
+    if (!formData.lr_Name) {
+      alert("select an item name.");
+      return;
+    }
+
+    try {
+      // Assuming selectedLedgerCode is the Ledger Code you want to find
+      const response = await axios.get(
+        `${apiBaseUrl}/findledger/${formData.ledcode}`
+      );
+      const { success, message, ledgerData, accountTransactionData } =
+        response.data;
+
+      if (success) {
+        setLedCodeValue(ledgerData.Ledcode);
+
+
+        // Format the date before setting it in the state
+        const formattedDate =
+          accountTransactionData.length > 0
+            ? formatDate(accountTransactionData[0].atDate)
+            : "";
+
+        // Do something with the retrieved data
+        const underValue =
+          ledgerHeads.find((head) => head.lh_id === ledgerData.lh_id)
+            ?.lh_name || "";
+        setFormData({
+          lr_Name: ledgerData.LedName || "",
+          lr_Under: underValue || "", // Assuming lh_name is the property in your option object
+
+          lh_id: ledgerData.lh_id,
+          lr_Address1: ledgerData.add1 || "",
+          lr_Address2: ledgerData.add2 || "",
+          lr_Address3: ledgerData.add3 || "",
+          lr_City: ledgerData.city || "",
+          lr_Pincode: ledgerData.PinNo || "",
+          lr_Contactperson: ledgerData.CPerson || "",
+          lr_Telno: ledgerData.Telno || "",
+          lr_Res: ledgerData.Res || "",
+          lr_Mobile: ledgerData.Mobile || "",
+          lr_Gstno: ledgerData.gstno || "",
+          lr_Email: ledgerData.Email || "",
+          lr_SalesMan: ledgerData.SalesMan || "",
+          lr_date: formattedDate || "",
+          lr_credit:
+            accountTransactionData.length > 0
+              ? accountTransactionData[0].atCreditAmount
+              : "",
+          lr_debit:
+            accountTransactionData.length > 0
+              ? accountTransactionData[0].atDebitAmount
+              : "",
+        });
+        setFindSuccess(true);
+      } else {
+        console.error("Error finding ledger:", message);
+        setFindSuccess(false);
+      }
+    } catch (error) {
+      console.error("Error finding ledger:", error.message);
+      setFindSuccess(false);
+    }
+
+  };
+
+  const handlemobileFind = async () => {
+    try {
+      // Assuming selectedLedgerCode is the Ledger Code you want to find
+      const response = await axios.get(
+        `${apiBaseUrl}/findledgermobile/${formData.lr_Mobile}`
+      );
+      const { success, message, ledgerData } = response.data;
+
+      if (success) {
+        ////console.log("Ledger Data:", ledgerData);
+        setFindSuccess(true);
+        setLedCodeValue(ledgerData.Ledcode);
+
+        //  Format the date before setting it in the state
+        const formattedDate = formatDate(ledgerData.Date);
+
+
+        setFormData({
+          lr_Name: ledgerData.LedName || "",
+          lr_Under: ledgerData.parentname || "", // Assuming lh_name is the property in your option object
+
+          lh_id: ledgerData.lh_id,
+          lr_Address1: ledgerData.add1 || "",
+          lr_Address2: ledgerData.add2 || "",
+          lr_Address3: ledgerData.add3 || "",
+          lr_City: ledgerData.city || "",
+          lr_Pincode: ledgerData.PinNo || "",
+          lr_Contactperson: ledgerData.CPerson || "",
+          lr_Telno: ledgerData.Telno || "",
+          lr_Res: ledgerData.Res || "",
+          lr_Mobile: ledgerData.Mobile || "",
+          lr_Gstno: ledgerData.gstno || "",
+          lr_Email: ledgerData.Email || "",
+          lr_SalesMan: ledgerData.SalesMan || "",
+          lr_date: formattedDate || "",
+          lr_credit: ledgerData.Creditamount || "",
+          lr_debit: ledgerData.Debitamount || ""
+        });
+      } else {
+        console.error("Error finding ledger:", message);
+        setFindSuccess(false);
+      }
+    } catch (error) {
+      console.error("Error finding ledger:", error.message);
+    }
+  };
+
+  const handleEdit = async () => {
+    ////console.log("ledcode=", ledCodeValue);
+
+    try {
+      // Send a PUT request to the server to update the ledger
+      const response = await axios.put(
+        `${apiBaseUrl}/updateledger/${ledCodeValue}`,
+        formData
+      );
+      ////console.log(response.data);
+
+      // Handle success, e.g., show a success message or redirect
+      alert("Ledger Updated");
+
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating data:", error.message);
+      // Handle error, e.g., show an error message
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      // Assuming you have the ledCodeValue available
+      const response = await axios.delete(
+        `${apiBaseUrl}/deleteledger/${ledCodeValue}`
+      );
+      ////console.log(response.data);
+
+      // Handle success, e.g., show a success message or redirect
+      alert("Ledger Deleted");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting data:", error.message);
+      // Handle error, e.g., show an error message
+    }
+  };
+
+  const handleClear = () => {
+
+
+    setFormData({
+      lr_Name: "",
+      lr_Under: "",
+      lr_Address1: "",
+      lr_Address2: "",
+      lr_Address3: "",
+      lr_City: "",
+      lr_Pincode: "",
+      lr_Contactperson: "",
+      lr_Telno: "",
+      lr_Res: "",
+      lr_Mobile: "",
+      lr_Gstno: "",
+      lr_Email: "",
+      lr_SalesMan: "",
+      lr_debit: "",
+      lr_credit: "",
+      lr_date: "",
+    });
+
+    setDebitAmount("");
+    setCreditAmount("");
+    setFindSuccess(false);
+  };
+
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value;
+    setFormData({ ...formData, lr_date: selectedDate });
+  };
+
+  const [showSalesmanDropdown, setShowSalesmanDropdown] = useState(false);
+
+  const handleSalesmanClick = () => {
+    setShowSalesmanDropdown(!showSalesmanDropdown);
+  };
+
+  const handleSalesmanInputChange = (e) => {
+    const inputText = e.target.value;
+    setFormData({ ...formData, lr_SalesMan: inputText });
+  };
+
+  const handleSalesmanOptionClick = (option) => {
+    setFormData({ ...formData, lr_SalesMan: option });
+    setShowSalesmanDropdown(false);
+  };
+
+  useEffect(() => {
+    const handleEnterKey = (e) => {
+      if (e.key === "Enter") {
+        setShowNameDropdown(false);
+        setShowUnderDropdown(false);
+        setShowSalesmanDropdown(false);
+      }
+    };
+
+    const handleOutsideClick = (e) => {
+      const isClickInsideNameInput = e.target.closest(
+        ".ledger-reg-name-input-div"
+      );
+      const isClickInsideUnderInput = e.target.closest(
+        ".ledger-reg-under-input-div"
+      );
+      const isClickInsideSalesmanInput = e.target.closest(
+        ".ledger-reg-salesman-input-div"
+      );
+
+      if (!isClickInsideNameInput) {
+        setShowNameDropdown(false);
+      }
+
+      if (!isClickInsideUnderInput) {
+        setShowUnderDropdown(false);
+      }
+
+      if (!isClickInsideSalesmanInput) {
+        setShowSalesmanDropdown(false);
+      }
+    };
+    document.body.addEventListener("keydown", handleEnterKey);
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("keydown", handleEnterKey);
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  const handleDebitAmountChange = (e) => {
+    const debitValue = e.target.value;
+    setDebitAmount(debitValue);
+    setCreditAmount("");
+    setFormData((prevData) => ({
+      ...prevData,
+      lr_debit: debitValue,
+      lr_credit: "",
+    }));
+  };
+
+  const handleCreditAmountChange = (e) => {
+    const creditValue = e.target.value;
+    setCreditAmount(creditValue);
+    setDebitAmount("");
+    setFormData((prevData) => ({
+      ...prevData,
+      lr_credit: creditValue,
+      lr_debit: "",
+    }));
+  };
+
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      // Get the current focused element
+      const focusedElement = document.activeElement;
+
+      // Find the next input element
+      let nextInput = null;
+      if (focusedElement) {
+        const formInputs = document.querySelectorAll(".ledger-reg-form input");
+        const focusedIndex = Array.from(formInputs).indexOf(focusedElement);
+
+        if (focusedIndex !== -1 && focusedIndex < formInputs.length - 1) {
+          nextInput = formInputs[focusedIndex + 1];
+        }
+      }
+
+      // Move focus to the next input
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  };
+
+  // Add event listener for Enter key
+  useEffect(() => {
+    document.body.addEventListener("keydown", handleEnterKey);
+
+    return () => {
+      document.body.removeEventListener("keydown", handleEnterKey);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Find the code input element
+    const codeInput = document.querySelector(".ledger-reg-name-form-control");
+
+    // Set focus on the code input element
+    if (codeInput) {
+      codeInput.focus();
+    }
+  }, []);
+
+  //////////////////arrow navigation//////////////////
+
+  const handleKeyDownSalesman = (e) => {
+    handleArrowKeys(e, "handleSalesmanOptionClick", ledgerSalesmanOptions);
+  };
+
+  const handleArrowKeys = (e, dropdownFunction, options) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const currentIndex = options.findIndex(
+        (option) => option.LedName === formData.lr_Name
+      );
+      const nextIndex =
+        e.key === "ArrowDown"
+          ? (currentIndex + 1) % options.length
+          : (currentIndex - 1 + options.length) % options.length;
+      const nextOption = options[nextIndex];
+
+      if (dropdownFunction === "handleNameOptionClick") {
+        setSelectedNameIndex(nextIndex); // Highlight the selected option
+        setFormData({
+          ...formData,
+          lr_Name: nextOption.LedName,
+          ledcode: nextOption.LedCode,
+        });
+      } else if (dropdownFunction === "handleUnderOptionClick") {
+        setSelectedUnderIndex(nextIndex); // Highlight the selected option
+        setFormData({ ...formData, lr_Under: nextOption.lh_name });
+      } else {
+        // handleSalesmanOptionClick logic
+      }
+    }
+  };
+
+  /////////////////name input field////////////////////////
+
+  const [showNameDropdown, setShowNameDropdown] = useState(true);
+
+  const handleNameClick = () => {
+    setShowNameDropdown(!showNameDropdown);
+  };
+
+  const [selectedNameIndex, setSelectedNameIndex] = useState(-1);
+
+  const handleKeyDownName = (e) => {
+    handleArrowKeys(e, "handleNameOptionClick", ledgerNameOptions);
+  };
+
+  const [ledgerNames, setLedgerNames] = useState([]);
+  useEffect(() => {
+    const fetchLedgerNames = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/ledgerNames`);
+        const sortedNames = response.data.sort((a, b) =>
+          a.LedName.localeCompare(b.LedName)
+        );
+        setLedgerNames(sortedNames);
+        setFilteredLedgerNames(sortedNames); // Set filtered names initially to show all options
+      } catch (error) {
+        console.error("Error fetching ledger names:", error.message);
+      }
+    };
+
+    fetchLedgerNames();
+  }, []);
+
+  const [filteredLedgerNames, setFilteredLedgerNames] = useState([]);
+
+  const filterLedgerNames = (input) => {
+    const filteredOptions = ledgerNames.filter((option) =>
+      option.LedName.toLowerCase().includes(input.toLowerCase())
+    );
+    setFilteredLedgerNames(filteredOptions);
+  };
+
+  const handleNameInputChange = (e) => {
+    const input = e.target.value;
+    setFormData({ ...formData, lr_Name: input, ledcode: "" });
+    filterLedgerNames(input);
+  };
+
+  const handleNameOptionClick = (option, index) => {
+    setFormData({
+      ...formData,
+      lr_Name: option.LedName,
+      ledcode: option.LedCode,
+    });
+    setShowNameDropdown(false);
+    setSelectedNameIndex(index);
+    setFilteredLedgerNames([]); // Clear filtered options after selecting an option
+  };
+
+  /////////////////////////under input field//////////////////// ...
+
+  const [showUnderDropdown, setShowUnderDropdown] = useState(false);
+  const [selectedUnderIndex, setSelectedUnderIndex] = useState(-1);
+  const [ledgerHeads, setLedgerHeads] = useState([]);
+  const [filteredUnderOptions, setFilteredUnderOptions] = useState([]);
+  const filterLedgerHeads = (input) => {
+    const filteredOptions = ledgerHeads.filter((option) =>
+      option.lh_name.toLowerCase().includes(input.toLowerCase())
+    );
+    setFilteredUnderOptions(filteredOptions);
+  };
+
+  const handleUnderInputChange = (e) => {
+    const input = e.target.value;
+    setFormData({ ...formData, lr_Under: input, lh_id: "" });
+    filterLedgerHeads(input);
+  };
+
+  const handleUnderInputFocus = () => {
+    setShowUnderDropdown(true);
+  };
+  const handleUnderClick = () => {
+    setShowUnderDropdown(!showUnderDropdown);
+  };
+
+  const handleUnderOptionClick = (option) => {
+    setFormData({
+      ...formData,
+      lr_Under: option.lh_name,
+      lh_id: option.lh_id,
+    });
+    setShowUnderDropdown(false);
+    setSelectedUnderIndex(-1);
+    setFilteredUnderOptions([]); // Clear filtered options after selecting an option
+  };
+
+  const handleKeyDownUnder = (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const options = ledgerHeads;
+      let newIndex = selectedUnderIndex;
+
+      if (e.key === "ArrowDown") {
+        newIndex = (selectedUnderIndex + 1) % options.length;
+      } else if (e.key === "ArrowUp") {
+        newIndex = (selectedUnderIndex - 1 + options.length) % options.length;
+      }
+
+      setSelectedUnderIndex(newIndex);
+      setFormData({
+        ...formData,
+        lr_Under: options[newIndex].lh_name,
+        lh_id: options[newIndex].lh_id,
+      });
+    }
+  };
+
+  // Fetch ledger heads data from the server
+  const fetchLedgerHeads = async () => {
+    try {
+      const response = await axios.get(`${apiBaseUrl}/ledgerHeads`);
+      const sortedHeads = response.data.sort((a, b) =>
+        a.lh_name.localeCompare(b.lh_name)
+      );
+      setLedgerHeads(sortedHeads);
+      setFilteredUnderOptions(sortedHeads);
+    } catch (error) {
+      console.error("Error fetching ledger heads:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchLedgerHeads();
+  }, []);
+
+  /////////////////////////////////////dropdown focus//////////////
+
+  const handleNameInputFocus = () => {
+    setShowNameDropdown(true);
+  };
+
+  const handleSalesmanInputFocus = () => {
+    setShowSalesmanDropdown(true);
+  };
+  //////sales man///////
+
+  //////////////////
+
+  return (
+    <Layout style={{ minHeight: "150vh" }}>
+      
+      <Layout >
+        <Navbar expand="lg" className="bg-body-tertiary">
+          <Container style={{display:'flex' ,gap:'1%'}}>
+            <Navbar.Brand href="#home">Ledger Registration</Navbar.Brand>
+           
+            <Navbar.Collapse id="basic-navbar-nav" style={{marginLeft:'15%'}}>
+              <Nav className="me-auto" style={{display:'flex',gap:'1%'}}>
+                <Nav.Link href="/home">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 128 128">
+                    <path fill="#fff" d="M15 124c0-5.5 4.5-10 10-10 0-5.5 4.5-10 10-10v20H15zM115.3 83.2L70 38 24.7 83.2 16.3 74.8 70 21 123.7 74.8z"></path><path fill="#fff" d="M105,117V72.4L70,38L35,73v51h76v-1C111,119.7,108.3,117,105,117z"></path><path fill="#71c2ff" d="M59 80H81V124H59z"></path><path fill="#71c2ff" d="M81,127H59c-1.7,0-3-1.3-3-3V80c0-1.7,1.3-3,3-3h22c1.7,0,3,1.3,3,3v44C84,125.7,82.7,127,81,127z M62,121h16 V83H62V121z"></path><path fill="#444b54" d="M125.9 72.6L72.1 18.9c-1.1-1.1-3.1-1.1-4.2 0L14.1 72.6c-1.2 1.2-1.2 3.1 0 4.2l8.5 8.5c.6.6 1.3.9 2.1.9s1.6-.3 2.1-.9L70 42.2l32 32v40.3c-2.9 1-5.1 3.5-5.8 6.5H38V94c0-1.7-1.3-3-3-3s-3 1.3-3 3v7.4c-4.9 1.2-8.7 5-9.7 9.9-4.9 1-8.8 4.9-9.9 9.7H4c-1.7 0-3 1.3-3 3s1.3 3 3 3h95c1.7 0 3-1.3 3-3v-1c0-1.7 1.3-3 3-3s3 1.3 3 3v1c0 1.7 1.3 3 3 3h3c1.7 0 3-1.3 3-3s-1.3-3-3-3h-.2c-.7-3-2.9-5.5-5.8-6.5V80.2l5.1 5.1c.6.6 1.3.9 2.1.9s1.6-.3 2.1-.9l8.5-8.5C127 75.7 127 73.8 125.9 72.6zM25 117c1.7 0 3-1.3 3-3 0-2.8 1.6-5.2 4-6.3V121H18.7C19.8 118.6 22.2 117 25 117zM115.3 79L72.1 35.9C71.5 35.3 70.8 35 70 35s-1.5.3-2.1.9L24.7 79l-4.2-4.2L70 25.3l49.5 49.5L115.3 79zM124 121A3 3 0 1 0 124 127 3 3 0 1 0 124 121z"></path>
+                  </svg>
+                  Home</Nav.Link>
+                <Nav.Link href="#link" onClick={handleSave}>
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 128 128">
+                    <path fill="#fff" d="M82.36,110.21l-21.71-19.3c-3.79-3.37-9.5-3.37-13.29,0l-21.71,19.3C19.19,115.94,9,111.36,9,102.73V14 C9,8.48,13.48,4,19,4h70c5.52,0,10,4.48,10,10v88.73C99,111.36,88.81,115.94,82.36,110.21z"></path><path fill="#444b54" d="M19.05,115.76c-1.81,0-3.63-0.38-5.37-1.17C8.94,112.47,6,107.92,6,102.73V14C6,6.83,11.83,1,19,1h70 c1.66,0,3,1.34,3,3c0,1.66-1.34,3-3,3H19c-3.86,0-7,3.14-7,7v88.73c0,2.84,1.54,5.22,4.13,6.39c2.59,1.16,5.4,0.73,7.52-1.15 l21.71-19.3c4.92-4.38,12.35-4.38,17.27,0l21.71,19.3c2.12,1.88,4.93,2.32,7.52,1.15c2.59-1.16,4.13-3.55,4.13-6.39V24 c0-1.66,1.34-3,3-3s3,1.34,3,3v78.73c0,5.19-2.94,9.73-7.67,11.86c-4.73,2.12-10.08,1.31-13.96-2.14l-21.71-19.3 c-2.65-2.36-6.65-2.36-9.3,0l-21.71,19.3C25.19,114.63,22.15,115.76,19.05,115.76z"></path><path fill="#71c2ff" d="M119,75.73c-1.66,0-3-1.34-3-3V14c0-3.86-3.14-7-7-7c-1.66,0-3-1.34-3-3c0-1.66,1.34-3,3-3 c7.17,0,13,5.83,13,13v58.73C122,74.39,120.66,75.73,119,75.73z"></path>
+                  </svg>
+
+                  Save
+                </Nav.Link>
+                <Nav.Link href="#link" onClick={handleClear}>
+                  <img width="20" height="20" src="https://img.icons8.com/ultraviolet/20/delete-view.png" alt="delete-view" /> 
+                    Clear
+                </Nav.Link>
+                <Nav.Link href="#link" onClick={handleFind}>
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48">
+                  <path fill="#616161" d="M34.6 28.1H38.6V45.1H34.6z" transform="rotate(-45.001 36.586 36.587)"></path><path fill="#616161" d="M20 4A16 16 0 1 0 20 36A16 16 0 1 0 20 4Z"></path><path fill="#37474F" d="M36.2 32.1H40.2V44.400000000000006H36.2z" transform="rotate(-45.001 38.24 38.24)"></path><path fill="#64B5F6" d="M20 7A13 13 0 1 0 20 33A13 13 0 1 0 20 7Z"></path><path fill="#BBDEFB" d="M26.9,14.2c-1.7-2-4.2-3.2-6.9-3.2s-5.2,1.2-6.9,3.2c-0.4,0.4-0.3,1.1,0.1,1.4c0.4,0.4,1.1,0.3,1.4-0.1C16,13.9,17.9,13,20,13s4,0.9,5.4,2.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.5-0.1,0.6-0.2C27.2,15.3,27.2,14.6,26.9,14.2z"></path>
+                </svg>
+
+                  Find
+                </Nav.Link>
+                <Nav.Link
+                  href="#link"
+                  onClick={handleEdit}
+                  disabled={!findSuccess}
+
+                >
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABuklEQVR4nKXV3StDYRwH8BXiystftJtdnLy02Zwtm5dlUa683FhK8paICxeYeclL7XbC8pYwjNjQyC6ElBLlMO/jHF89zs4cmrZnvvW9OT19es7znH5HoQiHZdmknBxjVqwyDJOqkGX5DGk1q3BUuaGJPMxjiyy5WtODrrAsGKvWhtYAgAFSARgWgHP7IbhaN/jqVai/dkYw7vYONAkJQJ8f8F0Bl09AjRuodsOmUKrVmdpC830imO0A4F6BTh/Qs4eTCi9SqEEJ65dho0fAm4CBr/OjASWscUvEOrwiJnwAK2seJxX4HsbIWZFaN4CxgIiREINYcYPP70DL9jcox6jB6VNgPABcPETHqMAQD9R7RKhuPTpGBW5eihi5iIXz6BgVGOAA3zXA/wFJob6UWNH+F9zd98M+MhGyDY29kmbnG0MqFZuREEiworLK5ynXPEh1JguvMZjpPmx5+uwjL665RQiCgKa2rkcNW+IkQyZhsKd38Gl2YQnN7d2Pan3JjFKpTI7MQml83XC3VKChuJzP15dORnYmTzwDtsBoCR4fnzrIYG1u79ohZxYVi/cXwDCmdGntj1f8lU8Fx4WnwnQxbgAAAABJRU5ErkJggg=="></img>
+                 
+                  Edit
+                </Nav.Link>
+                <Nav.Link
+                  href="#link"
+                  onClick={handleDelete}
+                  disabled={!findSuccess}
+                >
+
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACf0lEQVR4nJ2UXUgUURTHN0p76iF2RpwrQQ8+CdLHGljUs0batsW6UKRgEdxZpQUpeygEMyyigtQHXWn33tl9CSHIIIJQ23vdCgShj4eCiKCHgsCK6qFzbOKusx+uO5N04HC5h5nf/f/PmTs+36oY2KQb9LJOzPGVpBM1JLrX97+hE5P6CW0vVsIbNUKn6ut7N68bUmNEQzqhcaVIM+jjojonDfO+Tmgqv/c1hKs9gZpBE+s9XDOiMb2uZ4f3Q4SOaIRG9Doa/mcSmtpK6DZPoN/fvcWxfM4TZtBZzaCB9Vsh5s7y+sK4XSWSEJIcz+9rvrYgOPa7ZOds2tbWAhvC1Zphjqnm19b1xEOtk59uXli0JUe7oz35R63lKTgs51YGn58m7O2uCh1ltuC4mGHQtnvX4Nx8Cm6XwOZUXaQxLDhYKzW45Q608KwD7BQMfkXamS0ZjGYtuCo4zgiGXZIBOuqO5oAM77la3t98PXsilLZ7u6bvSAavc8DcSzAiOJ6SDMDZ/5AMgpWBpQoZxpzTv4kUHDzSMrFUoX8/HXWv3IAb1Ko+j6FY9gYbfm8/GFtS0K+NjZceqcaXAueScFgwfFmorQEGzlT5idmnG7Q/2DI+3df90I4PvrUFw8yewBVRsFkAwMh8CobcgZUsc3yuBtDRllwu2OTwsRSatWB0FdBfG23SiZku/Snkh9LcNDxzPGjh6chUbgBPGAQzHFolhzdFtXBsFbBSFBQmsV8yfCY4fFEw1TPV03kLDgmGL1Rf89+sJzDD8GTeouQ4IJNIJYN3JRP+LjheFAmMSg4fHPuTrkB1N8un6pW5K2j9PuAKVKHuprpOkuNdrxQM4nnYX14lkTKPLvmBAAAAAElFTkSuQmCC"></img>
+                 
+                  Delete
+                </Nav.Link>
+                <Nav.Link href="/home">
+                  
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nGNgoBXYdus/+657v/t23fu1myh893dz/f//TDgN3HPvV/rue7//k4L33P8dgNPA3Xd/N5Bq4M67v7IHn4E77/yiroGJFSf+rz33mXoGesbs/u+TsPf/okNviTdw240f/+fseokVu0Xu/G8fuPW/c+j2/8V9l+cTZeCy4x/AmrBhh6BtSPwt/+wDtnYwMPxnpK+B26jt5d3UjpTd9Ew2O6mdsHcPXF6+9yuNqsUXtIDtJbaA3X33dyPeApZaAACuNj9ypIxsXAAAAABJRU5ErkJggg=="></img>
+
+
+                  Exit</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        <div className="ledgerReg-root-div" style={{marginTop:'2%'}}>
+          <div className="ledger-reg-form-div-center">
+            <Form className="ledger-reg-form">
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-name-form-label">Name </Form.Label>
+                <div className="ledger-reg-name-input-div">
+                  <input
+                    type="text"
+                    placeholder=""
+                    className="small-input center-input ledger-reg-name-form-control"
+                    value={formData.lr_Name}
+                    onKeyDown={(e) =>
+                      handleArrowKeys(
+                        e,
+                        "handleNameOptionClick",
+                        filteredLedgerNames
+                      )
+                    }
+                    onChange={handleNameInputChange}
+                    onFocus={handleNameInputFocus}
+                  />
+
+                  {showNameDropdown && (
+                    <div className="ledger-name-dropdown">
+                      {filteredLedgerNames.map((option, index) => (
+                        <div
+                          key={index}
+                          className={`ledger-dropdown-option ${index === selectedNameIndex ? "selected" : ""
+                            }`}
+                          onClick={() => handleNameOptionClick(option, index)}
+                        >
+                          {option.LedName}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-under-form-label">
+                  Under
+                </Form.Label>
+                <div className="ledger-reg-under-input-div">
+                  <input
+                    type="text"
+                    placeholder=""
+                    className="small-input center-input ledger-reg-under-form-control"
+                    value={formData.lr_Under}
+                    onKeyDown={handleKeyDownUnder}
+                    onChange={handleUnderInputChange}
+                    onFocus={handleUnderInputFocus}
+                  />
+
+                  {showUnderDropdown && (
+                    <div className="ledger-under-dropdown">
+                      {filteredUnderOptions.map((option, index) => (
+                        <div
+                          key={option.lh_id}
+                          className={`ledger-dropdown-option ${index === selectedUnderIndex ? "selected" : ""
+                            }`}
+                          onClick={() => handleUnderOptionClick(option)}
+                        >
+                          {option.lh_name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-address-form-label">
+                  Address 1
+                </Form.Label>
+                <input
+                  type="text"
+                  placeholder=""
+                  className="small-input center-input ledger-reg-address-form-control"
+                  value={formData.lr_Address1}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Address1: e.target.value })
+                  }
+                />
+              </div>
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-address-form-label">
+                  Address 2
+                </Form.Label>
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Address2}
+                  className="small-input center-input ledger-reg-address-form-control"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Address2: e.target.value })
+                  }
+                />
+              </div>
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-address-form-label">
+                  Address 3
+                </Form.Label>
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Address3}
+                  className="small-input center-input ledger-reg-address-form-control"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Address3: e.target.value })
+                  }
+                />
+              </div>
+              {/* <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-gst-form-label">
+                  GST No
+                </Form.Label>
+                <input
+                  type="text"
+                  placeholder=""
+                  className="small-input center-input ledger-reg-gst-form-control"
+                  value={formData.lr_Gstno}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Gstno: e.target.value })
+                  }
+                />
+
+                <Button variant="primary" className="ledger-search-button">
+                  <i className="fas fa-search"></i>
+                </Button>
+              </div> */}
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-city-form-label">
+                  City/Town
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_City}
+                  className="small-input center-input ledger-reg-city-form-input"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_City: e.target.value })
+                  }
+                />
+              </div>
+
+              {/* <div
+                className="form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-mobile-form-label">
+                  Mobile
+                </Form.Label>
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Mobile}
+                  className="small-input center-input ledger-reg-mobile-form-input"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Mobile: e.target.value })
+                  }
+                />
+
+                <Button
+                  variant="primary"
+                  className="ledger-search-button"
+                  onClick={handlemobileFind}
+                >
+                  <i className="fas fa-search"></i>
+                </Button>
+              </div> */}
+
+              <div
+                className="ledger-reg-form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-contact-person-form-label">
+                  Contact Person
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Contactperson}
+                  className="small-input center-input ledger-reg-contact-person-form-input"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      lr_Contactperson: e.target.value,
+                    })
+                  }
+                />
+              </div>
+
+              {/* <div className="ledger-reg-numbers ledger-reg-form-pair ledger-reg-div">
+                <Form.Label className="ledger-reg-telno-form-label">
+                  Tel No Office
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  className="small-input center-input ledger-reg-telno-form-input"
+                  value={formData.lr_Telno}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Telno: e.target.value })
+                  }
+                />
+                <Form.Label className="ledger-reg-res-form-label ">
+                  Res
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Res}
+                  className="small-input center-input ledger-reg-res-form-input"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Res: e.target.value })
+                  }
+                />
+              </div>
+
+              <div
+                className="ledger-reg-numbers ledger-reg-form-pair ledger-reg-div "
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-pincode-form-label">
+                  Pin code
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  value={formData.lr_Pincode}
+                  className="small-input center-input ledger-reg-pincode-form-input"
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Pincode: e.target.value })
+                  }
+                />
+
+                <Form.Label className="ledger-reg-salesman-form-label">
+                  Sales Man
+                </Form.Label>
+                <div className="ledger-reg-salesman-input-div">
+                  <input
+                    type="text"
+                    placeholder=""
+                    className="small-input center-input ledger-reg-salesman-form-input"
+                    value={formData.lr_SalesMan}
+                    onChange={handleSalesmanInputChange}
+                    onKeyDown={handleKeyDownSalesman}
+                    onFocus={handleSalesmanInputFocus}
+                  />
+                  {showSalesmanDropdown && (
+                    <div className="ledger-salesman-dropdown">
+                      {ledgerSalesmanOptions.map((option, index) => (
+                        <div
+                          key={index}
+                          className="ledger-dropdown-option"
+                          onClick={() => handleSalesmanOptionClick(option)}
+                        >
+                          {option}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div> */}
+
+              <div
+                className="form-pair ledger-reg-div"
+                style={{ display: "flex" }}
+              >
+                <Form.Label className="ledger-reg-email-form-label">
+                  Email Address
+                </Form.Label>
+
+                <input
+                  type="text"
+                  placeholder=""
+                  className="small-input center-input ledger-reg-email-form-input"
+                  value={formData.lr_Email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_Email: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="ledger-date">
+                <input
+                  type="date"
+                  placeholder=""
+                  value={formData.lr_date}
+                  className="small-input center-input opening-date "
+                  onChange={(e) =>
+                    setFormData({ ...formData, lr_date: e.target.value })
+                  }
+                />
+              </div>
+
+              <div className="ledger-opening-balance">
+                <Form.Label className="ledger-reg-openingbalance-form-label">
+                  Opening Balance
+                </Form.Label>
+
+                <div className="debit-div">
+
+                  <Form.Label className="ledger-reg-debit-form-label">
+                    Debit Amount
+                  </Form.Label>
+                  <input
+                    type="text"
+                    placeholder=""
+                    className="small-input center-input ledger-reg-debit-form-input"
+                    value={formData.lr_debit}
+                    onChange={handleDebitAmountChange}
+                  />
+
+                </div>
+
+                <div className="credit-div">
+
+                  <Form.Label className="ledger-reg-credit-form-label">
+                    Credit Amount
+                  </Form.Label>
+
+                  <input
+                    type="text"
+                    placeholder=""
+                    className="small-input center-input ledger-reg-credit-form-input"
+                    value={formData.lr_credit}
+                    onChange={handleCreditAmountChange}
+                  />
+                </div>
+
+
+              </div>
+            </Form>
+          </div>
+        </div>
+      </Layout>
+    </Layout>
+  );
+}
+
+export default LedgerReg;

@@ -1,0 +1,239 @@
+.ledgerregmobRoot {
+  width: 100vw;
+  height: auto;
+  padding: 0 !important;
+  /* background-color: aqua; */
+}
+.ledgerregMobnav {
+  width: 100%;
+  height: 7vh;
+  background: rgb(0, 8, 169);
+  display: flex;
+  position: fixed;
+  z-index: 10000;
+}
+.ledgerregMobtoggle {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  left: 0.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.schemeMobshesofttag {
+  margin-left: 20%;
+}
+.ledgerregmobnavitems {
+  display: flex;
+  width: 50vw;
+}
+.ledgerregmobnavitems {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ledgerregmobnavitems {
+  display: flex;
+  width: 50vw;
+}
+.ledgeregMobnavBaritemsbuttons {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ledgerregMobbuttonimg {
+  width: 65%;
+  max-height: 50px;
+}
+
+.ledgerRegMobBody {
+  width: 100vw;
+  height: auto;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(7vh + 15px);  padding-bottom: 15px;
+}
+
+.ledgerregMobshesofttaglabel {
+  color: rgb(255, 255, 255);
+  font-family: Poppins;
+  /* font-size: 14px; */
+  font-weight: 500;
+  /* line-height: 21px; */
+  letter-spacing: 0%;
+  text-align: left;
+  font-size: clamp(1rem, 0.3043rem + 1.5vw, 3rem);
+}
+
+.ledgerRegBodyMobsec {
+  width: 90%;
+  height: 30vh;
+  background-color:white;
+  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding-left: clamp(5px, 2vw, 20px);
+  padding-right: clamp(5px, 2vw, 20px);
+
+}
+.ledgerregBodyrows {
+  width: 100%;
+  height: 22%;
+  display: flex;
+  flex-direction: column;
+  gap:2%;
+
+  /* background-color:white; */
+}
+.ledgerregBodyrows input{
+width: 97%;
+height: clamp(28px, 4.5vh, 45px); 
+border-radius: 5px;
+}
+.gstnodivMob{
+  width: 98.5%;
+height: clamp(28px, 4.5vh, 45px);
+display: flex; 
+gap: 2%;
+
+}
+.gstnodivMob input{
+  height: 92%;
+  width: 90%;
+}
+.gstnodivMob button{
+  height: 100%;
+  width: 38px;
+}
+
+
+.comboclassmob{
+  width: 98%;
+  height: clamp(28px, 4.5vh, 45px);   
+}
+.ledgerregBodyrows label {
+  height: 25px;
+  width: 100%;
+
+}
+.ledgerregBodyrowsDate{
+    width: 90%;
+    height: 8.75vh;
+    margin-bottom: 20px;
+    background-color:white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2%;
+    padding-left: clamp(5px, 2vw, 20px);
+    padding-right: clamp(5px, 2vw, 20px);
+
+
+}
+.ledgerregBodyrowsDate label {
+  color: #000;
+  text-align: left;
+ 
+  width: 50%;
+  height: 25px;
+
+}
+.ledgerregBodyrowsDate input{
+
+  width: 50%;
+  height: clamp(20px, 3.5vh, 45px); 
+    border-radius: 5px;
+}
+
+.ledgerregBodyrowsOpbalance{
+    width: 90%;
+    height: 20vh;
+    margin-bottom: 30px;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding-left: clamp(5px, 2vw, 20px);
+    padding-right: clamp(5px, 2vw, 20px);
+
+}
+.ledgerregBodyrowsOpbalancesecDate{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 10%;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.ledgerregBodyrowsOpbalancesecDate input{
+  width: 50%;
+  height: clamp(20px, 3.5vh, 45px); 
+    border-radius: 5px;
+}
+.ledgerregBodyrowsOpbalancesecDate input{
+  width: 44.5%;
+  height: clamp(20px, 3.5vh, 45px); 
+    border-radius: 5px;
+}
+.ledgerregBodyrowsOpbalancesecDate label{
+  color: #000;
+  text-align: left;
+ 
+  width: 44.5%;
+  height: 25px;
+}
+.ledgerregBodyrowsOpbalancesec{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 10%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.ledgerregBodyrowslines{
+  border: 1px solid black;
+  border: 0 0 1px 0;
+  height: 0;
+  width: 30%;
+}
+
+.ledgerregBodyrowsOpbalancesecpart{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.ledgerregBodyrowsOpbalancesecpart input{
+  width: 98%;
+  height: clamp(20px, 3.5vh, 45px); 
+  border-radius: 5px;
+}
+
+
+.ledgerregBodyrowsOpbalancesecpart label{
+}
+
+

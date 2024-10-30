@@ -1,0 +1,155 @@
+.ratesettingsmodal {
+  width: 45%;
+  height: 55%;
+  padding: 0;
+}
+.ratesettingsHead {
+  height: 12%;
+}
+.rateSettingsNavbar {
+  height: 12%;
+}
+.ratesettingsBody {
+  height: 76%;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+}
+.ratesettingsdaterow {
+  width: 95%;
+  height: 18%;
+  /* background-color: rgb(237, 161, 240); */
+
+  border-radius: 5px;
+  border: 1px #e0e0e0 solid;
+  display: flex;
+  gap: 3%;
+  align-items: center;
+}
+.ratesettingsdaterow label {
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 10%;
+  margin-left: 2%;
+  text-align: center;
+}
+.ratesettingsdaterow input {
+  width: 23%;
+  height: 50%;
+  border-radius: 3px;
+  border: 1px solid #878787;
+}
+
+.ratesettingsTablerow {
+  width: 95%;
+  height: auto;
+  /* background-color: brown; */
+  border-radius: 5px;
+  border: 1px #e0e0e0 solid;
+  overflow-y: auto; /* Add overflow-y for vertical scrolling */
+  position: relative; /* Ensure the header is sticky */
+}
+.ratesettingsTable {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  color: #000;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  overflow: auto;
+}
+.ratesettingsTable td {
+  height: 20px !important; /* Adjust this value as needed */
+
+}
+
+.ratesettingsTable th {
+
+  background-color: #026cc3;
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+  height: 5vh;
+
+}
+.ratesettingsTbody{
+  height: 5vh;
+}
+.rateclasshead{
+  width: 40%;
+}
+.ratesettRatehead{
+  width: 30%;
+}
+
+.TableHeadrateclass{
+  width: 40%;
+}
+.TableHeadrate{
+  width: 30%;
+}
+.schRatesettingsTableHead {
+  width: 100%;
+  background: rgb(2, 108, 195);
+  height: 5vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+.ratesettingsDataTableBodyStyletr {
+  height: 2vh;
+}
+
+
+
+
+
+.schRatesettingsTableHead tr th {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  height: 20%;
+}
+
+
+.DataTableDataBoxrateclass,
+.DataTableDataBoxrate,
+.DataTableDataBoxrate
+{
+  border-bottom: 0.1px solid #e8e8e8;
+  border-right: 0.4px solid #e8e8e8;
+  
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 15px;
+  
+}
+
+.ratesettingstableBody tr{
+  height: 5vh;
+  background: #eeeeee;
+}
+
+
+

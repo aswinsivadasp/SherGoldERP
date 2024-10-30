@@ -1,0 +1,349 @@
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+label {
+  color: rgb(0, 0, 0);
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.SchemeRegistrationMobRoot {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.SchemeRegistrationMobnavBar {
+  width: 100%;
+  height: 6%;
+  background: rgb(0, 8, 169);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.schemeMobshesofttag {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+}
+.schemeMobshesofttag img {
+  height: 50%;
+  width: auto;
+}
+.schemeMobshesofttaglabel {
+  color: rgb(255, 255, 255);
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.SchemeRegistrationMobBody {
+  width: 100%;
+  height: 94%;
+  display: flex;
+  flex-direction: column;
+  gap: auto;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+/* //////////////////////////////////// */
+.SchemeRegistrationMobBodypart1 {
+  width: 92.3%;
+  height: 35.9%;
+  background-color: white;
+  margin-top: 2.14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SchemeRegistrationMobBodypart1innerDiv {
+  width: 96.38%;
+  height: 92.65%;
+  display: flex;
+  flex-direction: column;
+}
+.SchemeRegistrationMobBodypart1innerDivRow {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1%;
+}
+.SchemeRegistrationMobBodypart1innerDivRowpartentynoParent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.SchemeRegistrationMobBodypart1innerDivRowpartentyno {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  justify-content: center;
+}
+.schEntyNoinput {
+  width: 90%;
+  height: 60%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.schDateLabel {
+  margin-left: 10%;
+}
+.schDateinput {
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+  width: 90%;
+  /* width: 168px; */
+
+  height: 60%;
+  margin-left: 10%;
+  -webkit-appearance: none;
+  background-color: none;
+}
+.schAccNameinput {
+  width: 100%;
+  height: 60%;
+}
+.schAccNameinputClassnameCombo {
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.schDurationparentDiv {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  justify-content: center;
+}
+.schDurInput {
+  height: 60%;
+  width: 90%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+  -webkit-appearance: none;
+
+}
+.schAccNoParentDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.schAccNoParentDivpart1 {
+  height: 100%;
+  width: 73%;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+}
+.schAccNoParentDivbutton {
+  height: 100%;
+  width: 25%;
+}
+.schSearchButton {
+  width: 100%;
+  height: 60%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 5px;
+  /* margin-top: 22.5%; */
+  margin-top: 18px;
+  background: rgb(188, 192, 193);
+  text-align: center;
+}
+.schAccNoPart1input {
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+  width: 100%;
+  height: 60%;
+}
+.schSearchButton {
+  text-align: center;
+}
+/* ///////////////////////////////////////////////////// */
+.SchemeRegistrationMobBodypart2 {
+  width: 92.3%;
+  height: 35.9%;
+  background-color: white;
+  margin-top: 2.14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SchemeRegistrationMobBodypart2innerDiv {
+  width: 96.38%;
+  height: 92.65%;
+}
+.SchemeRegistrationMobBodypart2innerDivRow {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1%;
+}
+.schAddr1input {
+  width: 100%;
+  height: 60%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.SchemeRegistrationMobBodypart2innerDivRowparentdiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.SchemeRegistrationMobBodypart2innerDivRowcol {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  justify-content: center;
+}
+.schCityinput {
+  width: 90%;
+  height: 60%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.schpincodeinput {
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+  width: 90%;
+  /* width: 168px; */
+
+  height: 60%;
+  margin-left: 10%;
+}
+.schpincodelabel {
+  margin-left: 10%;
+}
+/* ///////////////////////////////////////////////////////////// */
+.SchemeRegistrationMobBodypart3 {
+  width: 92.3%;
+  height: 21.78%;
+  background-color: white;
+  margin-top: 2.14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SchemeRegistrationMobBodypart3innerDiv {
+  width: 96.38%;
+  height: 92.65%;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+}
+.SchemeRegistrationMobBodypart3innerDivRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  width: 100%;
+  height: 33.33%;
+}
+.schNarrationinput {
+  width: 100%;
+  height: 55%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.SchemeRegistrationMobBodypart3innerDivRowparent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.SchemeRegistrationMobBodypart3innerDivRowcol {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  gap: 1%;
+}
+.schAmtinput {
+  width: 90%;
+  height: 55%;
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+}
+.schRateinput {
+  box-sizing: border-box;
+  border: 1px solid rgb(74, 74, 74);
+  border-radius: 2px;
+  width: 90%;
+  /* width: 168px; */
+
+  height: 55%;
+  margin-left: 10%;
+}
+.schRatelabel {
+  margin-left: 10%;
+}
+/* //////////////navbar/////////////////////// */
+
+.SchemeRegistrationMobnavBaritems {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  right: 2%;
+  display: flex;
+  
+}
+.SchemeRegistrationMobnavBartoggle {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  left: .5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SchemeRegistrationMobnavBaritemsbuttons{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.SchemeRegistrationMobnavBaritemsbuttons img{
+    width: 16px;
+    height: 16px;
+}
+.SchemeRegistrationMobsavebutton{
+    position: absolute;
+    right: 2%;
+}

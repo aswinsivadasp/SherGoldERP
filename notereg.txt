@@ -1,0 +1,354 @@
+import React, { useState, useRef } from "react";
+import "../styles/SchemeRegistration.css";
+import { FaRegWindowMinimize } from "react-icons/fa";
+import { IoMdExpand } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+import minimize from "../images/minimize.png";
+import expand from "../images/resize.png";
+import exit from "../images/close.png";
+import headeLogo from "../images/shersoftnavLogo.png";
+import saveImg from "../images/SaveImage.png";
+import printImg from "../images/Printer.png";
+import clearImg from "../images/Document.png";
+import findImg from "../images/search.png";
+import editImg from "../images/Editing.png";
+import deleteImg from "../images/Delete.png";
+import exitImg from "../images/Exit1.png";
+import playandpause from "../images/Play and pause button.png";
+import leftarrow from "../images/Play button arrowhead left.png";
+import rightarrow from "../images/Play button arrowhead right.png";
+import playandpauseRight from "../images/Play and pause button right.png";
+import binImg from "../images/Bin.png";
+import ComboBox from "shersoft-combov1";
+function SchemeRegistration({ onClose }) {
+  const [minimized, setMinimized] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleMinimize = () => {
+    setMinimized(!minimized);
+  };
+  const accountNameInputRef = useRef(null);
+  const agentNameInputRef = useRef(null);
+  const saveButtonRef = useRef(null);
+  const entryNoInputRef = useRef(null);
+  const durationInputRef = useRef(null);
+  const accountNoInputRef = useRef(null);
+  const address1InputRef = useRef(null);
+  const address2InputRef = useRef(null);
+  const cityInputRef = useRef(null);
+  const pincodeInputRef = useRef(null);
+  const contactPersonInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const telNoInputRef = useRef(null);
+  const mobNoInputRef = useRef(null);
+  const narrationInputRef = useRef(null);
+  const amountInputRef = useRef(null);
+  const rateInputRef = useRef(null);
+  const gmInputRef = useRef(null);
+  const dateInputRef = useRef(null);
+  const searchButtonRef = useRef(null);
+
+  const handleKeyDown = (event, nextInputRef) => {
+    if (event.key === "Enter" || event.key === "Return") {
+      nextInputRef.current.focus();
+    }
+  };
+  return (
+    // <div className="regmodal-overlay">
+    <div className={`regmodal ${minimized ? "minimized" : ""}`}>
+      <div className="schemecontrolls">
+        {/* ///////// */}
+        <div className="schemereg_headerLogo_Div">
+          <div className="schemereg_headerLogo">
+            <img src={headeLogo} alt="SherSoftLogo" />
+          </div>
+          <label className="schemeReg_pageHead">Scheme Registration</label>
+        </div>
+      </div>
+
+      {/*............................ Navbar.............................................. */}
+      <div className="schemeReg_navbar">
+        <button
+          style={{
+            border: "none",
+            backgroundColor: "transparent",
+            marginLeft: "2%",
+          }}
+          className="schemeNav_items"
+          ref={saveButtonRef}
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={saveImg} alt="SaveImg" />
+          </div>
+          Save
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={printImg} alt="PrintImg" />
+          </div>
+          Print
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={clearImg} alt="clearImg" />
+          </div>
+          Clear
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={findImg} alt="findImg" />
+          </div>
+          Find
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={editImg} alt="editImg" />
+          </div>
+          Edit
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={deleteImg} alt="deleteImg" />
+          </div>
+          Delete
+        </button>
+        <button
+          style={{ border: "none", backgroundColor: "transparent" }}
+          className="schemeNav_items"
+        >
+          <div className="schemeReg_buttonImage">
+            <img src={exitImg} alt="exitImg" />
+          </div>
+          Exit
+        </button>
+
+        {/* ////////// */}
+        <div className="schemeReg_arrowButtons">
+          <button
+            style={{ backgroundColor: "transparent" }}
+            className="schemeReg_arrowButtonImage"
+          >
+            <img src={playandpause} alt="playandpause" />
+          </button>
+          <button
+            style={{ backgroundColor: "transparent" }}
+            className="schemeReg_arrowButtonImage"
+          >
+            <img src={leftarrow} alt="leftarrow" />
+          </button>
+          <button
+            style={{ backgroundColor: "transparent" }}
+            className="schemeReg_arrowButtonImage"
+          >
+            <img src={rightarrow} alt="rightarrow" />
+          </button>
+          <button
+            style={{ backgroundColor: "transparent", marginRight: "2%" }}
+            className="schemeReg_arrowButtonImage"
+          >
+            <img src={playandpauseRight} alt="playandpauseRight" />
+          </button>
+        </div>
+      </div>
+      {/*............................ NavbarEnd.............................................. */}
+
+      <div className="schemeRegBody">
+        <div className="schemeRegBodyData">
+          <div className="schemeRegBodyDatapart1">
+            <div className="schemeRegBodyDataRows">
+              <div className="schemeRegBodyDataRowspart1">
+                <label>Entry No</label>
+
+                <input
+                  ref={entryNoInputRef}
+                  onKeyDown={(e) => handleKeyDown(e, dateInputRef)}
+                />
+              </div>
+              <div className="schemeRegBodyDataRowspart2">
+                <label>Date</label>
+                <input
+                  type="date"
+                  ref={dateInputRef}
+                  onKeyDown={(e) => handleKeyDown(e, accountNameInputRef)}
+                />
+              </div>
+            </div>
+            <div className="schemeRegBodyDataRows SchAccName">
+              <label className="accNameLabel">Account Name</label>
+              {/* <input className="accNameinput" /> */}
+              <ComboBox
+                onKeyDown={(e) => handleKeyDown(e, agentNameInputRef)}
+                comboRef={accountNameInputRef}
+                options={["name1", "name2"]}
+                className="accNameinput"
+                inputClassName="accNameinputClass"
+              />
+            </div>
+            <div className="schemeRegBodyDataRows SchAccName">
+              <label className="accNameLabel">Agent</label>
+              {/* <input className="accNameinput" /> */}
+              <ComboBox
+                onKeyDown={(e) => handleKeyDown(e, durationInputRef)}
+                comboRef={agentNameInputRef}
+                options={["name1", "name2"]}
+                className="accNameinput"
+                inputClassName="accNameinputClass"
+              />
+            </div>
+            <div className="schemeRegBodyDataRows SchAccName">
+              <div className="durationdiv">
+                <label className="Durationlabel">Duration</label>
+                <input
+                  onKeyDown={(e) => handleKeyDown(e, accountNoInputRef)}
+                  className="Durationinput"
+                  placeholder="IN MONTHS"
+                  ref={durationInputRef}
+                />
+              </div>
+             <div className="accNodiv">
+               <div className="accNolabelDiv">
+                  <label className="accountNumberlabel">Account Number</label>
+                  <input
+                    onKeyDown={(e) => handleKeyDown(e, address1InputRef)}
+                    className="accountNumberInput"
+                    ref={accountNoInputRef}
+                  />
+               </div>
+                <button className="accountNumbersearchbutton">Search</button>
+              </div>
+             </div>
+          </div>
+          {/* ///lines/// */}
+          <div className="schemeReglines">
+            <div className="schemeReglinesparts"></div>
+            <div className="schemeReglinesparts"></div>
+          </div>
+          {/* /////////////////// */}
+          <div className="schemeRegBodyDatapart2">
+            <div className="schemeRegBodyDataRows">
+              <label className="schemeRegBodyDatapart2label1">Address 1</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, address2InputRef)}
+                className="schemeRegBodyDatapart2input1"
+                ref={address1InputRef}
+              />
+              <label className="schemeRegBodyDatapart2label2">Address 2</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, cityInputRef)}
+                className="schemeRegBodyDatapart2input2"
+                ref={address2InputRef}
+              />
+            </div>
+            <div className="schemeRegBodyDataRows">
+              <label className="schemeRegBodyDatapart2label1">City/Town</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, pincodeInputRef)}
+                className="schemeRegBodyDatapart2input1"
+                ref={cityInputRef}
+              />
+              <label className="schemeRegBodyDatapart2label2">Pincode</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, contactPersonInputRef)}
+                className="schemeRegBodyDatapart2input2"
+                ref={pincodeInputRef}
+              />
+            </div>
+            <div className="schemeRegBodyDataRows">
+              <label className="schemeRegBodyDatapart2label1">
+                Contact Person
+              </label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, emailInputRef)}
+                className="schemeRegBodyDatapart2input1"
+                ref={contactPersonInputRef}
+              />
+              <label className="schemeRegBodyDatapart2label2">Email</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, telNoInputRef)}
+                className="schemeRegBodyDatapart2input2"
+                ref={emailInputRef}
+              />
+            </div>
+            <div className="schemeRegBodyDataRows">
+              <label className="schemeRegBodyDatapart2label1">Tele No.</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, mobNoInputRef)}
+                className="schemeRegBodyDatapart2input1"
+                ref={telNoInputRef}
+              />
+              <label className="schemeRegBodyDatapart2label2">Mobile</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, narrationInputRef)}
+                className="schemeRegBodyDatapart2input2"
+                ref={mobNoInputRef}
+              />
+            </div>
+          </div>
+          {/* ///////lines//// */}
+          <div className="schemeReglines">
+            <div className="schemeReglinesparts1"></div>
+          </div>
+          {/* ///////////// */}
+          <div className="schemeRegBodyDatapart3">
+            <div className="schemeRegBodyDatapart3narration">
+              <label>Narration</label>
+              <textarea
+                onKeyDown={(e) => handleKeyDown(e, amountInputRef)}
+                ref={narrationInputRef}
+              />
+            </div>
+
+            <div className="schemeRegBodyDatapart3Rows">
+              <label className="schemeRegBodyDatapart3Rowslabel">Amount</label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, rateInputRef)}
+                className="schemeRegBodyDatapart3Rowsinput"
+                ref={amountInputRef}
+              />
+              <label
+                className="schemeRegBodyDatapart3Rowslabel"
+                style={{ marginLeft: ".33%", textAlign: "center" }}
+              >
+                Rate
+              </label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, gmInputRef)}
+                className="schemeRegBodyDatapart3Rowsinput"
+                ref={rateInputRef}
+              />
+              <label
+                className="schemeRegBodyDatapart3Rowslabel"
+                style={{ marginLeft: ".6%", textAlign: "center" }}
+              >
+                Gm
+              </label>
+              <input
+                onKeyDown={(e) => handleKeyDown(e, saveButtonRef)}
+                className="schemeRegBodyDatapart3Rowsinput"
+                ref={gmInputRef}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    // </div>
+  );
+}
+
+export default SchemeRegistration;

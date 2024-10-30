@@ -1,0 +1,118 @@
+import React from "react";
+import PrimaryNav from "./PrimaryNav";
+import exit from "../images/close.png";
+import headeLogo from "../images/shersoftnavLogo.png";
+import saveImg from "../images/SaveImage.png";
+import printImg from "../images/Printer.png";
+import clearImg from "../images/Document.png";
+import findImg from "../images/search.png";
+import editImg from "../images/Editing.png";
+import deleteImg from "../images/Delete.png";
+import exitImg from "../images/Exit1.png";
+import excel from "../images/Excel file.png";
+import pdf from "../images/Pdf.png"
+import playandpause from "../images/Play and pause button.png";
+import leftarrow from "../images/Play button arrowhead left.png";
+import rightarrow from "../images/Play button arrowhead right.png";
+import playandpauseRight from "../images/Play and pause button right.png";
+import "../styles/SchemeReport.css"
+
+function SchemeReport() {
+  return (
+    <div className="SchemeReportParentdiv">
+      <PrimaryNav />
+     c
+      {/* ////////// */}
+
+
+      <div className="content2">
+        <table className="excel-table">
+
+          <thead>
+            <tr>
+              <th id="date">AccNo</th>
+              <th id="entryno">Customer</th>
+              <th>Date</th>
+              <th>Entry No</th>
+              {/* {customerType !== 'DEALER' && ( */}
+              <th>Type</th>
+              {/* )} */}
+
+              <th id="delivery">Rate</th>
+              <th id="delivery">Amount</th>
+              <th id="delivery">Weight</th>
+              <th id="delivery">Redeem Rate</th>
+              <th id="delivery">Redeem Amount</th>
+              <th id="delivery">Redeem Weight</th>
+              <th id="delivery">Scheme Balance</th>
+              <th id="delivery">P/L In Weight</th>
+              <th id="delivery">Agent</th>
+              <th id="delivery">Narration</th>
+              
+            </tr>
+          </thead> 
+          <tbody>
+            {/* {filteredOrderData.map((item, index) => (    */}
+              <tr
+            
+                className={"selected-row" }
+              //  onClick={() => setSelectedCustomer(item.Customer)}
+              >  
+                <td>26/04/24</td>        
+                <td>1111</td>         
+                <td>customer</td>  
+                <td id="total-amount">1234</td>
+                {/* {customerType !== 'DEALER' && ( */}
+                <td style={{ textAlign: 'right' }}>5678</td>
+                {/* )} */}
+
+                <td
+                //   style={{
+                //     textAlign: 'center',   
+                //     color: item.DeliveryStatus === 1 ? 'green' : item.DeliveryStatus === 0 ? 'red' : 'inherit',
+                //     fontWeight: item.DeliveryStatus === 1 || item.DeliveryStatus === 0 ? 'bold' : 'normal',
+                //   }}
+                >   
+                  {/* {item.DeliveryStatus === 0 ? "Pending" : item.DeliveryStatus === 1 ? "Success" : item.DeliveryStatus} */}
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              
+              </tr>  
+            {/* ))}    */}
+            <tr>
+              <td id="total-text">Total:</td>   
+              <td id="total-entry"></td>  
+              <td></td>
+              <td id="total-sum"></td>     
+              {/* {customerType !== 'DEALER' && ( */}
+              <td id="total-profit"></td>      
+              {/* )} */}
+  
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default SchemeReport;

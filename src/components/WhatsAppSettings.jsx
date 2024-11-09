@@ -1,15 +1,15 @@
 import React, { useState, useRef, useContext } from "react";
-import "../styles/SmsSettings.css";
+import "../styles/WhatsAppSettings.css";
 import headeLogo from "../assets/images/shersoftnavLogo.png";
 import close from "../assets/images/CreateCompanyImages/Wrong (1).webp";
 import ComboBox from "./ComboBox";
-import crtCmp from "../assets/images/CreateCompanyImages/CreateCmp.webp";
+import send from "../assets/images/CreateCompanyImages/send.webp";
 import exit from "../assets/images/CreateCompanyImages/Cdbexit.webp";
 import { AuthContext } from "../context/AuthContext";
 import { useDbContext } from "../context/DbContext";
 import axios from "axios";
 
-function SmsSettings({ onClose }) {
+function WhatsAppSettings({ onClose }) {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const { dbCode } = useDbContext();
 
@@ -17,12 +17,12 @@ function SmsSettings({ onClose }) {
   const [selectedRow, setSelectedRow] = useState(null);
   const selectref = useRef(null);
   const textareaRef = useRef(null);
-  const [smssettingsData, setsmssettingsData] = useState({
+  const [WhatsAppsettingsData, setWhatsAppsettingsData] = useState({
     EntryName: "",
-    Template: "",
+    Message: "",
     api: "",
   });
-  console.log("smssettingsData=", smssettingsData);
+  console.log("WhatsAppsettingsData=", WhatsAppsettingsData);
 
   const handleRowClick = (rowName) => {
     setSelectedRow(rowName);
@@ -57,9 +57,9 @@ function SmsSettings({ onClose }) {
 
   const handleSave = async () => {
     if (
-      smssettingsData.EntryName === "" ||
-      smssettingsData.Template === "" ||
-      smssettingsData.api === ""
+      WhatsAppsettingsData.EntryName === "" ||
+      WhatsAppsettingsData.Message === "" ||
+      WhatsAppsettingsData.api === ""
     ) {
       alert("Enter Data Correctly");
       return;
@@ -67,8 +67,8 @@ function SmsSettings({ onClose }) {
 
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/main/savesmssettings/${dbCode}`,
-        smssettingsData
+        `${apiBaseUrl}/main/saveWhatsAppsettings/${dbCode}`,
+        WhatsAppsettingsData
       );
 
       if (response.status === 200) {
@@ -82,7 +82,7 @@ function SmsSettings({ onClose }) {
       console.error("Error saving rateClass Values:", error.message);
     }
   };
-  const fetchsmssettings = async (eName) => {
+  const fetchWhatsAppsettings = async (eName) => {
     try {
       const response = await axios.get(
         `${apiBaseUrl}/main/selectapidatas/${dbCode}/${eName}`
@@ -91,41 +91,41 @@ function SmsSettings({ onClose }) {
       const smsData = response.data[0];
       console.log("smsData=", smsData);
 
-      setsmssettingsData({
-        ...smssettingsData,
+      setWhatsAppsettingsData({
+        ...WhatsAppsettingsData,
         EntryName: smsData.Voucher,
-        Template: smsData.MessageBody,
+        Message: smsData.MessageBody,
         api: smsData.ApiLink,
       });
     } catch (error) {
-      console.error("Error fetching smssettings Values:", error.message);
+      console.error("Error fetching WhatsAppsettings Values:", error.message);
     }
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === "Return") {
-      fetchsmssettings(event.target.value);
+      fetchWhatsAppsettings(event.target.value);
     }
   };
 
   return (
-    <div className="SmsSettingsRoot">
-      <div className="smsSettingsHead">
-        <div className="smsSettingsHeadpart">
+    <div className="WhatsAppsettingsRoot">
+      <div className="WhatsAppsettingsHead">
+        <div className="WhatsAppsettingsHeadpart">
           <img src={headeLogo} alt="SS" />
-          <label>SMS Settings</label>
+          <label>WhatsApp Settings</label>
         </div>
-        <div className="smsSettingsHeadControlls">
+        <div className="WhatsAppsettingsHeadControlls">
           <button
-            className="smsSettingscontrollsbuttons smsXbutton"
+            className="WhatsAppsettingscontrollsbuttons smsXbutton"
             onClick={onClose}
           >
             <img src={close} alt="X" />
           </button>
         </div>
       </div>
-      <div className="smssettingsBody">
-        <div className="smssettingsrow">
+      <div className="WhatsAppsettingsBody">
+        <div className="WhatsAppsettingsrow">
           <label>Entry Name</label>
           <ComboBox
             options={[
@@ -133,98 +133,75 @@ function SmsSettings({ onClose }) {
               [2, "SALES"],
             ]}
             findedValue={
-              Array.isArray(smssettingsData.EntryName)
-                ? smssettingsData.EntryName[1]
-                : smssettingsData.EntryName
+              Array.isArray(WhatsAppsettingsData.EntryName)
+                ? WhatsAppsettingsData.EntryName[1]
+                : WhatsAppsettingsData.EntryName
             }
-            className="smssettingsSelect"
+            className="WhatsAppsettingsSelect"
             comboRef={selectref}
             onInputChange={(e) =>
-              setsmssettingsData({
-                ...smssettingsData,
+              setWhatsAppsettingsData({
+                ...WhatsAppsettingsData,
                 EntryName: e,
               })
             }
             onKeyDown={handleKeyDown}
-            onBlur={(e) => fetchsmssettings(e.target.value)}
+            onBlur={(e) => fetchWhatsAppsettings(e.target.value)}
           />
         </div>
-        <div className="smssettingscontent">
-          <div className="smssettingstemplate">
-            <label>Content as in Template</label>
+        <div className="WhatsAppsettingscontent">
+          <div className="WhatsAppsettingsMessage">
+            <label>Message</label>
             <textarea
-              className="smssettingstextarea"
+              className="WhatsAppsettingstextarea"
               ref={textareaRef}
               onDrop={handleDrop}
               onDragOver={handleDragOver}
-              value={smssettingsData.Template}
+              value={WhatsAppsettingsData.Message}
               onChange={(e) =>
-                setsmssettingsData({
-                  ...smssettingsData,
-                  Template: e.target.value,
+                setWhatsAppsettingsData({
+                  ...WhatsAppsettingsData,
+                  Message: e.target.value,
                 })
               }
             />
           </div>
-          <div className="smssettingsvariables">
-            <div className="smssettingsvariablessec1">
-              {[
-                "accountNo",
-                "customerName",
-                "total",
-                "grandTotal",
-                "gm",
-                "netwt",
-                "mobileNo",
-              ].map((variable) => (
-                <div
-                  key={variable}
-                  className={`smssettingsvarRow ${
-                    selectedRow === variable ? "selected" : ""
-                  }`}
-                  onClick={() => handleRowClick(variable)}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, variable)}
-                >
-                  {`$\{${variable}\}`}
-                </div>
-              ))}
+          <div className="WhatsAppsettingsvariables">
+            <div className="WhatsAppsettingsvariablessec1">
+             
+
+
+
+
             </div>
-            {/* <div className="smssettingsvariablessec2">
-              <div className="smssettingspararow"><label ></label></div>
-              <div className="smssettingspararow"></div>
-              <div className="smssettingspararow"></div>
-              <div className="smssettingspararow"></div>
-              <div className="smssettingspararow"></div>
-            </div> */}
+           
           </div>
         </div>
-        <div className="smssettingsrow">
-          <label htmlFor="api">API Link</label>
+        <div className="WhatsAppsettingsrow">
+          <label htmlFor="api">Sender Number</label>
           <input
             className="smsapiLink"
             type="text"
             id="api"
-            value={smssettingsData.api}
+            value={WhatsAppsettingsData.api}
             onChange={(e) =>
-              setsmssettingsData({
-                ...smssettingsData,
+              setWhatsAppsettingsData({
+                ...WhatsAppsettingsData,
                 api: e.target.value,
               })
             }
           />
         </div>
 
-        <div className="smssettingsControlls">
+        <div className="WhatsAppsettingsControlls">
           <div
-            className="smssettingsButtons"
+            className="WhatsAppsettingsButtons"
             style={{ marginLeft: "16.5%" }}
-            onClick={handleSave}
           >
-            <img src={crtCmp} alt="Save" />
-            <label htmlFor="">Save</label>
+            <img src={send} alt="Send" />
+            <label htmlFor="">Send</label>
           </div>
-          <div className="smssettingsButtons" onClick={onClose}>
+          <div className="WhatsAppsettingsButtons" onClick={onClose}>
             <img src={exit} alt="Exit" />
             <label htmlFor="">Exit</label>
           </div>
@@ -234,4 +211,4 @@ function SmsSettings({ onClose }) {
   );
 }
 
-export default SmsSettings;
+export default WhatsAppSettings;

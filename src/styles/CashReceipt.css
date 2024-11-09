@@ -1,0 +1,299 @@
+* {
+  /* font-family: Inter; */
+}
+
+.cashRecRoot {
+  background-color: white;
+  font-family: normal;
+  width: 950px;
+  height: 500px;
+  padding: 2px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: absolute;
+  transition: all 0.3s;
+}
+
+/* /////////////////////////// */
+
+.cashRecBody {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cashRecBodyData {
+  height: 96%;
+  width: 95%;
+}
+.cashReccashaccCombo {
+  width: 48%;
+  height: 66%;
+
+  /* box-sizing: border-box; */
+}
+
+.cashRecTopdata {
+  width: 100%;
+  height: 15%;
+  /* background-color: blueviolet; */
+  display: flex;
+}
+.cashRecTopdatasections {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.cashRecsec1 {
+  width: 15%;
+}
+.cashrecentryno label {
+  width: 50% !important;
+  font-family: Inter;
+}
+.cashrecentryno input {
+  width: 35% !important;
+  /* background-color: #f8f9f9; */
+  @apply bg-[#c30000];
+}
+.cashRecsec2 {
+  width: 73%;
+}
+.sec2row {
+  gap: 1% !important;
+  /* margin-left: 5%; */
+  /* @apply bg-[#c30000] */
+}
+.cashRecsec2label {
+  width: 16% !important;
+  margin-left: 1%;
+}
+.cashrecamnt {
+  width: 20% !important;
+}
+.cashrecamntlabel {
+  width: 10% !important;
+  font-family: Inter;
+  text-align: right !important;
+}
+.cashRecsec3 {
+  width: 11% !important;
+}
+.cashRecsec3row input {
+  margin-left: 2%;
+  background-color: #f8f9f9;
+
+  width: 75% !important;
+}
+.cashRecsec3row {
+  margin-right: 0;
+  justify-content: end;
+}
+
+.cashRecTopdatasectionsrows {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  gap: 3%;
+  align-items: center;
+}
+.cashRecTopdatasectionsrows label {
+  color: rgb(0, 0, 0);
+  font-family: Inter;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  width: 20%;
+}
+.cashRecTopdatasectionsrows input {
+  width: 50%;
+  height: 65%;
+  /* box-sizing: border-box; */
+  border: 1px solid rgb(74, 74, 74);
+  background-color: #f8f9f9;
+}
+
+/* ////////////////table styles///////////// */
+.cashRecDataTable {
+  width: 100%;
+  height: 65%;
+  /* background-color: aqua; */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  overflow-y: auto;
+}
+.cashRecDataTable table {
+  width: 100%;
+}
+.cashRecDataTableHead {
+  width: 100%;
+  background: rgb(2, 108, 195);
+  height: 4vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.cashRecDataTableHead tr th {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  height: 20%;
+}
+.cashRecDataTableHeadslno,
+.cashRecDataTableDataBoxSlno {
+  width: 4%;
+}
+.cashRecDataTableHeadDbAcc,
+.cashRecDataTableDataBoxDbAcc {
+  width: 14%;
+}
+.cashRecDataTableHeadCbAcc,
+.cashRecDataTableDataBoxCdAcc {
+  width: 14%;
+}
+.cashRecDataTableHeadaccno,
+.cashRecDataTableDataBoxaccno {
+  width: 16%;
+}
+.cashRecDataTableHeadamount,
+.cashRecDataTableDataBoxamount {
+  width: 10%;
+}
+.cashRecDataTableHeadgm,
+.cashRecDataTableDataBoxGm {
+  width: 13%;
+}
+.cashRecDataTableHeadprintgm,
+.cashRecDataTableDataBoxprintgm {
+  width: auto;
+}
+.cashRecDataTableDataBoxprintgm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cashRecDataTableHeadnarration,
+.cashRecDataTableDataBoxStonenarration {
+  width: 20%;
+}
+.cashRecDataTableBodyStyletr {
+  height: 3vh;
+}
+
+.cashRecDataTableDataBox {
+  /* height: 17px; */
+  height: 3vh;
+
+  width: 100%;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.dataBox {
+  border: none;
+  width: 100%;
+}
+
+.cashRecDataTablefootertotal {
+  width: 100%;
+  height: 6%;
+  background-color: #ebebeb;
+  display: flex;
+  align-items: center;
+}
+.cashRecDataTablefootertotalamount {
+  width: 11.5%;
+  height: 80%;
+  border: none;
+  margin-right: 2px;
+}
+.cashRecDataTablefootertotalamount1 {
+ 
+}
+.cashRecfooterbtn {
+  width: 10%;
+  height: 95%;
+  margin-left: 1%;
+  background-color: #026cc3;
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cashRecDataTablefootertotalGm {
+  width: 13%;
+  height: 80%;
+  border: none;
+  margin-left: 1.2px;
+  display: flex;
+  align-items: center;
+}
+
+.cashRecCurrentBalance {
+  width: 100%;
+  height: 10%;
+  background-color: #d2d2d2;
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 590;
+  line-height: 15px;
+  text-align: center;
+}
+.find-dialog {
+  width: 30vw;
+  height: 15vh;
+  border-radius: 10px;
+  background: #f8f9f9;
+  border: 1px solid rgb(74, 74, 74);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+.find-dialog input {
+  height: 3vh;
+  width: 60%;
+}
+.find-dialog button {
+  height: 4vh;
+  width: 20%;
+  border-radius: 5px;
+  background: rgba(0, 8, 180, 0.73);
+  color: #fff;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

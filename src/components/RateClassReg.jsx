@@ -66,7 +66,7 @@ function RateClassReg({ onClose }) {
   useEffect(() => {
     const fetchrateClass = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/selectall/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/selectall/${dbCode}`);
 
         const rateClass = response.data;
         setRateClassalldata(rateClass)
@@ -86,7 +86,7 @@ function RateClassReg({ onClose }) {
 
   const fetchrateClass = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/selectall/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/selectall/${dbCode}`);
 
       const rateClass = response.data;
       setRateClassalldata(rateClass)
@@ -152,7 +152,7 @@ function RateClassReg({ onClose }) {
 
         // Make a POST request to your server with the form data
         const response = await axios.post(
-          `${apiBaseUrl}/insertrateclass/${dbCode}`,
+          `${apiBaseUrl}/main/insertrateclass/${dbCode}`,
           rateClassData
         );
 
@@ -191,7 +191,7 @@ function RateClassReg({ onClose }) {
    
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/updaterateclass/${rateclassid}/${dbCode}`,
+        `${apiBaseUrl}/main/updaterateclass/${rateclassid}/${dbCode}`,
         rateClassData
       );
       if (response.status === 200) {
@@ -214,7 +214,7 @@ function RateClassReg({ onClose }) {
         return;
       }
       const response = await axios.delete(
-        `${apiBaseUrl}/spdeleterateclass/${rateClassData.rateClass[0]}/${dbCode}`
+        `${apiBaseUrl}/main/spdeleterateclass/${rateClassData.rateClass[0]}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({

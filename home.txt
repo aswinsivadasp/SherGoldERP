@@ -262,7 +262,7 @@ function HomePage() {
     const fetchRegCname = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_schemeregisteredcustomers`
+          `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers`
         );
 
         // Assuming response.data is an array with objects and each object has a LedName property
@@ -289,7 +289,7 @@ function HomePage() {
   const fetchRegCname = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRec_schemeregisteredcustomers`
+        `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers`
       );
 
       // Assuming response.data is an array with objects and each object has a LedName property
@@ -313,7 +313,7 @@ function HomePage() {
   const [agentobj, setAgentObj] = useState([]);
   const fetchAgname = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schsalesmanNames`);
+      const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const AgName = response.data;
@@ -333,7 +333,7 @@ function HomePage() {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -357,7 +357,7 @@ function HomePage() {
 
   const fetchAccno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const Accno = response.data;
@@ -378,7 +378,7 @@ function HomePage() {
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;

@@ -96,7 +96,7 @@ function LedgerReg() {
     try {
       // Your existing save logic
       const response = await axios.post(
-       `${apiBaseUrl}/saveledger`,
+       `${apiBaseUrl}/main/saveledger`,
         formData
       );
       ////console.log(response.data);
@@ -133,7 +133,7 @@ function LedgerReg() {
     try {
       // Assuming selectedLedgerCode is the Ledger Code you want to find
       const response = await axios.get(
-        `${apiBaseUrl}/findledger/${formData.ledcode}`
+        `${apiBaseUrl}/main/findledger/${formData.ledcode}`
       );
       const { success, message, ledgerData, accountTransactionData } =
         response.data;
@@ -195,7 +195,7 @@ function LedgerReg() {
     try {
       // Assuming selectedLedgerCode is the Ledger Code you want to find
       const response = await axios.get(
-        `${apiBaseUrl}/findledgermobile/${formData.lr_Mobile}`
+        `${apiBaseUrl}/main/findledgermobile/${formData.lr_Mobile}`
       );
       const { success, message, ledgerData } = response.data;
 
@@ -244,7 +244,7 @@ function LedgerReg() {
     try {
       // Send a PUT request to the server to update the ledger
       const response = await axios.put(
-        `${apiBaseUrl}/updateledger/${ledCodeValue}`,
+        `${apiBaseUrl}/main/updateledger/${ledCodeValue}`,
         formData
       );
       ////console.log(response.data);
@@ -263,7 +263,7 @@ function LedgerReg() {
     try {
       // Assuming you have the ledCodeValue available
       const response = await axios.delete(
-        `${apiBaseUrl}/deleteledger/${ledCodeValue}`
+        `${apiBaseUrl}/main/deleteledger/${ledCodeValue}`
       );
       ////console.log(response.data);
 
@@ -482,7 +482,7 @@ function LedgerReg() {
   useEffect(() => {
     const fetchLedgerNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/ledgerNames`);
+        const response = await axios.get(`${apiBaseUrl}/main/ledgerNames`);
         const sortedNames = response.data.sort((a, b) =>
           a.LedName.localeCompare(b.LedName)
         );
@@ -583,7 +583,7 @@ function LedgerReg() {
   // Fetch ledger heads data from the server
   const fetchLedgerHeads = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/ledgerHeads`);
+      const response = await axios.get(`${apiBaseUrl}/main/ledgerHeads`);
       const sortedHeads = response.data.sort((a, b) =>
         a.lh_name.localeCompare(b.lh_name)
       );

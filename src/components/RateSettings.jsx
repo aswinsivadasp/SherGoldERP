@@ -44,7 +44,7 @@ function RateSettings({ onClose }) {
   useEffect(() => {
     const fetchrateClass = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/selectall/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/selectall/${dbCode}`);
         const rateClass = response.data.map((item) => ({
           ...item,
           newRate: "",
@@ -64,7 +64,7 @@ function RateSettings({ onClose }) {
   // ////console.log("rateclassdata", tableData);
   const fetchrateClass = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/selectall/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/selectall/${dbCode}`);
       const rateClass = response.data.map((item) => ({
         ...item,
         newRate: "",
@@ -85,7 +85,7 @@ function RateSettings({ onClose }) {
   const handleSave = async () => {
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/savecurrentRates/${dbCode}`,
+        `${apiBaseUrl}/main/savecurrentRates/${dbCode}`,
         tableData
       );
       // ////console.log("Save response:", response.data);

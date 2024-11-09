@@ -45,7 +45,7 @@ function LoginPage() {
 
   // const handleLogin = async () => {
   //   try {
-  //     const response = await axios.get(`${apiBaseUrl}/userLogin`);
+  //     const response = await axios.get(`${apiBaseUrl}/main/userLogin`);
   //     const data = response.data;
 
   //     const user = data.find(user => user.userName === loginData.userName && user.password === loginData.password);
@@ -71,7 +71,7 @@ function LoginPage() {
     navigate('/');
   }
     try {
-      const response = await axios.post(`${apiBaseUrl}/userLogin`, {
+      const response = await axios.post(`${apiBaseUrl}/main/userLogin`, {
         userName: loginData.userName,
         password: loginData.password,
         dbName: dbDetails.Code // Include dbDetails.Code here

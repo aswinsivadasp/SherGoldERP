@@ -301,7 +301,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   useEffect(() => {
     const fetchSchEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/jv_entryno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/jv_entryno/${dbCode}`);
         //  ////console.log("response =", response);
         const schemeRecentryNo = response.data;
 
@@ -320,7 +320,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
 
   const fetchSchEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/jv_entryno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/jv_entryno/${dbCode}`);
       // ////console.log("response =", response);
       const schemeRecentryNo = response.data;
 
@@ -343,7 +343,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/jvschsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/jvschsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -366,7 +366,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
 
   // const fetchAgname = async (searchTerm = '') => {
   //   try {
-  //     const response = await axios.get(`${apiBaseUrl}/jvschsalesmanNames?search=${encodeURIComponent(searchTerm)}`);
+  //     const response = await axios.get(`${apiBaseUrl}/main/jvschsalesmanNames?search=${encodeURIComponent(searchTerm)}`);
   //     const AgName = response.data;
   //     const transformedData = AgName.map((item) => [item.Auto, item.Name]);
   //     setagentName(transformedData);
@@ -385,7 +385,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   useEffect(() => {
     const fetchLgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/jvledgernames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/jvledgernames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const LgName = response.data;
@@ -585,7 +585,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
         narration: row.narration || null,
       }));
       // ////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/savejournal/${dbCode}`, {
+      const response = await axios.post(`${apiBaseUrl}/main/savejournal/${dbCode}`, {
         Branch: jvInfoData.Branch[0],
         Salesman: jvInfoData.Salesman[0],
         date: jvInfoData.date,
@@ -667,7 +667,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
         narration: row.narration || null,
       }));
       //////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/jvupdate/${dbCode}`, {
+      const response = await axios.post(`${apiBaseUrl}/main/jvupdate/${dbCode}`, {
         Branch: jvInfoData.Branch[0],
         Salesman: jvInfoData.Salesman[0],
         date: jvInfoData.date,
@@ -727,7 +727,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
 
   const fetchfirstandlast = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/jvtopandlast/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/jvtopandlast/${dbCode}`);
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
         setLastEno(response.data[0].lastentryno);
@@ -742,7 +742,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   const handleFindbyentrynumber = async () => {
     handleClearfind();
     try {
-      const response = await axios.get(`${apiBaseUrl}/findjv/${findEntryNo}/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/findjv/${findEntryNo}/${dbCode}`);
 
       if (response.status === 200) {
         const foundData = response.data;
@@ -798,7 +798,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
     }
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/deletejv/${jvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/deletejv/${jvInfoData.EntryNo}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({
@@ -829,7 +829,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
     // }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/jvprevs/${jvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/jvprevs/${jvInfoData.EntryNo}/${dbCode}`
       );
 
       //  ////console.log("response=",response.data);
@@ -880,7 +880,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/jvnext/${jvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/jvnext/${jvInfoData.EntryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -926,7 +926,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   const handleFindfirst = async () => {
     handleClearfind();
     try {
-      const response = await axios.get(`${apiBaseUrl}/jvfirst/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/jvfirst/${dbCode}`);
 
       if (response.status === 200) {
         const foundData = response.data;
@@ -972,7 +972,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/jvlast/${dbCode}`
+        `${apiBaseUrl}/main/jvlast/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -1029,7 +1029,7 @@ function JournalEntry({ onClose,Open,ledgerJustClosed  }) {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}/${dbCode}`
       );
       //////console.log("res===",response.data);
       setaccumulatedWt(response.data[0].WeightDifference);

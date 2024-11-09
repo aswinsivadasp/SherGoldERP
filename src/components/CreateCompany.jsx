@@ -152,7 +152,7 @@ function CreateCompany({ onClose }) {
 
   //   try {
   //     // Make the POST request to create a new database
-  //     const response = await axios.post(`${apiBaseUrl}/createDatabase`, {
+  //     const response = await axios.post(`${apiBaseUrl}/main/createDatabase`, {
   //       compData,
   //     });
   //     alert(response.data);
@@ -183,9 +183,13 @@ function CreateCompany({ onClose }) {
       return;
     }
     try {
-      const response = await axios.post(`${apiBaseUrl}/createDatabase`, {
+      const response = await axios.post(`${apiBaseUrl}/main/createDatabase`, {
         compData,
       });
+    
+        
+        localStorage.setItem("customerCode", compData.customerCode);
+    
       alert(response.data);
       onClose(); // Close after successful creation
     } catch (error) {
@@ -194,13 +198,14 @@ function CreateCompany({ onClose }) {
     }
   };
 
-
   const handleUpdateDatabase = async () => {
-   
     try {
-      const response = await axios.post(`${apiBaseUrl}/updatecompanyDetails`, {
-        compData,
-      });
+      const response = await axios.post(
+        `${apiBaseUrl}/main/updatecompanyDetails`,
+        {
+          compData,
+        }
+      );
       alert(response.data);
     } catch (error) {
       console.error("Error creating database:", error);
@@ -239,7 +244,7 @@ function CreateCompany({ onClose }) {
   useEffect(() => {
     const fetchCmpname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/getAllCompanies`);
+        const response = await axios.get(`${apiBaseUrl}/main/getAllCompanies`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const cData = response.data;
@@ -260,40 +265,42 @@ function CreateCompany({ onClose }) {
     fetchCmpname();
   }, [apiBaseUrl]);
 
-
   function formatDateForInput(dateStr) {
-    const [day, month, year] = dateStr.split('/');
+    const [day, month, year] = dateStr.split("/");
     return `${year}-${month}-${day}`;
-}
-
+  }
 
   const handleFind = async () => {
-    if(compData.companyCode===""){
-      alert("Select Company Code")
+    if (compData.companyCode === "") {
+      alert("Select Company Code");
     }
     try {
-      const response = await axios.get(`${apiBaseUrl}/findCompanyDetails/${Array.isArray(compData.companyCode)
-        ? compData.companyCode[1]
-        : compData.companyCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/findCompanyDetails/${
+          Array.isArray(compData.companyCode)
+            ? compData.companyCode[1]
+            : compData.companyCode
+        }`
+      );
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const foundData = response.data[0];
-      console.log("foundData=",foundData);
-      
+      console.log("foundData=", foundData);
+
       setCompData({
         ...compData,
-        companyCode:  companyCode.find((item) => item[1] === foundData.Code),
+        companyCode: companyCode.find((item) => item[1] === foundData.Code),
 
-        customerCode:  foundData.CustomerCode,
+        customerCode: foundData.CustomerCode,
         companyName: foundData.name,
-        fpFrom:formatDateForInput(foundData.sdateFormatted),
+        fpFrom: formatDateForInput(foundData.sdateFormatted),
         fpTo: formatDateForInput(foundData.edateFormatted),
         location: "",
         add1: foundData.add1,
         add2: foundData.add2,
-        add3:foundData.add3,
+        add3: foundData.add3,
         telNo: foundData.telephone,
-        mobNo:foundData.mobile,
+        mobNo: foundData.mobile,
         email: foundData.email,
         gstNo: "",
         type: foundData.stype,
@@ -303,8 +310,6 @@ function CreateCompany({ onClose }) {
         decPoint: "",
         taxType: "",
       });
-
-
 
       // setsupplierName(supplName);
     } catch (error) {
@@ -342,11 +347,15 @@ function CreateCompany({ onClose }) {
           <img src={clear} alt="" />
           <span>Clear</span>
         </div>
-        <div className="createCmpnyNavBtn"  onClick={handleFind}>
+        <div className="createCmpnyNavBtn" onClick={handleFind}>
           <img src={find} alt="" />
           <span>Find</span>
         </div>
-        <div className="createCmpnyNavBtn" ref={editBtnRef} onClick={handleUpdateDatabase}>
+        <div
+          className="createCmpnyNavBtn"
+          ref={editBtnRef}
+          onClick={handleUpdateDatabase}
+        >
           <img src={edit} alt="" />
           <span>Edit</span>
         </div>

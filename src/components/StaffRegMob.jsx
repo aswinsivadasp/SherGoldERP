@@ -133,7 +133,7 @@ function StaffRegMob() {
   useEffect(() => {
     const selectcashAcc = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_caba/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_caba/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const caba = response.data;
@@ -183,7 +183,7 @@ function StaffRegMob() {
 
       // Make a POST request to your server with the form data
       const response = await axios.post(
-        `${apiBaseUrl}/insertSalesman/${dbCode}`,
+        `${apiBaseUrl}/main/insertSalesman/${dbCode}`,
         formData
       );
 
@@ -221,7 +221,7 @@ function StaffRegMob() {
 
       // Make a POST request to your server with the form data
       const response = await axios.post(
-        `${apiBaseUrl}/updateSalesman/${dbCode}`,
+        `${apiBaseUrl}/main/updateSalesman/${dbCode}`,
         formData
       );
 
@@ -246,7 +246,7 @@ function StaffRegMob() {
     try {
       // Make a DELETE request to your server with the employee's name
       const response = await axios.delete(
-        `${apiBaseUrl}/deleteSalesman/${formData.sr_Name}/${dbCode}`
+        `${apiBaseUrl}/main/deleteSalesman/${formData.sr_Name}/${dbCode}`
       );
       //////console.log('res',response.data.message);
       // Check the response status and handle accordingly
@@ -271,7 +271,7 @@ function StaffRegMob() {
   useEffect(() => {
     const fetchEmployeeNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/getEmployeeNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/getEmployeeNames/${dbCode}`);
         const empNames = response.data.map((item) => [item.Auto, item.name]);
         setEmployeeNames(empNames);
       } catch (error) {
@@ -283,7 +283,7 @@ function StaffRegMob() {
   }, []);
   const fetchEmployeeNames = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/getEmployeeNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/getEmployeeNames/${dbCode}`);
       const empNames = response.data.map((item) => [item.Auto, item.name]);
 
       setEmployeeNames(empNames);
@@ -304,7 +304,7 @@ function StaffRegMob() {
     try {
       // Make a GET request to your server with the selected name for finding data
       const response = await axios.get(
-        `${apiBaseUrl}/getEmployeeByName/${formData.sr_Name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/getEmployeeByName/${formData.sr_Name[0]}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -406,7 +406,7 @@ function StaffRegMob() {
   useEffect(() => {
     const fetchEmployeeId = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/getEmployeeId/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/getEmployeeId/${dbCode}`);
         //  setEmployeeId(response.data.employeeId.toString()); // Assuming employeeId is a number
 
         setFormData((prevData) => ({
@@ -422,7 +422,7 @@ function StaffRegMob() {
   }, []);
   const fetchEmployeeId = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/getEmployeeId/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/getEmployeeId/${dbCode}`);
       //  setEmployeeId(response.data.employeeId.toString()); // Assuming employeeId is a number
 
       setFormData((prevData) => ({

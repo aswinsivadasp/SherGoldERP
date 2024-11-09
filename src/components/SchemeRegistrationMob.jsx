@@ -114,7 +114,7 @@ function SchemeRegistrationMob() {
   }, [schemeRegData.amount, schemeRegData.rate]);
   // const fetchUpdatedAccountNames = async () => {
   //   try {
-  //     const response = await axios.get(`${apiBaseUrl}/accountNames`);
+  //     const response = await axios.get(`${apiBaseUrl}/main/accountNames`);
   //     const schemeDet = response.data;
   //     const AccNames = schemeDet.map((item) => item.accname);
   //     setANames(AccNames);
@@ -125,7 +125,7 @@ function SchemeRegistrationMob() {
 
   const fetchUpdatedAccountNames = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/accountNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/accountNames/${dbCode}`);
       const schemeDet = response.data;
       const AccNames = schemeDet.map((item) => [item.Ledcode, item.LedName]);
       setANames(AccNames);
@@ -139,7 +139,7 @@ function SchemeRegistrationMob() {
   // useEffect(() => {
   //     const fetchEmployeeNames = async () => {
   //         try {
-  //             const response = await axios.get(`${apiBaseUrl}/getEmployeeNames`);
+  //             const response = await axios.get(`${apiBaseUrl}/main/getEmployeeNames`);
 
   //             setEmployeeNames(response.data);
   //         } catch (error) {
@@ -162,7 +162,7 @@ function SchemeRegistrationMob() {
   useEffect(() => {
     const fetchEmployeeNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchReg_empname/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchReg_empname/${dbCode}`);
 
         const empNames = response.data.map((item) => [item.Auto, item.name]);
 
@@ -180,7 +180,7 @@ function SchemeRegistrationMob() {
   useEffect(() => {
     const fetchschregisteredcustomers = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/registeredcustomers/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/registeredcustomers/${dbCode}`);
 
         const Names = response.data.map((item) => item.accname);
 
@@ -195,7 +195,7 @@ function SchemeRegistrationMob() {
 
   const fetchupdschregisteredcustomers = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/registeredcustomers/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/registeredcustomers/${dbCode}`);
 
       const Names = response.data.map((item) => item.accname);
 
@@ -262,7 +262,7 @@ function SchemeRegistrationMob() {
           };
           // Make a POST request to your server with the form data
           const response = await axios.post(
-            `${apiBaseUrl}/insertScheme/${dbCode}`,
+            `${apiBaseUrl}/main/insertScheme/${dbCode}`,
             updatedSchemeRegData
           );
 
@@ -303,7 +303,7 @@ function SchemeRegistrationMob() {
   useEffect(() => {
     const fetchSchEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/Sch_entryno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/Sch_entryno/${dbCode}`);
         const schemeentryNo = response.data.map((item) => item[""]);
         setschemeRegData((prevData) => ({
           ...prevData,
@@ -319,7 +319,7 @@ function SchemeRegistrationMob() {
 
   const fetchSchEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/Sch_entryno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/Sch_entryno/${dbCode}`);
       const schemeentryNo = response.data.map((item) => item[""]);
       setschemeRegData((prevData) => ({
         ...prevData,
@@ -333,7 +333,7 @@ function SchemeRegistrationMob() {
   // useEffect(() => {
   //   const fetchAccountNames = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/accountNames`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/accountNames`);
   //       const schemeDet = response.data;
   //       const AccNames = schemeDet.map((item) => item.accname);
   //       setANames(AccNames);
@@ -349,7 +349,7 @@ function SchemeRegistrationMob() {
   useEffect(() => {
     const fetchAccountNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/accountNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/accountNames/${dbCode}`);
         const schemeDet = response.data;
         const AccNames = schemeDet.map((item) => [item.Ledcode, item.LedName]);
         const cnames = schemeDet.map((item) => item.Ledcode);
@@ -366,7 +366,7 @@ function SchemeRegistrationMob() {
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
         const currentrate = response.data[0]?.currentRate;
         setschemeRegData((prevData) => ({ ...prevData, rate: currentrate }));
       } catch (error) {
@@ -378,7 +378,7 @@ function SchemeRegistrationMob() {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
       const currentrate = response.data[0]?.currentRate;
       setschemeRegData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -393,7 +393,7 @@ function SchemeRegistrationMob() {
 
         // Make a GET request to your server with the selected name for finding data
         const response = await axios.get(
-          `${apiBaseUrl}/findbyAccname/${schemeRegData.accountName[0]}/${dbCode}`
+          `${apiBaseUrl}/main/findbyAccname/${schemeRegData.accountName[0]}/${dbCode}`
         );
 
         // Check the response status and handle accordingly
@@ -452,7 +452,7 @@ function SchemeRegistrationMob() {
   const handleSearchByAccountNo = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/findbyAccno/${schemeRegData.accountNo}/${dbCode}`
+        `${apiBaseUrl}/main/findbyAccno/${schemeRegData.accountNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -511,7 +511,7 @@ function SchemeRegistrationMob() {
         };
        // ////console.log("up", updatedSchemeRegData);
         const response = await axios.post(
-          `${apiBaseUrl}/updateScheme/${dbCode}`,
+          `${apiBaseUrl}/main/updateScheme/${dbCode}`,
           updatedSchemeRegData
         );
 
@@ -548,7 +548,7 @@ function SchemeRegistrationMob() {
         alert("please select an  Account Name");
       } else {
         const response = await axios.delete(
-          `${apiBaseUrl}/deletebyAccname/${schemeRegData.accountName[0]}/${dbCode}`
+          `${apiBaseUrl}/main/deletebyAccname/${schemeRegData.accountName[0]}/${dbCode}`
         );
         if (response.status === 200) {
           // Swal.fire({

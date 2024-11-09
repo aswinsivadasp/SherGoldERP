@@ -33,6 +33,8 @@ select:focus{
     /* justify-content: center; */
     align-items: center;
     position: absolute;
+    transition: all 0.3s;
+
     
   }
   

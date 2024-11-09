@@ -29,7 +29,7 @@ function SignUp() {
             alert("Please fill the fields");
             return
         }
-        const response = await axios.post(`${apiBaseUrl}/userReg/${dbCode}`, userData);
+        const response = await axios.post(`${apiBaseUrl}/main/userReg/${dbCode}`, userData);
 
         if (response.status === 200) {
           alert("user Registered");

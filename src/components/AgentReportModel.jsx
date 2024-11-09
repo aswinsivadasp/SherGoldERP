@@ -51,7 +51,7 @@ function AgentReportModel({ onClose, openReport }) {
   const [agentobj, setAgentObj] = useState([]);
   const fetchAgname = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const AgName = response.data;
@@ -71,7 +71,7 @@ function AgentReportModel({ onClose, openReport }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;

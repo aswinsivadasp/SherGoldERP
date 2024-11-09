@@ -72,7 +72,7 @@ function ReceiptListReport({ onClose, reportData }) {
   //   const fetchData = async () => {
   //     try {
   //       const response = await axios.post(
-  //         `${apiBaseUrl}/schReceiptList`,
+  //         `${apiBaseUrl}/main/schReceiptList`,
   //         reportData
   //       );
   //       setTableData(response.data);
@@ -90,7 +90,7 @@ function ReceiptListReport({ onClose, reportData }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schReceiptList/${dbCode}`, {
+        const response = await axios.get(`${apiBaseUrl}/main/schReceiptList/${dbCode}`, {
           params: reportData,
         });
         setTableData(response.data);

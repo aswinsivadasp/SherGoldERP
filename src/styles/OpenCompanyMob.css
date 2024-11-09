@@ -23,7 +23,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 3%;
+    gap: 5%;
+    margin-top: 3%;
 }
 .OpenCompanyMobDiaHead{
     text-align: center;
@@ -40,3 +41,114 @@
 
 }
 
+.opnCmplabel{
+  width: 30% !important;
+}
+.opencmpmobselect{
+  width: 60% !important;
+}
+.opencmpmobselectrow{
+  width: 98%;
+  height: 10%;
+  display: flex;
+  gap: 5%;
+  padding: 0 1% 0 1%;
+  align-items: center;
+  justify-content: center;
+
+  /* background-color: black; */
+
+}
+
+.opncmpMobTableHead {
+  width: 100%;
+  background: rgb(2, 108, 195);
+  height: 4vh;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.opncmpMobDataBox {
+  height: 17px;
+  width: 98%;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.dataBox {
+  border: none;
+}
+
+/* Add this CSS to your agentReport.css file */
+
+/* Style for table rows */
+/* .opncmpMobBodyStyletr {
+  border: 1px solid #E8E8E8;
+background: #FFF; 
+} */
+
+/* Style for table cells */
+.opncmpMobDataBoxSlno,
+.opncmpMobDataBoxcode,
+.opncmpMobDataBoxname,
+.opncmpMobDataBoxyear
+{
+  border-bottom: 0.1px solid #e8e8e8;
+  border-right: 0.4px solid #e8e8e8;
+  background: #eeeeee;
+  font-family: Inter;
+  font-size: 13px;
+
+
+  
+ 
+}
+.opncmpMobHeadslno {
+  width: 10%; /* Adjust width as per your need */
+}
+
+.opncmpMobHeadcode {
+  width: 25%; /* Adjust width as per your need */
+}
+
+.opncmpMobHeadname {
+  width: 35%; /* Adjust width as per your need */
+}
+
+.opncmpMobHeadyear {
+  width: 30%; /* Adjust width as per your need */
+}
+
+/* Apply the same to the body cells */
+.opncmpMobDataBoxSlno {
+  width: 10%;
+  padding: 0 5px 0 5px;
+
+}
+
+.opncmpMobDataBoxcode {
+  width: 25%;
+  padding: 0 5px 0 5px;
+
+}
+
+.opncmpMobDataBoxname {
+  width: 35%;
+  padding: 0 5px 0 5px;
+
+}
+
+.opncmpMobDataBoxyear {
+  width: 30%;
+  padding: 0 5px 0 5px;
+}
+
+/* .highlighted {
+  background-color: #ffcccb; 
+}
+ */
+
+
+ .opncmpMobBodyStyletr.highlighted td {
+  background-color: #ffcccb; /* Highlight color for the entire row */
+}

@@ -76,7 +76,7 @@ function SchemeReport({ onClose, reportData }) {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          `${apiBaseUrl}/Schrepsimple/${dbCode}`,
+          `${apiBaseUrl}/main/Schrepsimple/${dbCode}`,
           reportData
         );
         setTableData(response.data);

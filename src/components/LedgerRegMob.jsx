@@ -200,7 +200,7 @@ function LedgerRegMob({ onClose, val }) {
         };
         // Make a POST request to your server with the form data
         const response = await axios.post(
-          `${apiBaseUrl}/insertledger/${dbCode}`,
+          `${apiBaseUrl}/main/insertledger/${dbCode}`,
           updatedformData
         );
 
@@ -275,7 +275,7 @@ function LedgerRegMob({ onClose, val }) {
         };
         // Make a POST request to your server with the form data
         const response = await axios.post(
-          `${apiBaseUrl}/spupdateledger/${dbCode}`,
+          `${apiBaseUrl}/main/spupdateledger/${dbCode}`,
           updatedformData
         );
 
@@ -311,7 +311,7 @@ function LedgerRegMob({ onClose, val }) {
   useEffect(() => {
     const fetchLednamesNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/spledgernames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/spledgernames/${dbCode}`);
         const ledDetails = response.data;
         const lednames = ledDetails.map((item) => [item.Ledcode, item.LedName]);
         setLednames(lednames);
@@ -325,7 +325,7 @@ function LedgerRegMob({ onClose, val }) {
 
   const fetchLednamesNames = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/spledgernames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/spledgernames/${dbCode}`);
       const ledDetails = response.data;
       const lednames = ledDetails.map((item) => [item.Ledcode, item.LedName]);
       setLednames(lednames);
@@ -338,7 +338,7 @@ function LedgerRegMob({ onClose, val }) {
   useEffect(() => {
     const fetchparent = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/spledgerheads/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/spledgerheads/${dbCode}`);
         const parDetails = response.data;
         const under = parDetails.map((item) => [item.lh_id, item.lh_name]);
         setUnder(under);
@@ -355,7 +355,7 @@ function LedgerRegMob({ onClose, val }) {
   useEffect(() => {
     const fetchEmployeeNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchReg_empname/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchReg_empname/${dbCode}`);
 
         const empNames = response.data.map((item) => [item.Auto, item.name]);
 
@@ -372,7 +372,7 @@ function LedgerRegMob({ onClose, val }) {
     try {
       // Make a GET request to your server with the selected name for finding data
       const response = await axios.get(
-        `${apiBaseUrl}/spledgerFindbyname/${formData.lr_Name[0]}/${formData.lr_Name[1]}/${dbCode}`
+        `${apiBaseUrl}/main/spledgerFindbyname/${formData.lr_Name[0]}/${formData.lr_Name[1]}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -430,7 +430,7 @@ function LedgerRegMob({ onClose, val }) {
     try {
       // Make a GET request to your server with the selected name for finding data
       const response = await axios.get(
-        `${apiBaseUrl}/spledgerFindbygstNo/${formData.lr_Gstno}/${dbCode}`
+        `${apiBaseUrl}/main/spledgerFindbygstNo/${formData.lr_Gstno}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -488,7 +488,7 @@ function LedgerRegMob({ onClose, val }) {
     try {
       // Make a GET request to your server with the selected name for finding data
       const response = await axios.get(
-        `${apiBaseUrl}/spledgerFindbymob/${formData.lr_Mobile}/${dbCode}`
+        `${apiBaseUrl}/main/spledgerFindbymob/${formData.lr_Mobile}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -548,7 +548,7 @@ function LedgerRegMob({ onClose, val }) {
   const fetchExist = async (e) => {
     // ////console.log("e",e);
     try {
-      const response = await axios.get(`${apiBaseUrl}/schUsedEntry/${e[0]}/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schUsedEntry/${e[0]}/${dbCode}`);
       // ////console.log("count=", response.data[0].CountExists);
 
       setcountExist(response.data[0].CountExists);
@@ -573,7 +573,7 @@ function LedgerRegMob({ onClose, val }) {
     }
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/spdeleteLedger/${formData.lr_Name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/spdeleteLedger/${formData.lr_Name[0]}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({

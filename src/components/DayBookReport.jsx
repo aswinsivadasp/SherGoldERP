@@ -68,7 +68,7 @@ function DayBookReport({ onClose, dayBookRepData }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/daybookReport/${dbCode}`, {
+        const response = await axios.get(`${apiBaseUrl}/main/daybookReport/${dbCode}`, {
           params: dayBookRepData,
         });
         setTableData(response.data);

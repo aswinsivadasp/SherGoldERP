@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "../styles/SchemeCashReceiptMob.css";
 import sslogo from "../assets/images/ssMob.png";
 //import ComboBox from "shersoft-combov1";
@@ -10,7 +10,7 @@ import edit from "../assets/images/Editing.png";
 import Delete from "../assets/images/Delete.png";
 import print from "../assets/images/Printer.png";
 import exit from "../assets/images/Exit1.png";
-import close from "../assets/images/findclose.png"
+import close from "../assets/images/findclose.png";
 import home from "../assets/images/arrow.png";
 import clear from "../assets/images/Document.png";
 
@@ -35,14 +35,12 @@ function SchemeCashReceiptMob() {
 
   const [userType, setuserType] = useState("");
 
-
   useEffect(() => {
     const storeduType = sessionStorage.getItem("userType");
     if (storeduType) {
       setuserType(storeduType);
     }
   }, []);
-
 
   const [showFind, setShowFind] = useState(true);
   const navigate = useNavigate();
@@ -87,7 +85,7 @@ function SchemeCashReceiptMob() {
   const [editDisabled, setEditDisabled] = useState(true);
   const [deleteDisabled, setDeleteDisabled] = useState(true);
   const [saveDisabled, setSaveDisabled] = useState(false);
-  const[printDisabled,setPrintDisabled]=useState(true)
+  const [printDisabled, setPrintDisabled] = useState(true);
 
   const handleScroll = () => {
     const tableContainer = tableContainerRef.current;
@@ -125,7 +123,7 @@ function SchemeCashReceiptMob() {
     }),
   ]);
 
- /// ////console.log("table data ===== ", tableData);
+  /// ////console.log("table data ===== ", tableData);
 
   const [schemeRecInfoData, setschemeRecInfoData] = useState({
     EntryNo: "",
@@ -134,8 +132,7 @@ function SchemeCashReceiptMob() {
     date: getCurrentDate(),
     totalamt: 0,
     totalgm: 0,
-    agCode:agentCode
-
+    agCode: agentCode,
   });
   // ////console.log("info data = ", schemeRecInfoData);
 
@@ -305,7 +302,9 @@ function SchemeCashReceiptMob() {
   useEffect(() => {
     const fetchSchEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_entryno/${parseInt(agentCode)}/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_entryno/${parseInt(agentCode)}/${dbCode}`
+        );
         // ////console.log("response =", response);
         const schemeRecentryNo = response.data.map((item) => item[""]);
 
@@ -324,7 +323,9 @@ function SchemeCashReceiptMob() {
 
   const fetchSchEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_entryno/${parseInt(agentCode)}/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/SchRec_entryno/${parseInt(agentCode)}/${dbCode}`
+      );
       // ////console.log("response =", response);
       const schemeRecentryNo = response.data.map((item) => item[""]);
 
@@ -351,7 +352,9 @@ function SchemeCashReceiptMob() {
   useEffect(() => {
     const fetchCname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Cname/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_Cname/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const cName = response.data;
@@ -379,7 +382,7 @@ function SchemeCashReceiptMob() {
   // useEffect(() => {
   //   const fetchCname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Cname`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Cname`);
   //       setCnameData(response.data);
 
   //       // ////console.log("11111", response.data);
@@ -399,7 +402,9 @@ function SchemeCashReceiptMob() {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/schsalesmanNames/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -422,7 +427,7 @@ function SchemeCashReceiptMob() {
   // useEffect(() => {
   //   const fetchAgname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/salesmanNames`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/salesmanNames`);
   //       // setagentName(response.data);
   //       // setagentName(response.data.map((item) => item.Name));
 
@@ -444,12 +449,14 @@ function SchemeCashReceiptMob() {
   //////acc no////////////
 
   const [accNo, setaccNo] = useState([]);
-  // ////console.log('......',accnoAuto);
+   console.log('......',accNo);
 
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_Accno/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;
@@ -472,7 +479,7 @@ function SchemeCashReceiptMob() {
   // useEffect(() => {
   //   const fetchAccno = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
   //       // setaccNo(response.data);
   //       setaccNo(response.data);
   //     } catch (error) {
@@ -484,12 +491,14 @@ function SchemeCashReceiptMob() {
   // }, [apiBaseUrl]);
 
   const [selectcashAcc, setselectcashAcc] = useState([]);
- // ////console.log("selectcashAcc", selectcashAcc);
+  // ////console.log("selectcashAcc", selectcashAcc);
 
   useEffect(() => {
     const selectcashAcc = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_caba/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_caba/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const caba = response.data;
@@ -505,7 +514,7 @@ function SchemeCashReceiptMob() {
 
         if (userType === "EMPLOYEE") {
           ////console.log("function called");
-          
+
           fetchcashAcc(transformedData);
         }
 
@@ -515,11 +524,13 @@ function SchemeCashReceiptMob() {
       }
     };
     selectcashAcc();
-  }, [apiBaseUrl,userType]);
+  }, [apiBaseUrl, userType]);
 
   const Selectcashacc = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_caba/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/SchRec_caba/${dbCode}`
+      );
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const caba = response.data;
@@ -531,7 +542,7 @@ function SchemeCashReceiptMob() {
       setselectcashAcc(transformedData);
       if (userType === "EMPLOYEE") {
         ////console.log("function called");
-        
+
         fetchcashAcc(transformedData);
       }
 
@@ -547,7 +558,7 @@ function SchemeCashReceiptMob() {
   const fetchcashAcc = async (data) => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/fetchcashacc/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/fetchcashacc/${parseInt(agentCode)}/${dbCode}`
       );
       const caba = response.data[0];
       // ////console.log("agentcode,==", parseInt(agentCode));
@@ -567,13 +578,14 @@ function SchemeCashReceiptMob() {
     }
   };
 
-
   ///////////////////current rate //////////////////////////////
 
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/currentgoldRate/${dbCode}`
+        );
         const currentrate = response.data[0]?.currentRate;
         setschemeRecInfoData((prevData) => ({
           ...prevData,
@@ -588,7 +600,9 @@ function SchemeCashReceiptMob() {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/currentgoldRate/${dbCode}`
+      );
       const currentrate = response.data[0]?.currentRate;
       setschemeRecInfoData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -621,7 +635,6 @@ function SchemeCashReceiptMob() {
   ///////////////////////////////////clear/////////////////////////////
 
   const handleClear = () => {
-
     fetchSchEntryno();
     fetchSchCurrentRate();
     Selectcashacc();
@@ -652,8 +665,8 @@ function SchemeCashReceiptMob() {
     setEditDisabled(true);
     setDeleteDisabled(true);
     setSaveDisabled(false);
-    setShowFind(true)
-    setPrintDisabled(true)
+    setShowFind(true);
+    setPrintDisabled(true);
     // const [editDisabled, setEditDisabled] = useState(true);
     // const [deleteDisabled, setDeleteDisabled] = useState(true);
     // const [saveDisabled, setSaveDisabled] = useState(false);
@@ -688,18 +701,48 @@ function SchemeCashReceiptMob() {
     setEditDisabled(true);
     setDeleteDisabled(true);
     setSaveDisabled(false);
-    setShowFind(true)
-    setPrintDisabled(true)
+    setShowFind(true);
+    setPrintDisabled(true);
 
-    
     // const [editDisabled, setEditDisabled] = useState(true);
     // const [deleteDisabled, setDeleteDisabled] = useState(true);
     // const [saveDisabled, setSaveDisabled] = useState(false);
   };
   ////////////////////////////////////////////////////////
+  const fetchsmssettings = async (eName) => {
+    try {
+      const response = await axios.get(
+        `${apiBaseUrl}/main/selectapidatas/${dbCode}/${eName}`
+      );
 
-  const sendSMS = async (aNo,mobileNo, customerName, grandTotal,total, netwt, gm) => {
-    const message = `Account No.:${aNo[1]} NAME:${customerName[1]} Amount:${grandTotal} Total:${total} Weight:${gm}gm Total weight:${netwt}gm Thank you CHUNDANGATHRA GOLD AND DIAMONDS`;
+      const smsData = response.data[0];
+      console.log("smsData=", smsData);
+
+      return smsData;
+    } catch (error) {
+      console.error("Error fetching smssettings Values:", error.message);
+    }
+  };
+
+  const sendSMS = async (
+    accountNo,
+    mobileNo,
+    customerName,
+    total,
+    grandTotal,
+    netwt,
+    gm
+  ) => {
+    const apiData = await fetchsmssettings("RECEIPT");
+    console.log("apiData=", apiData);
+    // const message = `Account No.:${accountNo[1]} NAME:${customerName[1]} Amount:${total} Total:${grandTotal} Weight:${gm}gm Total weight:${netwt}gm Thank you CHUNDANGATHRA GOLD AND DIAMONDS`;
+
+    const message = apiData.MessageBody.replace("${accountNo}", accountNo[1])
+      .replace("${customerName}", customerName[1])
+      .replace("${total}", total)
+      .replace("${grandTotal}", grandTotal)
+      .replace("${netwt}", netwt)
+      .replace("${gm}", gm);
 
     const url = `http://sapteleservices.com/SMS_API/sendsms.php`;
     const params = {
@@ -721,12 +764,8 @@ function SchemeCashReceiptMob() {
     }
   };
 
-
-
-
   const handleSave = async () => {
     setSaveDisabled(true);
-
 
     try {
       if (!schemeRecInfoData.cashAcc) {
@@ -735,7 +774,6 @@ function SchemeCashReceiptMob() {
         setSaveDisabled(false);
 
         return;
-
       }
 
       const hasData = tableData.some((row) => {
@@ -772,28 +810,30 @@ function SchemeCashReceiptMob() {
         printgm: row.printgm || null,
       }));
       // ////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/saveSchRec/${dbCode}`, {
-        statementType: "SchRec_insert",
-        cashacc: schemeRecInfoData.cashAcc[0],
-        rate: schemeRecInfoData.rate,
-        date: schemeRecInfoData.date,
-        totalamount: schemeRecInfoData.totalamt,
-        totalgm: schemeRecInfoData.totalgm,
-        agCode:parseInt(agentCode),
-        type: transformedTableData, // Pass the entire tableData array
-      });
+      const response = await axios.post(
+        `${apiBaseUrl}/main/saveSchRec/${dbCode}`,
+        {
+          statementType: "SchRec_insert",
+          cashacc: schemeRecInfoData.cashAcc[0],
+          rate: schemeRecInfoData.rate,
+          date: schemeRecInfoData.date,
+          totalamount: schemeRecInfoData.totalamt,
+          totalgm: schemeRecInfoData.totalgm,
+          agCode: parseInt(agentCode),
+          type: transformedTableData, // Pass the entire tableData array
+        }
+      );
 
       if (response.data.success) {
         setSaveDisabled(false);
         // handleClear();
         //  Swal.fire("Success", "Data saved successfully!", "success");
 
-
         const accountNumbers = transformedTableData.map(
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos/${dbCode}`,
+          `${apiBaseUrl}/main/fetchMobileNos/${dbCode}`,
           {
             accountNumbers,
           }
@@ -804,31 +844,28 @@ function SchemeCashReceiptMob() {
 
           // Send SMS to each mobile number
           mobileNumbersResponse.data.forEach(async (mobileNumber) => {
-
-           // ////console.log(transformedTableData);
-           // ////console.log(mobileNumber);
+            // ////console.log(transformedTableData);
+            // ////console.log(mobileNumber);
             const customerData = transformedTableData.find(
               (row) => row.name === mobileNumber.accname
             );
-              // ////console.log("customerData==", customerData);
+            // ////console.log("customerData==", customerData);
 
-              if (customerData) {
-           
-                const grandTotal = customerData.amount;
-                const netwt = mobileNumber.totalWt;
-                const total=mobileNumber.totalAmt
-                const gm = customerData.gm;
-                // const smsResponse = await sendSMS(
-                //   accNo.find((item) => item[0] ===  customerData.accountNumber),
-                //   mobileNumber.mobileNo,
-                //   cnameData.find((item) => item[0] === mobileNumber.accname),
-                //   grandTotal,
-                //   total,
-                //   netwt,
-                //   gm
-                // );
-  
-            
+            if (customerData) {
+              const grandTotal = customerData.amount;
+              const netwt = mobileNumber.totalWt;
+              const total = mobileNumber.totalAmt;
+              const gm = customerData.gm;
+              const smsResponse = await sendSMS(
+                accNo.find((item) => item[0] === customerData.accountNumber),
+                mobileNumber.mobileNo,
+                cnameData.find((item) => item[0] === mobileNumber.accname),
+                total,
+                grandTotal,
+                netwt,
+                gm
+              );
+
               // ////console.log(`SMS sent to ${mobileNumber.mobileNo}:`, smsResponse);
             }
           });
@@ -837,21 +874,19 @@ function SchemeCashReceiptMob() {
         alert("Entry Saved");
         handlePrint();
 
-        handleClear()
+        handleClear();
         // Optionally, you can perform additional actions after successful save
-        setPrintDisabled(false)
+        setPrintDisabled(false);
       } else {
         // Swal.fire("Error", "Failed to save data!", "error");
         alert("Failed to save data!");
         setSaveDisabled(false);
-
       }
     } catch (error) {
       console.error("Error saving data:", error.message);
       //  Swal.fire("Error", "Internal server error!", "error");
       alert("Internal server error!");
       setSaveDisabled(false);
-
     }
     // handleClear();
   };
@@ -896,31 +931,34 @@ function SchemeCashReceiptMob() {
         printgm: row.printgm || null,
       }));
       //////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/updateSchRec/${dbCode}`, {
-        statementType: "SchRec_insert",
-        cashacc: schemeRecInfoData.cashAcc[0],
-        rate: schemeRecInfoData.rate,
-        date: schemeRecInfoData.date,
-        totalamount: schemeRecInfoData.totalamt,
-        totalgm: schemeRecInfoData.totalgm,
-        EntryNo: schemeRecInfoData.EntryNo,
-        agCode:parseInt(agentCode),
-        type: transformedTableData, // Pass the entire tableData array
-      });
+      const response = await axios.post(
+        `${apiBaseUrl}/main/updateSchRec/${dbCode}`,
+        {
+          statementType: "SchRec_insert",
+          cashacc: schemeRecInfoData.cashAcc[0],
+          rate: schemeRecInfoData.rate,
+          date: schemeRecInfoData.date,
+          totalamount: schemeRecInfoData.totalamt,
+          totalgm: schemeRecInfoData.totalgm,
+          EntryNo: schemeRecInfoData.EntryNo,
+          agCode: parseInt(agentCode),
+          type: transformedTableData, // Pass the entire tableData array
+        }
+      );
 
       if (response.data.success) {
         const accountNumbers = transformedTableData.map(
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos/${dbCode}`,
+          `${apiBaseUrl}/main/fetchMobileNos/${dbCode}`,
           {
             accountNumbers,
           }
         );
 
         if (mobileNumbersResponse.data) {
-         // ////console.log("Mobile Numbers:", mobileNumbersResponse.data);
+          // ////console.log("Mobile Numbers:", mobileNumbersResponse.data);
 
           // Send SMS to each mobile number
           mobileNumbersResponse.data.forEach(async (mobileNumber) => {
@@ -929,10 +967,9 @@ function SchemeCashReceiptMob() {
             );
 
             if (customerData) {
-           
               const grandTotal = customerData.amount;
               const netwt = mobileNumber.totalWt;
-              const total=mobileNumber.totalAmt
+              const total = mobileNumber.totalAmt;
               const gm = customerData.gm;
               // const smsResponse = await sendSMS(
               //   accNo.find((item) => item[0] ===  customerData.accountNumber),
@@ -949,14 +986,11 @@ function SchemeCashReceiptMob() {
           });
         }
 
-
-
         handleClear();
         // Swal.fire("Success", "Data Edit successfully!", "success");
         alert("Entry Edited");
         // Optionally, you can perform additional actions after successful save
         setShowFind(true);
-
       } else {
         // Swal.fire("Error", "Failed to edit data!", "error");
         alert("Failed to edit data!");
@@ -983,7 +1017,7 @@ function SchemeCashReceiptMob() {
   // const fetchAccNoData = async (e, rowIndex) => {
   //   try {
   //     const response = await axios.get(
-  //       `${apiBaseUrl}/findbyaccnotable/${e[1]}`
+  //       `${apiBaseUrl}/main/findbyaccnotable/${e[1]}`
   //     );
   //     const fetchedData = response.data;
   //     const newData = [...tableData];
@@ -1021,14 +1055,12 @@ function SchemeCashReceiptMob() {
   //   }
   // };
 
-
   const fetchAccNoData = async (e, rowIndex, agCode) => {
     try {
-
       // ////console.log("eeeee====",e.target.value);
-      
+
       const response = await axios.get(
-        `${apiBaseUrl}/findbyaccnotable/${e.target.value}/${dbCode}`
+        `${apiBaseUrl}/main/findbyaccnotable/${e.target.value}/${dbCode}`
       );
       const fetchedData = response.data;
       const newData = [...tableData];
@@ -1051,14 +1083,65 @@ function SchemeCashReceiptMob() {
             ...newData[rowIndex - rowIndex / 2],
             name: matchingCnameData || [], // Store the matching array from cnameData or an empty array
             agent: matchingAgentData || [], // Store the matching array from agentName or an empty array
-             accountNumber:accNo.find((item) => item[1] ===e.target.value)
+            accountNumber: accNo.find((item) => item[1] === e.target.value),
           };
         } else {
           newData[rowIndex] = {
             ...newData[rowIndex],
             name: matchingCnameData || [], // Store the matching array from cnameData or an empty array
             agent: matchingAgentData || [], // Store the matching array from agentName or an empty array
-            accountNumber:accNo.find((item) => item[1] ===e.target.value)
+            accountNumber: accNo.find((item) => item[1] === e.target.value),
+          };
+        }
+        setTableData(newData);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
+
+  const fetchAccNmData = async (e, rowIndex, agCode) => {
+    if (!Array.isArray(e)) {
+      return;
+    }
+    try {
+      // console.log("eeeee====",e.target.value);
+
+      const response = await axios.get(
+        `${apiBaseUrl}/main/findbyaccnametable/${e[0]}/${dbCode}`
+      );
+      const fetchedData = response.data;
+      const newData = [...tableData];
+
+
+      // Check if fetched data exists and is in the correct format
+      if (Array.isArray(fetchedData) && fetchedData.length > 0) {
+        const { accno, agent } = fetchedData[0]; // Assuming only one record is fetched
+// console.log(accno);
+
+        // Find the corresponding array in cnameData based on accname
+        const matchingAccnoData = accNo.find((item) => item[1] === accno);
+// console.log("matchingAccnoData",matchingAccnoData);
+
+        // Find the corresponding array in agentName based on agent
+        const matchingAgentData = agentName.find(
+          (item) => item[0] === parseInt(agentCode)
+        );
+
+        // Update the name and agent fields of the current row in tableData
+        if (rowIndex > 0 && rowIndex % 2 === 0) {
+          newData[rowIndex - rowIndex / 2] = {
+            ...newData[rowIndex - rowIndex / 2],
+            accountNumber: matchingAccnoData || [],
+            agent: matchingAgentData || [],
+            name: cnameData.find((item) => item[0] === e[0]),
+          };
+        } else {
+          newData[rowIndex] = {
+            ...newData[rowIndex],
+            accountNumber: matchingAccnoData || [],
+            agent: matchingAgentData || [],
+            name: cnameData.find((item) => item[0] === e[0]),
           };
         }
         setTableData(newData);
@@ -1091,7 +1174,9 @@ function SchemeCashReceiptMob() {
 
   const fetchfirstandlast = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/topandlast/${parseInt(agentCode)}/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/topandlast/${parseInt(agentCode)}/${dbCode}`
+      );
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
         setLastEno(response.data[0].lastentryno);
@@ -1104,11 +1189,12 @@ function SchemeCashReceiptMob() {
   // ////console.log('accccc=',accNo.find((item) => item[0] === 10));
 
   const handleFindbyentrynumber = async () => {
-
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindbyentryNo/${findEntryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRecfindbyentryNo/${findEntryNo}/${parseInt(
+          agentCode
+        )}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -1148,8 +1234,6 @@ function SchemeCashReceiptMob() {
         setDeleteDisabled(false);
         setSaveDisabled(true);
         setShowFind(false);
-        
-
       } else {
         console.error("Error finding data:", response.data);
       }
@@ -1169,14 +1253,15 @@ function SchemeCashReceiptMob() {
   // ////console.log('formatted date',formatDate);
 
   const handleDelete = async () => {
-
     if (!window.confirm("Do You Want To Delete..?")) {
       return;
     }
 
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/deleterecbyentryno/${schemeRecInfoData.EntryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/deleterecbyentryno/${
+          schemeRecInfoData.EntryNo
+        }/${parseInt(agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({
@@ -1190,7 +1275,6 @@ function SchemeCashReceiptMob() {
         // window.location.reload();
         handleClear();
         setShowFind(true);
-
       } else {
         console.error("Error deleting data:", response.data);
       }
@@ -1198,122 +1282,101 @@ function SchemeCashReceiptMob() {
       console.error("Error:", error.message);
     }
   };
-  
-    
-
 
   const handlePrint = () => {
     navigate("/printMob", {
       state: {
         receiptData: tableData,
         receiptInfo: schemeRecInfoData,
-      }
+      },
     });
   };
   const [dispWt, setdispWt] = useState("");
 
-  const dispTotalWt = async (index,e) => {
+  const dispTotalWt = async (index, e) => {
     // ////console.log("index===",index);
-  //   if(e.key==='Enter'||e.key==='Return')
-  //  {
-     try {
+    //   if(e.key==='Enter'||e.key==='Return')
+    //  {
+    try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${tableData[ 0].name[0]}/${dbCode}`
-        // `${apiBaseUrl}/totalweight/${e}`
-
+        `${apiBaseUrl}/main/totalweight/${tableData[0].name[0]}/${dbCode}`
+        // `${apiBaseUrl}/main/totalweight/${e}`
       );
-      var calcgm =0;
+      var calcgm = 0;
       if (e.target.value !== "" || null) {
         const Rate = schemeRecInfoData.rate;
         //  ////console.log("log rate", Rate);
         if (Rate !== 0) {
-           calcgm = (e.target.value / Rate).toFixed(3);
+          calcgm = (e.target.value / Rate).toFixed(3);
           //  ////console.log("calcgm===",calcgm);
-          
         }
-      
-       }
-      const totalWeight = parseFloat(response.data[0].WeightDifference||0) + parseFloat(calcgm);
-      
+      }
+      const totalWeight =
+        parseFloat(response.data[0].WeightDifference || 0) + parseFloat(calcgm);
+
       // setdispWt(response.data[0].WeightDifference||0);
       setdispWt(totalWeight.toFixed(3));
 
-
       // ////console.log("res===",response.data[0].WeightDifference);
       // ////console.log("parse=", parseFloat(response.data[0].WeightDifference));
-      
+
       // ////console.log("wt===",calcgm);
       // ////console.log("parse2", parseFloat(calcgm));
-      
+
       // ////console.log("totalgm=",dispWt);
-      
-
-
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  // }
-  //   else{
-  //     return
-  //   }
+    // }
+    //   else{
+    //     return
+    //   }
   };
-
-
 
   return (
     <div className="SchemeCashReceiptMobRoot">
       <div className="SchemeCashReceiptMobnavBar">
         <div
           className="SchemeCashReceiptMobnavBartoggle"
-          onClick={() => {navigate("/home");
+          onClick={() => {
+            navigate("/home");
             setdispWt("");
           }}
         >
-          <img src={home} alt="X"  />
+          <img src={home} alt="X" />
         </div>
-        <div className="schemeMobshesofttag"  style={{width:'35%',justifyContent:'left'}}>
+        <div
+          className="schemeMobshesofttag"
+          style={{ width: "35%", justifyContent: "left" }}
+        >
           <img src={sslogo} alt="SS" />
           <label className="schemeMobshesofttaglabel">Scheme Receipt</label>
         </div>
- 
+
         {showFind ? (
-          <div className=" scherecmobnavitems" >
-             <button
+          <div className=" scherecmobnavitems">
+            <button
               className="SchemeRecMobnavBaritemsbuttons"
               onClick={handleClear}
             >
-              <img
-                src={clear}
-                alt="Clear"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={clear} alt="Clear" className="SchemeRecMobbuttonimg" />
             </button>
             <button
-
               className="SchemeRecMobnavBaritemsbuttons"
               onClick={handleSave}
               ref={saveButtonRef}
               disabled={saveDisabled}
-
             >
-              <img
-                src={save}
-                alt="Save"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={save} alt="Save" className="SchemeRecMobbuttonimg" />
             </button>
-            
+
             <button
               className="SchemeRecMobnavBaritemsbuttons"
               ref={printButtonRef}
               disabled={printDisabled}
               onClick={handlePrint}
             >
-              <img
-                src={print}
-                alt="Print"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={print} alt="Print" className="SchemeRecMobbuttonimg" />
             </button>
             <button
               className="SchemeRecMobnavBaritemsbuttons"
@@ -1325,52 +1388,35 @@ function SchemeCashReceiptMob() {
 
               onClick={openFindDialog}
             >
-              <img
-                src={find}
-                alt="Find"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={find} alt="Find" className="SchemeRecMobbuttonimg" />
             </button>
           </div>
         ) : (
           <div className="scherecmobnavitems">
-             <button
+            <button
               className="SchemeRecMobnavBaritemsbuttons"
               ref={printButtonRef}
               onClick={handlePrint}
             >
-              <img
-                src={print}
-                alt="Print"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={print} alt="Print" className="SchemeRecMobbuttonimg" />
             </button>
             <button
               className="SchemeRecMobnavBaritemsbuttons"
               onClick={handleClear}
             >
-              <img
-                src={clear}
-                alt="Clear"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={clear} alt="Clear" className="SchemeRecMobbuttonimg" />
             </button>
             <button
               className="SchemeRecMobnavBaritemsbuttons"
               onClick={handleEdit}
-              disabled={editDisabled||userType!=='ADMIN'}
+              disabled={editDisabled || userType !== "ADMIN"}
             >
-              <img
-                src={edit}
-                alt="Edit"
-                className="SchemeRecMobbuttonimg"
-              />
+              <img src={edit} alt="Edit" className="SchemeRecMobbuttonimg" />
             </button>
             <button
-
               className="SchemeRecMobnavBaritemsbuttons"
-               onClick={handleDelete}
-              disabled={deleteDisabled||userType!=='ADMIN'}
+              onClick={handleDelete}
+              disabled={deleteDisabled || userType !== "ADMIN"}
             >
               <img
                 src={Delete}
@@ -1436,8 +1482,7 @@ function SchemeCashReceiptMob() {
               onInputChange={(e) =>
                 setschemeRecInfoData({ ...schemeRecInfoData, cashAcc: e })
               }
-              readOnly={userType==='EMPLOYEE'?true:false}
-
+              readOnly={userType === "EMPLOYEE" ? true : false}
             />
           </div>
           <div className="schemeRecMobBodySec1Row">
@@ -1458,13 +1503,11 @@ function SchemeCashReceiptMob() {
           </div>
         </div>
         <div className="schemeRecMobBodySec2">
-         
           <div className="schemeRecMobBodySec2Row">
             <label htmlFor="">Account Number</label>
             <ComboBox
               className="scheRecMobCashAccCombo"
               inputClassName="comboInputPadding"
-
               options={accNo}
               comboRef={accnoRef}
               onKeyDown={(e) => handleKeyDown(e, amountInputRef)}
@@ -1476,8 +1519,7 @@ function SchemeCashReceiptMob() {
               onInputChange={(e) => {
                 handleCellChange(e, 0, "accountNumber");
               }}
-              onBlur={  (e)=>  fetchAccNoData(e, 0)
-              }
+              onBlur={(e) => fetchAccNoData(e, 0)}
               inlineStyles={{ textAlign: "right" }}
             />
           </div>
@@ -1486,7 +1528,6 @@ function SchemeCashReceiptMob() {
             <ComboBox
               className="scheRecMobCashAccCombo"
               inputClassName="comboInputPadding"
-
               options={cnameData}
               comboRef={accnameRef}
               onKeyDown={(e) => {
@@ -1500,6 +1541,7 @@ function SchemeCashReceiptMob() {
               }
               onInputChange={(e) => {
                 handleCellChange(e, 0, "name");
+                fetchAccNmData(e, 0);
 
                 // handleNameSelection(
                 //   e,
@@ -1515,7 +1557,6 @@ function SchemeCashReceiptMob() {
             <ComboBox
               className="scheRecMobCashAccCombo"
               inputClassName="comboInputPadding"
-
               options={agentName}
               comboRef={agentRef}
               onKeyDown={(e) => handleKeyDown(e, amountInputRef)}
@@ -1526,7 +1567,6 @@ function SchemeCashReceiptMob() {
               }
               onInputChange={(e) => handleCellChange(e, 0, "agent")}
               readOnly={true}
-
             />
           </div>
           <div
@@ -1546,7 +1586,7 @@ function SchemeCashReceiptMob() {
                 }}
                 onBlur={(e) => {
                   calculateGmvalue(e.target.value, 0);
-                  dispTotalWt(0,e);
+                  dispTotalWt(0, e);
                 }}
               />
             </div>
@@ -1576,15 +1616,8 @@ function SchemeCashReceiptMob() {
             className="schemeRecMobBodySec2Row"
             //  style={{ backgroundColor: "blue" }}
           >
-           
-              <label htmlFor="">TW</label>
-              <input
-                type="number"
-                value={dispWt}
-                readOnly
-                
-              />
-           
+            <label htmlFor="">TW</label>
+            <input type="number" value={dispWt} readOnly />
           </div>
 
           <div className="schemeRecMobBodySec2Row2">
@@ -1597,9 +1630,6 @@ function SchemeCashReceiptMob() {
               onChange={(e) => handleCellChangeinput(e, 0, "narration")}
             />
           </div>
-          
-
-        
         </div>
       </div>
       {showFindDialog && (
@@ -1609,21 +1639,21 @@ function SchemeCashReceiptMob() {
             value={findEntryNo}
             onChange={(e) => setFindEntryNo(e.target.value)}
             placeholder="Enter Entry No"
-           
           />
-          <button  onClick={handleFindbyentrynumber}>
-            Find
-          </button>
+          <button onClick={handleFindbyentrynumber}>Find</button>
           <div
-          className="findCloseDiv"
+            className="findCloseDiv"
             onClick={() => {
               closeFindDialog();
               handleClear();
             }}
-            style={{border:'none',backgroundColor:'transparent'}}
-           
+            style={{ border: "none", backgroundColor: "transparent" }}
           >
-            <img src={close} alt="Close"  style={{width:"100%",height:"100%"}}/>
+            <img
+              src={close}
+              alt="Close"
+              style={{ width: "100%", height: "100%" }}
+            />
           </div>
         </div>
       )}

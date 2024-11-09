@@ -15,6 +15,30 @@ function PrintMob() {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const { dbCode } = useDbContext();
 
+  const [companyName, setCompanyName] = useState("");
+
+  useEffect(() => {
+    fetchcompanydetails();
+  }, []);
+
+  
+    
+    const fetchcompanydetails = async () => {
+      try {
+        const response = await axios.get(
+          `${apiBaseUrl}/main/findCompanyDetails/${dbCode}`
+        );
+        const foundData = response.data[0];
+        setCompanyName(foundData.name || "SherGold");
+        console.log("found", foundData.name);
+
+        // setsupplierName(supplName);
+      } catch (error) {
+        console.error("Error fetching company datas:", error.message);
+        // alert(error.response.data);
+      }
+    };
+
   const printRef = useRef();
 
   const location = useLocation();
@@ -25,7 +49,7 @@ function PrintMob() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${receiptData[0].name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/totalweight/${receiptData[0].name[0]}/${dbCode}`
       );
       //////console.log("res===",response.data);
       setaccumulatedWt(response.data[0].WeightDifference);
@@ -104,7 +128,7 @@ function PrintMob() {
             RECEIPT
           </label>
           <label htmlFor="" className="receiptCompanyNamemob">
-            CHUNDANGATHRA GOLD & DIAMONDS
+           {companyName}
           </label>
         </div>
         <div id="printContentmob" className="printContentmob">

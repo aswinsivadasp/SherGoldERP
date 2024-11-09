@@ -311,7 +311,7 @@ function SchemeCashReceipt({ onClose }) {
     const fetchSchEntryno = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_entryno/${parseInt(agentCode)}`
+          `${apiBaseUrl}/main/SchRec_entryno/${parseInt(agentCode)}`
         );
         // ////console.log("response =", response);
         const schemeRecentryNo = response.data.map((item) => item[""]);
@@ -332,7 +332,7 @@ function SchemeCashReceipt({ onClose }) {
   const fetchSchEntryno = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRec_entryno/${parseInt(agentCode)}`
+        `${apiBaseUrl}/main/SchRec_entryno/${parseInt(agentCode)}`
       );
       // ////console.log("response =", response);
       const schemeRecentryNo = response.data.map((item) => item[""]);
@@ -360,7 +360,7 @@ function SchemeCashReceipt({ onClose }) {
   useEffect(() => {
     const fetchCname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Cname`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_Cname`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const cName = response.data;
@@ -388,7 +388,7 @@ function SchemeCashReceipt({ onClose }) {
   // useEffect(() => {
   //   const fetchCname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Cname`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Cname`);
   //       setCnameData(response.data);
 
   //       // ////console.log("11111", response.data);
@@ -408,7 +408,7 @@ function SchemeCashReceipt({ onClose }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -431,7 +431,7 @@ function SchemeCashReceipt({ onClose }) {
   // useEffect(() => {
   //   const fetchAgname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/salesmanNames`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/salesmanNames`);
   //       // setagentName(response.data);
   //       // setagentName(response.data.map((item) => item.Name));
 
@@ -458,7 +458,7 @@ function SchemeCashReceipt({ onClose }) {
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;
@@ -481,7 +481,7 @@ function SchemeCashReceipt({ onClose }) {
   // useEffect(() => {
   //   const fetchAccno = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
   //       // setaccNo(response.data);
   //       setaccNo(response.data);
   //     } catch (error) {
@@ -498,7 +498,7 @@ function SchemeCashReceipt({ onClose }) {
   useEffect(() => {
     const selectcashAcc = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_caba`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_caba`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const caba = response.data;
@@ -528,7 +528,7 @@ function SchemeCashReceipt({ onClose }) {
 
   const Selectcashacc = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_caba`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRec_caba`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const caba = response.data;
@@ -556,7 +556,7 @@ function SchemeCashReceipt({ onClose }) {
   const fetchcashAcc = async (data) => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/fetchcashacc/${parseInt(agentCode)}`
+        `${apiBaseUrl}/main/fetchcashacc/${parseInt(agentCode)}`
       );
       const caba = response.data[0];
       // ////console.log("agentcode,==", parseInt(agentCode));
@@ -585,7 +585,7 @@ function SchemeCashReceipt({ onClose }) {
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate`);
+        const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate`);
         const currentrate = response.data[0]?.currentRate;
         setschemeRecInfoData((prevData) => ({
           ...prevData,
@@ -600,7 +600,7 @@ function SchemeCashReceipt({ onClose }) {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate`);
+      const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate`);
       const currentrate = response.data[0]?.currentRate;
       setschemeRecInfoData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -779,7 +779,7 @@ function SchemeCashReceipt({ onClose }) {
         printgm: row.printgm || null,
       }));
       // ////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/saveSchRec`, {
+      const response = await axios.post(`${apiBaseUrl}/main/saveSchRec`, {
         statementType: "SchRec_insert",
         cashacc: schemeRecInfoData.cashAcc[0],
         rate: schemeRecInfoData.rate,
@@ -795,7 +795,7 @@ function SchemeCashReceipt({ onClose }) {
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos`,
+          `${apiBaseUrl}/main/fetchMobileNos`,
           {
             accountNumbers,
           }
@@ -891,7 +891,7 @@ function SchemeCashReceipt({ onClose }) {
         printgm: row.printgm || null,
       }));
       //////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/updateSchRec`, {
+      const response = await axios.post(`${apiBaseUrl}/main/updateSchRec`, {
         statementType: "SchRec_insert",
         cashacc: schemeRecInfoData.cashAcc[0],
         rate: schemeRecInfoData.rate,
@@ -909,7 +909,7 @@ function SchemeCashReceipt({ onClose }) {
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos`,
+          `${apiBaseUrl}/main/fetchMobileNos`,
           {
             accountNumbers,
           }
@@ -974,7 +974,7 @@ function SchemeCashReceipt({ onClose }) {
   // const fetchAccNoData = async (e, rowIndex, agCode) => {
   //   try {
   //     const response = await axios.get(
-  //       `${apiBaseUrl}/findbyaccnotable/${e[1]}`
+  //       `${apiBaseUrl}/main/findbyaccnotable/${e[1]}`
   //     );
   //     const fetchedData = response.data;
   //     const newData = [...tableData];
@@ -1020,7 +1020,7 @@ function SchemeCashReceipt({ onClose }) {
       // ////console.log("eeeee====",e.target.value);
       
       const response = await axios.get(
-        `${apiBaseUrl}/findbyaccnotable/${e.target.value}`
+        `${apiBaseUrl}/main/findbyaccnotable/${e.target.value}`
       );
       const fetchedData = response.data;
       const newData = [...tableData];
@@ -1094,7 +1094,7 @@ function SchemeCashReceipt({ onClose }) {
   const fetchfirstandlast = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/topandlast/${parseInt(agentCode)}`
+        `${apiBaseUrl}/main/topandlast/${parseInt(agentCode)}`
       );
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
@@ -1111,7 +1111,7 @@ function SchemeCashReceipt({ onClose }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindbyentryNo/${findEntryNo}/${parseInt(
+        `${apiBaseUrl}/main/SchRecfindbyentryNo/${findEntryNo}/${parseInt(
           agentCode
         )}`
       );
@@ -1176,7 +1176,7 @@ function SchemeCashReceipt({ onClose }) {
     }
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/deleterecbyentryno/${
+        `${apiBaseUrl}/main/deleterecbyentryno/${
           schemeRecInfoData.EntryNo
         }/${parseInt(agentCode)}`
       );
@@ -1209,7 +1209,7 @@ function SchemeCashReceipt({ onClose }) {
     // }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindprev/${schemeRecInfoData.EntryNo}/${parseInt(
+        `${apiBaseUrl}/main/SchRecfindprev/${schemeRecInfoData.EntryNo}/${parseInt(
           agentCode
         )}`
       );
@@ -1269,7 +1269,7 @@ function SchemeCashReceipt({ onClose }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindnext/${schemeRecInfoData.EntryNo}/${parseInt(
+        `${apiBaseUrl}/main/SchRecfindnext/${schemeRecInfoData.EntryNo}/${parseInt(
           agentCode
         )}`
       );
@@ -1323,7 +1323,7 @@ function SchemeCashReceipt({ onClose }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindfirst/${schemeRecInfoData.EntryNo}/${parseInt(
+        `${apiBaseUrl}/main/SchRecfindfirst/${schemeRecInfoData.EntryNo}/${parseInt(
           agentCode
         )}`
       );
@@ -1377,7 +1377,7 @@ function SchemeCashReceipt({ onClose }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindlast/${schemeRecInfoData.EntryNo}/${parseInt(
+        `${apiBaseUrl}/main/SchRecfindlast/${schemeRecInfoData.EntryNo}/${parseInt(
           agentCode
         )}`
       );
@@ -1441,7 +1441,7 @@ function SchemeCashReceipt({ onClose }) {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}`
+        `${apiBaseUrl}/main/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}`
       );
       //////console.log("res===",response.data);
       setaccumulatedWt(response.data[0].WeightDifference);

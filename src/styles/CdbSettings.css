@@ -1,0 +1,173 @@
+.cdbSettingsRoot {
+    background-color: white;
+    font-family: Inter;
+    width: 375px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+ 
+    /* position: absolute; */
+    transition: all 0.3s;
+    /* background-color: aqua; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    position: relative;
+    align-items: center;
+    justify-content:center;
+  }
+  .emailVerificationRoot label {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+  
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 0% !important;
+  }
+  .emailVerDataBox {
+    width: 90%;
+    height: 80%;
+    /* background-color: blueviolet; */
+    display: flex;
+    flex-direction: column;
+    gap: 6%;
+    padding: 2%;
+  
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+  
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  .otpinputdiv {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 5.8%;
+    /* background-color: aqua; */
+  }
+  
+  .otpinput {
+    width: 10%;
+    height: auto;
+    border-radius: 5px;
+    
+  }
+  
+  .cdbsettingscontrollsbuttons {
+    height:25px;
+    width: 25px;
+    border: none;
+    border-radius: 3px;
+  
+    background: rgb(217, 217, 217);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 2.5%;
+   
+  }
+  .cdbstngsbutton {
+    border-radius: 3px;
+  
+    background: #D9D9D9 !important;
+    margin-right: 2% !important;
+  
+  }
+  .cdbstngsbutton img {
+    height: 13px;
+    width: 13px;
+  }
+  .cdbsettingsBody{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aqua; */
+  }
+  .cdbsettingsrow{
+width: 96%;
+height: 15%;
+padding: 2%;
+display: flex;
+gap: 2%;
+align-items: center;
+justify-content: center;
+
+  }
+ 
+  .cdbsettingsrow label{
+    
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+  
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  .cdbsettingsrow input{
+    width: 50%;
+    height: 90%;
+  }
+ 
+  .dbsettingsnavbar {
+ 
+    width: 100%;
+    height: 55px;
+    align-items: center;
+    display: flex;
+    gap: 1%;
+  
+    /* background-color: #09125b;
+    padding: .5% 0 .5% 0; */
+  }
+  .dbsettingsnavbarBtn {
+    width: 100px;
+    height: 80%;
+    margin-left: 6%;
+    background-color: azure;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 3%;
+  
+    font-family: Times New Roman;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: left;
+    text-wrap: nowrap;
+    cursor:pointer;
+    padding: .2%;
+  }
+  
+  .dbsettingsnavbarBtn:hover {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dbsettingsnavbarBtn img {
+    height: 28px;
+    width: auto;
+  }
+  

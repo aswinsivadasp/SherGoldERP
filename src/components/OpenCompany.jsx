@@ -66,13 +66,19 @@ function OpenCompany({ onClose, customerCode }) {
 
   // ////console.log(companyCode);
 
-  useEffect(() => {
+  // useEffect(() => {
     const fetchCmpname = async () => {
+      const customerCode = localStorage.getItem("customerCode");
+      if(!customerCode){
+       return
+      }
+
       try {
-        const response = await axios.get(`${apiBaseUrl}/getAllCompanies`);
+        const response = await axios.get(`${apiBaseUrl}/main/getalldatabases/${customerCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const cData = response.data;
+// console.log("res",cData);
 
         // Transforming the array into the desired format
         // const supplName = cName.map((item) => item.LedName);
@@ -82,6 +88,8 @@ function OpenCompany({ onClose, customerCode }) {
           item.name,
         ]);
         setCompanyCode(transformedData);
+        // console.log(transformedData);
+        
 
         // setsupplierName(supplName);
       } catch (error) {
@@ -89,14 +97,14 @@ function OpenCompany({ onClose, customerCode }) {
       }
     };
 
-    fetchCmpname();
-  }, [apiBaseUrl]);
+  //   fetchCmpname();
+  // }, [apiBaseUrl]);
 
   const fetchDatabaseNames = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${apiBaseUrl}/getalldatabases/${
+        `${apiBaseUrl}/main/getalldatabases/${
           Array.isArray(cmpData.Cdata) ? cmpData.Cdata[0] : ""
         }`
       );
@@ -201,6 +209,7 @@ function OpenCompany({ onClose, customerCode }) {
             })
           }
           onBlur={() => fetchDatabaseNames()}
+          onFocus={()=>fetchCmpname()}
         />
       </div>
 

@@ -83,7 +83,7 @@ function AgentReport({ onClose, agentReportData }) {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          `${apiBaseUrl}/agentCommisssion_Report/${dbCode}`,
+          `${apiBaseUrl}/main/agentCommisssion_Report/${dbCode}`,
           agentReportData
         );
         setTableData(response.data);

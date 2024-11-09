@@ -49,6 +49,8 @@ import AgentReportModel from "../components/AgentReportModel";
 import AgentReport from "../components/AgentReport";
 import { useDbContext } from "../context/DbContext";
 import SmsSettings from "../components/SmsSettings";
+import CdbSettings from "../components/CdbSettings";
+import CashReceipt from "../components/CashReceipt";
 
 function HomePage() {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -137,6 +139,18 @@ function HomePage() {
   const [showagReportdiaModal, setShowagReportdiaModal] = useState(false);
   const [showagReportModal, setShowagReportModal] = useState(false);
   const [showSmssettingsModal, setShowSmssettingsModal] = useState(false);
+  const [showcashRecModal, setShowCashRecModal] = useState(false);
+
+
+  const opencashRec = () => {
+  
+    setShowCashRecModal(true);
+  
+  };
+
+
+
+
   const openSmsSettings = () => {
   
     setShowSmssettingsModal(true);
@@ -312,7 +326,7 @@ function HomePage() {
     const fetchRegCname = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_schemeregisteredcustomers/${dbCode}`
+          `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers/${dbCode}`
         );
 
         // Assuming response.data is an array with objects and each object has a LedName property
@@ -339,7 +353,7 @@ function HomePage() {
   const fetchRegCname = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRec_schemeregisteredcustomers/${dbCode}`
+        `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers/${dbCode}`
       );
 
       // Assuming response.data is an array with objects and each object has a LedName property
@@ -363,7 +377,7 @@ function HomePage() {
   const [agentobj, setAgentObj] = useState([]);
   const fetchAgname = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const AgName = response.data;
@@ -383,7 +397,7 @@ function HomePage() {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -407,7 +421,7 @@ function HomePage() {
 
   const fetchAccno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const Accno = response.data;
@@ -428,7 +442,7 @@ function HomePage() {
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;
@@ -498,7 +512,7 @@ function HomePage() {
   useEffect(() => {
     const fetchReceipts = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schselectAllformRec/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schselectAllformRec/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Rec = response.data;
@@ -522,7 +536,7 @@ function HomePage() {
   }, [apiBaseUrl]);
   const fetchReceipts = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schselectAllformRec/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schselectAllformRec/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const Rec = response.data;
@@ -577,7 +591,7 @@ function HomePage() {
 
   // const handleDownload = async () => {
   //   try {
-  //     const response = await fetch(`${apiBaseUrl}/download-backup`);
+  //     const response = await fetch(`${apiBaseUrl}/main/download-backup`);
   //     if (!response.ok) throw new Error('Network response was not ok.');
 
   //     // Convert the response to a blob and create a download link
@@ -593,8 +607,35 @@ function HomePage() {
   //   }
   // };
 
+  const [companyName, setCompanyName] = useState("");
+
+ 
+
+  
+    
+    const fetchcompanydetails = async () => {
+      try {
+        const response = await axios.get(
+          `${apiBaseUrl}/main/findCompanyDetails/${dbCode}`
+        );
+        const foundData = response.data[0];
+        setCompanyName(foundData.name || "SherGold");
+        // console.log("found", foundData.name);
+        return foundData.Code
+
+        // setsupplierName(supplName);
+      } catch (error) {
+        console.error("Error fetching company datas:", error.message);
+        // alert(error.response.data);
+      }
+    };
   const downloadBackup = async () => {
-    const response = await fetch(`${apiBaseUrl}/export-all-tables-xml-zip/${dbCode}`, {
+
+    const code = await fetchcompanydetails();
+    console.log(code);
+
+
+    const response = await fetch(`${apiBaseUrl}/main/export-all-tables-xml-zip/${dbCode}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/zip',
@@ -606,7 +647,7 @@ function HomePage() {
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', 'database_backup.zip'); // Downloaded file name
+        link.setAttribute('download', `${code}_backup.zip`); // Downloaded file name
         document.body.appendChild(link);
         link.click();
         link.parentNode.removeChild(link);
@@ -647,7 +688,9 @@ function HomePage() {
         { name: "Scheme Cash Receipt", subOptions: allReceipts},
         { name: "Scheme Redeem", subOptions: [] },
         { name: "Journal Entry", subOptions: [] },
-        { name: "Contra Entry", subOptions: [] }
+        { name: "Contra Entry", subOptions: [] },
+        { name: "Receipt Entry", subOptions: [[1,"Cash Receipt"]] }
+
       ],
     },
     { name: "Records List", options: [] },
@@ -778,6 +821,10 @@ function HomePage() {
     else if (option[1] === "Sms Settings" && userType === "ADMIN") {
       // console.log(`Selected: ${option}`);
       openSmsSettings();
+    }
+    else if (option[1] === "Cash Receipt" && userType === "ADMIN") {
+      // console.log(`Selected: ${option}`);
+      opencashRec();
     }
     
   };
@@ -945,11 +992,11 @@ function HomePage() {
           >
             {/* onClick={() => navigate("/registration")} */}
             <img src={reg} alt="img" />
-            <label>Registration</label>
+            <label className="font-Inter">Registration</label>
           </button>
           <button className="homeBodycols" onClick={()=>openReceiptModal("","")}>
             <img src={rec} alt="img" />
-            <label> Cash Receipt</label>
+            <label className="font-Inter"> Cash Receipt</label>
           </button>
           {/* onClick={() => navigate("/receipt")} */}
 
@@ -959,7 +1006,7 @@ function HomePage() {
             onClick={openLedgerRegModal}
           >
             <img src={ledger} alt="img" />
-            <label> Ledger Reg</label>
+            <label className="font-Inter"> Ledger Reg</label>
           </button>
         </div>
         <div className="homeBodyrows">
@@ -969,7 +1016,7 @@ function HomePage() {
             disabled={userType === "ADMIN" ? false : true}
           >
             <img src={staff} alt="img" />
-            <label> Staff Reg</label>
+            <label className="font-Inter"> Staff Reg</label>
           </button>
           <button
             className="homeBodycols"
@@ -977,7 +1024,7 @@ function HomePage() {
             onClick={openRedeemModal}
           >
             <img src={redeem} alt="img" />
-            <label> Redeem</label>
+            <label className="font-Inter"> Redeem</label>
           </button>
 
           <button
@@ -988,7 +1035,7 @@ function HomePage() {
             }}
           >
             <img src={dash} alt="img" />
-            <label>Report</label>
+            <label className="font-Inter">Report</label>
           </button>
         </div>
         <div className="homeBodyrows">
@@ -998,7 +1045,7 @@ function HomePage() {
             onClick={openRateClassModal}
           >
             <img src={rateclass} alt="img" />
-            <label>Rate Class</label>
+            <label className="font-Inter">Rate Class</label>
           </button>
 
           <button
@@ -1007,11 +1054,11 @@ function HomePage() {
             onClick={openRateSettingsModal}
           >
             <img src={rateSettings} alt="Rate Settings" />
-            <label>Rate Settings</label>
+            <label className="font-Inter">Rate Settings</label>
           </button>
           <button className="homeBodycols" onClick={handleExit}>
             <img src={exit} alt="img" />
-            <label>Exit</label>
+            <label className="font-Inter">Exit</label>
           </button>
         </div>
       </div>
@@ -1259,6 +1306,14 @@ function HomePage() {
           }}
         />
       )}
+      {showcashRecModal && (
+        <CashReceipt
+          onClose={() => {
+            setShowCashRecModal(false);
+          }}
+        />
+      )}
+      
       {showFindDialog && (
         <div className=" report_dialog">
           <div className="report_dialogHead">

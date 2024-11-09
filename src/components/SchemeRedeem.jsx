@@ -107,7 +107,7 @@ function SchemeRedeem({ onClose }) {
     const fetchRegCname = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_schemeregisteredcustomers/${dbCode}`
+          `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers/${dbCode}`
         );
 
         // Assuming response.data is an array with objects and each object has a LedName property
@@ -139,7 +139,7 @@ function SchemeRedeem({ onClose }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -167,7 +167,7 @@ function SchemeRedeem({ onClose }) {
     const fetchAcno = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_schemeregisteredaccno/${dbCode}`
+          `${apiBaseUrl}/main/SchRec_schemeregisteredaccno/${dbCode}`
         );
 
         // Assuming response.data is an array with objects and each object has a LedName property
@@ -216,7 +216,7 @@ function SchemeRedeem({ onClose }) {
         };
         // Make a POST request to your server with the form data
         const response = await axios.post(
-          `${apiBaseUrl}/insertRedeem/${dbCode}`,
+          `${apiBaseUrl}/main/insertRedeem/${dbCode}`,
           updatedSchemeRedeemData
         );
 
@@ -252,7 +252,7 @@ function SchemeRedeem({ onClose }) {
         };
         // Make a POST request to your server with the form data
         const response = await axios.post(
-          `${apiBaseUrl}/editRedeem/${dbCode}`,
+          `${apiBaseUrl}/main/editRedeem/${dbCode}`,
           updatedSchemeRedeemData
         );
 
@@ -280,7 +280,7 @@ function SchemeRedeem({ onClose }) {
   useEffect(() => {
     const fetchSchredEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRed_entryno/${parseInt(agentCode)}/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRed_entryno/${parseInt(agentCode)}/${dbCode}`);
         // ////console.log("response =", response);
         const schemeentryNo = response.data.map((item) => item[""]);
 
@@ -299,7 +299,7 @@ function SchemeRedeem({ onClose }) {
 
   const fetchSchredEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRed_entryno/${parseInt(agentCode)}/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRed_entryno/${parseInt(agentCode)}/${dbCode}`);
       const schemeentryNo = response.data.map((item) => item[""]);
 
       setschemeRedeemData((prevData) => ({
@@ -315,7 +315,7 @@ function SchemeRedeem({ onClose }) {
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
         const currentrate = response.data[0]?.currentRate;
         setschemeRedeemData((prevData) => ({ ...prevData, rate: currentrate }));
       } catch (error) {
@@ -327,7 +327,7 @@ function SchemeRedeem({ onClose }) {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
       const currentrate = response.data[0]?.currentRate;
       setschemeRedeemData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -407,7 +407,7 @@ function SchemeRedeem({ onClose }) {
   const handleFind = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/schredeemfindbyentryno/${findEntryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/schredeemfindbyentryno/${findEntryNo}/${parseInt(agentCode)}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -450,7 +450,7 @@ function SchemeRedeem({ onClose }) {
   const handlefindAccountNo = async (no) => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/schredeemfindbyaccno/${no[0]}/${dbCode}`
+        `${apiBaseUrl}/main/schredeemfindbyaccno/${no[0]}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -479,7 +479,7 @@ function SchemeRedeem({ onClose }) {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/deleteredeembyentryno/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/deleteredeembyentryno/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({
@@ -503,7 +503,7 @@ function SchemeRedeem({ onClose }) {
   const handleFindprev = async (e) => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRedfindprev/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRedfindprev/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -552,7 +552,7 @@ function SchemeRedeem({ onClose }) {
     // handleClear();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRedfindnext/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRedfindnext/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         const foundData = response.data[0];
@@ -598,7 +598,7 @@ function SchemeRedeem({ onClose }) {
   const handleFindfirst = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRedfindfirst/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRedfindfirst/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         const foundData = response.data[0];
@@ -643,7 +643,7 @@ function SchemeRedeem({ onClose }) {
   const handleFindlast = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRedfindlast/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRedfindlast/${schemeRedeemData.entryNo}/${parseInt(agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         const foundData = response.data[0];
@@ -692,7 +692,7 @@ function SchemeRedeem({ onClose }) {
     // handleClear();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/currentBalance/${name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/currentBalance/${name[0]}/${dbCode}`
       );
       if (response.status === 200) {
         const foundData = response.data[0];
@@ -711,7 +711,7 @@ function SchemeRedeem({ onClose }) {
     // handleClear();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/currentBalanceBYaccno/${accountNo[0]}/${dbCode}`
+        `${apiBaseUrl}/main/currentBalanceBYaccno/${accountNo[0]}/${dbCode}`
       );
       if (response.status === 200) {
         const foundData = response.data[0];

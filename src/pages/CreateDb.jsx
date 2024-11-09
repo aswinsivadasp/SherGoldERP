@@ -8,10 +8,19 @@ import settings from "../assets/images/CreateCompanyImages/Settings.webp";
 import exit from "../assets/images/CreateCompanyImages/Cdbexit.webp";
 import CreateCompany from "../components/CreateCompany";
 import OpenCompany from "../components/OpenCompany";
+import CdbSettings from "../components/CdbSettings";
 
 function CreateDb() {
   const [showcreateCompanyModal, setShowCreateCompanyModal] = useState(false);
   const [showopenCompanyModal, setShowopenCompanyModal] = useState(false);
+  const [showcdbsettingsModal, setShowcdbsettingsModal] = useState(false);
+
+  
+  const opencdbSettings = () => {
+  
+    setShowcdbsettingsModal(true);
+  
+  };
 
   const openRegistrationModal = () => {
    
@@ -21,6 +30,11 @@ function CreateDb() {
   const opencompanyModal = () => {
 
     setShowopenCompanyModal(true);
+  };
+  const handleClearcustomerCode = () => {
+
+    localStorage.removeItem("customerCode");
+
   };
 
 
@@ -35,11 +49,13 @@ function CreateDb() {
         <div className="CreateDbnavbarBtn"   onClick={opencompanyModal}>
           <img src={opnCmp} alt="Opn" /> Open Company
         </div>
-        <div className="CreateDbnavbarBtn" style={{ gap: "20%" }}>
+        <div className="CreateDbnavbarBtn" style={{ gap: "20%" }} 
+        onClick={opencdbSettings}
+        >
           {" "}
           <img src={settings} alt="" /> Settings
         </div>
-        <div className="CreateDbnavbarBtn" style={{ gap: "25%" }}>
+        <div className="CreateDbnavbarBtn" style={{ gap: "25%" }} onClick={handleClearcustomerCode}>
           <img src={exit} alt="Ext" /> Exit
         </div>
       </div>
@@ -120,6 +136,13 @@ function CreateDb() {
           //   //setShowRegistrationModal(false);
           //   sessionStorage.setItem("accountNameInputRef", accountNameInputRef);
           // }}
+        />
+      )}
+      {showcdbsettingsModal && (
+        <CdbSettings
+          onClose={() => {
+            setShowcdbsettingsModal(false);
+          }}
         />
       )}
     </div>

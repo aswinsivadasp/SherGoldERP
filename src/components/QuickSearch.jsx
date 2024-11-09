@@ -24,7 +24,7 @@ function QuickSearch({ onClose }) {
     setIsLoading(true); // Show loader when the search starts
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/quick_Search/${selectedField}?search=${searchTerm}/${dbCode}`
+        `${apiBaseUrl}/main/quick_Search/${selectedField}?search=${searchTerm}/${dbCode}`
       );
       setTableData(response.data);
     } catch (error) {

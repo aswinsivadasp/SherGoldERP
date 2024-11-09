@@ -7,6 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useLocation } from "react-router-dom";
 import { useDbContext } from "../context/DbContext";
 import ComboBox from "../components/ComboBox";
+import CdbSettings from "../components/CdbSettings";
 
 function OpenCompanyMob() {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -17,12 +18,12 @@ function OpenCompanyMob() {
     Cdata: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-
+  const customerCode = localStorage.getItem("customerCode");
   const fetchDatabaseNames = async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${apiBaseUrl}/getalldatabases/${
+        `${apiBaseUrl}/main/getalldatabases/${
           Array.isArray(cmpData.Cdata) ? cmpData.Cdata[0] : ""
         }`
       );
@@ -41,40 +42,40 @@ function OpenCompanyMob() {
   const [selectedRowData, setSelectedRowData] = useState(null);
   const selectcmpref = useRef(null);
 
+  const tableRef = useRef(null);
+  const [tableData, setTableData] = useState([]);
 
-
-  const tableRef = useRef(null);  const [tableData, setTableData] = useState([]);
-  
   const [highlightedRow, setHighlightedRow] = useState(-1);
 
-  useEffect(() => {
-    const fetchCmpname = async () => {
-      try {
-        const response = await axios.get(`${apiBaseUrl}/getAllCompanies`);
+  const fetchCmpname = async () => {
+    const customerCode = localStorage.getItem("customerCode");
+    if(!customerCode){
+     return
+    }
 
-        // Assuming response.data is an array with objects and each object has a LedName property
-        const cData = response.data;
+    try {
+      const response = await axios.get(`${apiBaseUrl}/main/getalldatabases/${customerCode}`);
 
-        // Transforming the array into the desired format
-        // const supplName = cName.map((item) => item.LedName);
+      // Assuming response.data is an array with objects and each object has a LedName property
+      const cData = response.data;
+// console.log("res",cData);
 
-        const transformedData = cData.map((item) => [
-          item.CustomerCode,
-          item.name,
-        ]);
-        setCompanyCode(transformedData);
+      // Transforming the array into the desired format
+      // const supplName = cName.map((item) => item.LedName);
 
-        // setsupplierName(supplName);
-      } catch (error) {
-        console.error("Error fetching company datas:", error.message);
-      }
-    };
+      const transformedData = cData.map((item) => [
+        item.CustomerCode,
+        item.name,
+      ]);
+      setCompanyCode(transformedData);
+      // console.log(transformedData);
+      
 
-    fetchCmpname();
-  }, [apiBaseUrl]);
-
-
-
+      // setsupplierName(supplName);
+    } catch (error) {
+      console.error("Error fetching company datas:", error.message);
+    }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -98,8 +99,7 @@ function OpenCompanyMob() {
     setHighlightedRow(rowIndex);
     onRowSelect(rowIndex); // Select the row immediately on click
   };
-  
- 
+
   const onRowSelect = (rowIndex) => {
     // Pass the rowIndex parameter to ensure we're selecting the correct row
     if (rowIndex >= 0 && rowIndex < tableData.length) {
@@ -120,73 +120,72 @@ function OpenCompanyMob() {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [tableData, highlightedRow]); 
-
+  }, [tableData, highlightedRow]);
 
   return (
     <div className="OpenCompanyMobRoot">
+       {customerCode ? (
       <div className="OpenCompanyMobDia">
-     
-       
-            <label className="OpenCompanyMobDiaHead">Open Company</label>
+        <label className="OpenCompanyMobDiaHead">Open Company</label>
 
-            <div className="opencmpselectrow">
-        <label htmlFor="">Select Company</label>
-        <ComboBox
-          comboRef={selectcmpref}
-          options={companyCode}
-          findedValue={
-            Array.isArray(cmpData.Cdata) ? cmpData.Cdata[1] : cmpData.Cdata
-          }
-          className="selectcmpCombo"
-          onInputChange={(e) =>
-            setCmpData({
-              ...cmpData,
-              Cdata: e,
-            })
-          }
-          onBlur={() => fetchDatabaseNames()}
-        />
-      </div>
+        <div className="opencmpmobselectrow">
+          <label htmlFor="" className="opnCmplabel">Select Company</label>
+          <ComboBox
+          
+            comboRef={selectcmpref}
+            options={companyCode}
+            findedValue={
+              Array.isArray(cmpData.Cdata) ? cmpData.Cdata[1] : cmpData.Cdata
+            }
+            className="selectcmpCombo opencmpmobselect"
+            onInputChange={(e) =>
+              setCmpData({
+                ...cmpData,
+                Cdata: e,
+              })
+            }
+            onBlur={() => fetchDatabaseNames()}
+            onFocus={()=>fetchCmpname()}
+          />
+        </div>
 
+        <table ref={tableRef} tabIndex="0">
+          <thead className="opncmpMobTableHead">
+            <tr>
+              <th className="opncmpMobHeadslno">SlNo</th>
 
+              <th className="opncmpMobHeadcode">Code</th>
+            </tr>
+          </thead>
+          <tbody className="opncmpMobBodyStyle">
+            {tableData.map((rowData, rowIndex) => (
+              <tr
+                key={rowIndex}
+                onClick={() => handleRowClick(rowIndex)}
+                onDoubleClick={() => onRowSelect(rowIndex)}
+                className={`opncmpMobBodyStyletr ${
+                  highlightedRow === rowIndex ? "highlighted" : ""
+                }`}
+              >
+                <td
+                  className={`opncmpMobDataBoxSlno ${
+                    highlightedRow === rowIndex ? "highlighted" : ""
+                  }`}
+                  style={{ textAlign: "center" }}
+                >
+                  {rowIndex + 1}
+                </td>
 
-            <table ref={tableRef} tabIndex="0">
-              <thead className="companylistTableHead">
-                <tr>
-                  <th className="companylistTableHeadslno">SlNo</th>
-
-                  <th className="companylistTableHeadcode">Code</th>
-                  
-                </tr>
-              </thead>
-              <tbody className="companylistTableBodyStyle">
-                {tableData.map((rowData, rowIndex) => (
-                  <tr
-                    key={rowIndex}
-                    onClick={() => handleRowClick(rowIndex)}
-                    onDoubleClick={() => onRowSelect(rowIndex)}
-                    className={`companylistTableBodyStyletr ${highlightedRow === rowIndex ? "highlighted" : ""}`}
-                  >
-                    <td
-                      className={`companylistTableDataBoxSlno ${
-                        highlightedRow === rowIndex ? "highlighted" : ""
-                      }`}
-                      style={{ textAlign: "center" }}
-                    >
-                      {rowIndex + 1}
-                    </td>
-
-                    <td className="companylistTableDataBoxcode">
-                      {rowData.Code}
-                    </td>
-                   
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-       
-      </div>
+                <td className="opncmpMobDataBoxcode">{rowData.Code}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>  ) : (
+         <CdbSettings 
+         onClose={()=>navigate("/")} 
+         
+         />  )}
     </div>
   );
 }

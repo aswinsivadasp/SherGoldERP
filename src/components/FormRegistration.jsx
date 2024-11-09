@@ -63,7 +63,7 @@ function FormRegistration({ onClose }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/getformregdatas/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/getformregdatas/${dbCode}`);
         setTableData(response.data);
         // ////console.log(response.data);
       } catch (error) {
@@ -76,7 +76,7 @@ function FormRegistration({ onClose }) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/getformregdatas/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/getformregdatas/${dbCode}`);
       setTableData(response.data);
       // ////console.log(response.data);
     } catch (error) {
@@ -86,7 +86,7 @@ function FormRegistration({ onClose }) {
 
   const fetchAgname = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const AgName = response.data;
@@ -113,7 +113,7 @@ function FormRegistration({ onClose }) {
   useEffect(() => {
     const fetchEno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/formregEntryno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/formregEntryno/${dbCode}`);
 
         //////console.log("response=", response.data);
 
@@ -131,7 +131,7 @@ function FormRegistration({ onClose }) {
 
   const fetchEno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/formregEntryno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/formregEntryno/${dbCode}`);
 
      // ////console.log("response=", response.data);
 
@@ -181,7 +181,7 @@ function FormRegistration({ onClose }) {
 
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/insertformReg/${dbCode}`,
+        `${apiBaseUrl}/main/insertformReg/${dbCode}`,
         formData
       );
 
@@ -207,7 +207,7 @@ function FormRegistration({ onClose }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -250,7 +250,7 @@ function FormRegistration({ onClose }) {
 
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/updateformReg/${dbCode}`,
+        `${apiBaseUrl}/main/updateformReg/${dbCode}`,
         formData
       );
 
@@ -288,7 +288,7 @@ function FormRegistration({ onClose }) {
   const handleFind = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/formregfindbyentryno/${findEntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/formregfindbyentryno/${findEntryNo}/${dbCode}`
       );
 
       // Check the response status and handle accordingly
@@ -331,7 +331,7 @@ function FormRegistration({ onClose }) {
       }
 
       const response = await axios.delete(
-        `${apiBaseUrl}/deleteform/${formData.slno}/${dbCode}`
+        `${apiBaseUrl}/main/deleteform/${formData.slno}/${dbCode}`
       );
       if (response.status === 200) {
         alert("Form Deleted ");

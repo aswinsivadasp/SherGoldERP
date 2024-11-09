@@ -33,7 +33,7 @@ function EmailVerification({ data, onClose, generatedOtp, onVerified }) {
   const timerInterval = useRef(null);
 
   const startTimer = () => {
-    setTimer(30);
+    setTimer(300);
 
     timerInterval.current = setInterval(() => {
       setTimer((prev) => {
@@ -48,7 +48,7 @@ function EmailVerification({ data, onClose, generatedOtp, onVerified }) {
 
   const sendOtpEmail = (emailData) => {
     axios
-      .post(`${apiBaseUrl}/sendVerfMail`, emailData)
+      .post(`${apiBaseUrl}/main/sendVerfMail`, emailData)
       .then((response) => {
         //console.log("OTP email sent successfully:", response.data);
       })

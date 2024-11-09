@@ -75,7 +75,7 @@ function LedgerReport({ onClose, ledgerReportData }) {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          `${apiBaseUrl}/ledger_Report/${dbCode}`,
+          `${apiBaseUrl}/main/ledger_Report/${dbCode}`,
           ledgerReportData
         );
         setTableData(response.data);

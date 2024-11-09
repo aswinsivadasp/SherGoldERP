@@ -26,21 +26,19 @@ import Print from "./Print";
 import { AuthContext } from "../context/AuthContext";
 import { useDbContext } from "../context/DbContext";
 
-
-function SchemeCashReceipt({ onClose,formId,formName }) {
+function SchemeCashReceipt({ onClose, formId, formName }) {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const { dbCode } = useDbContext();
 
   const { agentCode } = useContext(AuthContext);
-  const [frmId, setfrmid] = useState( "");
-  const [fname, setfname] = useState( "");
+  const [frmId, setfrmid] = useState("");
+  const [fname, setfname] = useState("");
 
   useEffect(() => {
     setfrmid(formId);
     setfname(formName);
-  }, [formId,formName]);
+  }, [formId, formName]);
   // ////console.log("frmId===", frmId);
-
 
   const agentCodeRef = useRef(agentCode);
 
@@ -145,7 +143,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     date: getCurrentDate(),
     totalamt: 0,
     totalgm: 0,
-    agCode: parseInt(frmId?frmId:agentCode),
+    agCode: parseInt(frmId ? frmId : agentCode),
   });
   // ////console.log("info data = ", schemeRecInfoData);
 
@@ -197,7 +195,6 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     } else {
       handleCellChange("", index, "gm");
     }
-    
   };
 
   const checkNameExists = (e) => {
@@ -323,7 +320,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     const fetchSchEntryno = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_entryno/${parseInt(formId?formId:agentCode)}/${dbCode}`
+          `${apiBaseUrl}/main/SchRec_entryno/${parseInt(
+            formId ? formId : agentCode
+          )}/${dbCode}`
         );
         // ////console.log("response =", response);
         const schemeRecentryNo = response.data.map((item) => item[""]);
@@ -339,12 +338,14 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     };
 
     fetchSchEntryno();
-  }, [apiBaseUrl,formId]);
+  }, [apiBaseUrl, formId]);
 
   const fetchSchEntryno = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRec_entryno/${parseInt(frmId?frmId:agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/SchRec_entryno/${parseInt(
+          frmId ? frmId : agentCode
+        )}/${dbCode}`
       );
       // ////console.log("response =", response);
       const schemeRecentryNo = response.data.map((item) => item[""]);
@@ -372,7 +373,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   useEffect(() => {
     const fetchCname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Cname/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_Cname/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const cName = response.data;
@@ -400,7 +403,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   // useEffect(() => {
   //   const fetchCname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Cname`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Cname`);
   //       setCnameData(response.data);
 
   //       // ////console.log("11111", response.data);
@@ -420,7 +423,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/schsalesmanNames/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -443,7 +448,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   // useEffect(() => {
   //   const fetchAgname = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/salesmanNames`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/salesmanNames`);
   //       // setagentName(response.data);
   //       // setagentName(response.data.map((item) => item.Name));
 
@@ -470,7 +475,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/SchRec_Accno/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;
@@ -493,7 +500,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   // useEffect(() => {
   //   const fetchAccno = async () => {
   //     try {
-  //       const response = await axios.get(`${apiBaseUrl}/SchRec_Accno`);
+  //       const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno`);
   //       // setaccNo(response.data);
   //       setaccNo(response.data);
   //     } catch (error) {
@@ -510,7 +517,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   useEffect(() => {
     const selectcashAcc = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_caba/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_caba/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const caba = response.data;
@@ -540,7 +547,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
 
   const Selectcashacc = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_caba/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRec_caba/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const caba = response.data;
@@ -568,7 +575,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   const fetchcashAcc = async (data) => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/fetchcashacc/${parseInt(frmId?frmId:agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/fetchcashacc/${parseInt(
+          frmId ? frmId : agentCode
+        )}/${dbCode}`
       );
       const caba = response.data[0];
       // ////console.log("agentcode,==", parseInt(agentCode));
@@ -597,7 +606,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/currentgoldRate/${dbCode}`
+        );
         const currentrate = response.data[0]?.currentRate;
         setschemeRecInfoData((prevData) => ({
           ...prevData,
@@ -612,7 +623,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/currentgoldRate/${dbCode}`
+      );
       const currentrate = response.data[0]?.currentRate;
       setschemeRecInfoData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -648,7 +661,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     fetchSchEntryno();
     fetchSchCurrentRate();
     Selectcashacc();
-    setdispWt("")
+    setdispWt("");
     setschemeRecInfoData({
       cashAcc: "",
 
@@ -715,18 +728,45 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   };
   ////////////////////////////////////////////////////////
 
+  const fetchsmssettings = async (eName) => {
+    try {
+      const response = await axios.get(
+        `${apiBaseUrl}/main/selectapidatas/${dbCode}/${eName}`
+      );
+
+      const smsData = response.data[0];
+      console.log("smsData=", smsData);
+
+      return smsData;
+    } catch (error) {
+      console.error("Error fetching smssettings Values:", error.message);
+    }
+  };
+
   const sendSMS = async (
-    aNo,
+    accountNo,
     mobileNo,
     customerName,
-    grandTotal,
     total,
+    grandTotal,
     netwt,
     gm
   ) => {
-    const message = `Account No.:${aNo[1]} NAME:${customerName[1]} Amount:${grandTotal} Total:${total} Weight:${gm}gm Total weight:${netwt}gm Thank you CHUNDANGATHRA GOLD AND DIAMONDS`;
+    const apiData = await fetchsmssettings("RECEIPT");
+    console.log("apiData=", apiData);
 
-    const url = `http://sapteleservices.com/SMS_API/sendsms.php`;
+
+    // Replace placeholders in the MessageBody with actual values
+    const message = apiData.MessageBody.replace("${accountNo}", accountNo)
+      .replace("${customerName}", customerName)
+      .replace("${total}", total)
+      .replace("${grandTotal}", grandTotal)
+      .replace("${netwt}", netwt)
+      .replace("${gm}", gm);
+
+    // const message = `Account No.:${accountNo} NAME:${customerName} Amount:${total} Total:${grandTotal} Weight:${gm}gm Total weight:${netwt}gm Thank you CHUNDANGATHRA GOLD AND DIAMONDS`;
+
+    // const url = `http://sapteleservices.com/SMS_API/sendsms.php`;
     const params = {
       username: "chundangathra",
       password: "81ed95",
@@ -737,8 +777,24 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
       tid: "1607100000000318300",
     };
 
+    // try {
+    //   const response = await axios.get(url, { params });
+    //   return response.data;
+    // } catch (error) {
+    //   console.error(`Error sending SMS to ${mobileNo}:`, error.message);
+    //   return null;
+    // }
+
+    // const url = `http://sapteleservices.com/SMS_API/sendsms.php?username=chundangathra&password=81ed95&mobile=${mobileNo}&sendername=CHUJWL&message=${encodeURIComponent(
+    //   message
+    // )}&routetype=1&tid=1607100000000318300`;
+    const url = apiData.ApiLink.replace("${mobileNo}", mobileNo).replace(
+      "${encodeURIComponent(message)}",
+      encodeURIComponent(message)
+    );
+
     try {
-      const response = await axios.get(url, { params });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
       console.error(`Error sending SMS to ${mobileNo}:`, error.message);
@@ -792,15 +848,15 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
         printgm: row.printgm || null,
       }));
       // ////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/saveSchRec/${dbCode}`, {
+      const response = await axios.post(`${apiBaseUrl}/main/saveSchRec/${dbCode}`, {
         statementType: "SchRec_insert",
         cashacc: schemeRecInfoData.cashAcc[0],
         rate: schemeRecInfoData.rate,
         date: schemeRecInfoData.date,
         totalamount: schemeRecInfoData.totalamt,
         totalgm: schemeRecInfoData.totalgm,
-        agCode: parseInt(frmId?frmId:agentCode),
-        
+        agCode: parseInt(frmId ? frmId : agentCode),
+
         type: transformedTableData, // Pass the entire tableData array
       });
 
@@ -809,7 +865,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos/${dbCode}`,
+          `${apiBaseUrl}/main/fetchMobileNos/${dbCode}`,
           {
             accountNumbers,
           }
@@ -828,16 +884,16 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
             // ////console.log("customerData==", customerData);
 
             if (customerData) {
-              const grandTotal = customerData.amount;
+              const total = customerData.amount;
               const netwt = mobileNumber.totalWt;
-              const total = mobileNumber.totalAmt;
+              const grandTotal = mobileNumber.totalAmt;
               const gm = customerData.gm;
-              //   const smsResponse = await sendSMS(
-              //   accNo.find((item) => item[0] ===  customerData.accountNumber),
+              // const smsResponse = await sendSMS(
+              //   accNo.find((item) => item[0] === customerData.accountNumber)[1],
               //   mobileNumber.mobileNo,
-              //   cnameData.find((item) => item[0] === mobileNumber.accname),
-              //   grandTotal,
+              //   cnameData.find((item) => item[0] === mobileNumber.accname)[1],
               //   total,
+              //   grandTotal,
               //   netwt,
               //   gm
               // );
@@ -905,25 +961,28 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
         printgm: row.printgm || null,
       }));
       //////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/updateSchRec/${dbCode}`, {
-        statementType: "SchRec_insert",
-        cashacc: schemeRecInfoData.cashAcc[0],
-        rate: schemeRecInfoData.rate,
-        date: schemeRecInfoData.date,
-        totalamount: schemeRecInfoData.totalamt,
-        totalgm: schemeRecInfoData.totalgm,
-        agCode: parseInt(frmId?frmId:agentCode),
+      const response = await axios.post(
+        `${apiBaseUrl}/main/updateSchRec/${dbCode}`,
+        {
+          statementType: "SchRec_insert",
+          cashacc: schemeRecInfoData.cashAcc[0],
+          rate: schemeRecInfoData.rate,
+          date: schemeRecInfoData.date,
+          totalamount: schemeRecInfoData.totalamt,
+          totalgm: schemeRecInfoData.totalgm,
+          agCode: parseInt(frmId ? frmId : agentCode),
 
-        EntryNo: schemeRecInfoData.EntryNo,
-        type: transformedTableData, // Pass the entire tableData array
-      });
+          EntryNo: schemeRecInfoData.EntryNo,
+          type: transformedTableData, // Pass the entire tableData array
+        }
+      );
 
       if (response.data.success) {
         const accountNumbers = transformedTableData.map(
           (row) => row.accountNumber
         );
         const mobileNumbersResponse = await axios.post(
-          `${apiBaseUrl}/fetchMobileNos/${dbCode}`,
+          `${apiBaseUrl}/main/fetchMobileNos/${dbCode}`,
           {
             accountNumbers,
           }
@@ -988,7 +1047,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   // const fetchAccNoData = async (e, rowIndex, agCode) => {
   //   try {
   //     const response = await axios.get(
-  //       `${apiBaseUrl}/findbyaccnotable/${e[1]}`
+  //       `${apiBaseUrl}/main/findbyaccnotable/${e[1]}`
   //     );
   //     const fetchedData = response.data;
   //     const newData = [...tableData];
@@ -1033,7 +1092,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
       // ////console.log("eeeee====",e.target.value);
 
       const response = await axios.get(
-        `${apiBaseUrl}/findbyaccnotable/${e.target.value}/${dbCode}`
+        `${apiBaseUrl}/main/findbyaccnotable/${e.target.value}/${dbCode}`
       );
       const fetchedData = response.data;
       const newData = [...tableData];
@@ -1047,7 +1106,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
 
         // Find the corresponding array in agentName based on agent
         const matchingAgentData = agentName.find(
-          (item) => item[0] === parseInt(frmId?frmId:agentCode)
+          (item) => item[0] === parseInt(frmId ? frmId : agentCode)
         );
 
         // Update the name and agent fields of the current row in tableData
@@ -1059,7 +1118,6 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
             accountNumber: accNo.find((item) => item[1] === e.target.value),
           };
           // dispTotalWt(rowIndex % 2 === 0 ? rowIndex / 2 + 1 : "",matchingCnameData[0] || [])
-
         } else {
           newData[rowIndex] = {
             ...newData[rowIndex],
@@ -1068,7 +1126,6 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
             accountNumber: accNo.find((item) => item[1] === e.target.value),
           };
           // dispTotalWt(rowIndex % 2 === 0 ? rowIndex / 2 + 1 : "",matchingCnameData[0] || [])
-
         }
         setTableData(newData);
       }
@@ -1111,7 +1168,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   const fetchfirstandlast = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/topandlast/${parseInt(frmId?frmId:agentCode)}/${dbCode}`
+        `${apiBaseUrl}/main/topandlast/${parseInt(
+          frmId ? frmId : agentCode
+        )}/${dbCode}`
       );
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
@@ -1128,8 +1187,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindbyentryNo/${findEntryNo}/${parseInt(
-          frmId?frmId:agentCode
+        `${apiBaseUrl}/main/SchRecfindbyentryNo/${findEntryNo}/${parseInt(
+          frmId ? frmId : agentCode
         )}/${dbCode}`
       );
 
@@ -1193,9 +1252,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     }
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/deleterecbyentryno/${
+        `${apiBaseUrl}/main/deleterecbyentryno/${
           schemeRecInfoData.EntryNo
-        }/${parseInt(frmId?frmId:agentCode)}/${dbCode}`
+        }/${parseInt(frmId ? frmId : agentCode)}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({
@@ -1226,8 +1285,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     // }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindprev/${schemeRecInfoData.EntryNo}/${parseInt(
-          frmId?frmId:agentCode
+        `${apiBaseUrl}/main/SchRecfindprev/${schemeRecInfoData.EntryNo}/${parseInt(
+          frmId ? frmId : agentCode
         )}/${dbCode}`
       );
 
@@ -1286,8 +1345,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindnext/${schemeRecInfoData.EntryNo}/${parseInt(
-          frmId?frmId:agentCode
+        `${apiBaseUrl}/main/SchRecfindnext/${schemeRecInfoData.EntryNo}/${parseInt(
+          frmId ? frmId : agentCode
         )}/${dbCode}`
       );
 
@@ -1340,8 +1399,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindfirst/${schemeRecInfoData.EntryNo}/${parseInt(
-          frmId?frmId:agentCode
+        `${apiBaseUrl}/main/SchRecfindfirst/${schemeRecInfoData.EntryNo}/${parseInt(
+          frmId ? frmId : agentCode
         )}/${dbCode}`
       );
 
@@ -1394,8 +1453,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
     handleClearfind();
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRecfindlast/${schemeRecInfoData.EntryNo}/${parseInt(
-          frmId?frmId:agentCode
+        `${apiBaseUrl}/main/SchRecfindlast/${schemeRecInfoData.EntryNo}/${parseInt(
+          frmId ? frmId : agentCode
         )}/${dbCode}`
       );
 
@@ -1458,7 +1517,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/totalweight/${
+          tableData[selectedSlNo - 1 || 0].name[0]
+        }/${dbCode}`
       );
       //////console.log("res===",response.data);
       setaccumulatedWt(response.data[0].WeightDifference);
@@ -1468,15 +1529,14 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   };
   const [dispWt, setdispWt] = useState("");
 
-
   // const dispTotalWt = async (index,e) => {
   //   // ////console.log("index===",index);
   // //   if(e.key==='Enter'||e.key==='Return')
   // //  {
   //    try {
   //     const response = await axios.get(
-  //       // `${apiBaseUrl}/totalweight/${tableData[index - 1 || 0].name[0]}`
-  //       `${apiBaseUrl}/totalweight/${e}`
+  //       // `${apiBaseUrl}/main/totalweight/${tableData[index - 1 || 0].name[0]}`
+  //       `${apiBaseUrl}/main/totalweight/${e}`
 
   //     );
   //     var calcgm =0;
@@ -1486,25 +1546,22 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   //     //   if (Rate !== 0) {
   //     //      calcgm = (e.target.value / Rate).toFixed(3);
   //     //     //  ////console.log("calcgm===",calcgm);
-          
+
   //     //   }
-      
+
   //     // }
   //     // const totalWeight = parseFloat(response.data[0].WeightDifference||0) + parseFloat(calcgm);
-      
+
   //     setdispWt(response.data[0].WeightDifference||0);
   //     // setdispWt(totalWeight.toFixed(3));
 
-
   //     // ////console.log("res===",response.data[0].WeightDifference);
   //     // ////console.log("parse=", parseFloat(response.data[0].WeightDifference));
-      
+
   //     // ////console.log("wt===",calcgm);
   //     // ////console.log("parse2", parseFloat(calcgm));
-      
-  //     // ////console.log("totalgm=",dispWt);
-      
 
+  //     // ////console.log("totalgm=",dispWt);
 
   //   } catch (error) {
   //     console.error("Error fetching data:", error);
@@ -1515,54 +1572,47 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
   // //   }
   // };
 
-
-  const dispTotalWt = async (index,e) => {
+  const dispTotalWt = async (index, e) => {
     // ////console.log("index===",index);
-  //   if(e.key==='Enter'||e.key==='Return')
-  //  {
-     try {
+    //   if(e.key==='Enter'||e.key==='Return')
+    //  {
+    try {
       const response = await axios.get(
-        `${apiBaseUrl}/totalweight/${tableData[index - 1 || 0].name[0]}/${dbCode}`
-        // `${apiBaseUrl}/totalweight/${e}`
-
+        `${apiBaseUrl}/main/totalweight/${
+          tableData[index - 1 || 0].name[0]
+        }/${dbCode}`
+        // `${apiBaseUrl}/main/totalweight/${e}`
       );
-      var calcgm =0;
+      var calcgm = 0;
       if (e.target.value !== "" || null) {
         const Rate = schemeRecInfoData.rate;
         //  ////console.log("log rate", Rate);
         if (Rate !== 0) {
-           calcgm = (e.target.value / Rate).toFixed(3);
+          calcgm = (e.target.value / Rate).toFixed(3);
           //  ////console.log("calcgm===",calcgm);
-          
         }
-      
-       }
-      const totalWeight = parseFloat(response.data[0].WeightDifference||0) + parseFloat(calcgm);
-      
+      }
+      const totalWeight =
+        parseFloat(response.data[0].WeightDifference || 0) + parseFloat(calcgm);
+
       // setdispWt(response.data[0].WeightDifference||0);
       setdispWt(totalWeight.toFixed(3));
 
-
       // ////console.log("res===",response.data[0].WeightDifference);
       // ////console.log("parse=", parseFloat(response.data[0].WeightDifference));
-      
+
       // ////console.log("wt===",calcgm);
       // ////console.log("parse2", parseFloat(calcgm));
-      
+
       // ////console.log("totalgm=",dispWt);
-      
-
-
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  // }
-  //   else{
-  //     return
-  //   }
+    // }
+    //   else{
+    //     return
+    //   }
   };
-
-
 
   const removeRow = (index) => {
     const newTableData = [...tableData];
@@ -1579,7 +1629,10 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
           <div className="schemereg_headerLogo" onClick={handleCheckSlno}>
             <img src={headeLogo} alt="SherSoftLogo" />
           </div>
-          <label className="schemeReg_pageHead"> {fname ? fname : "Scheme Receipt"}</label>
+          <label className="schemeReg_pageHead">
+            {" "}
+            {fname ? fname : "Scheme Receipt"}
+          </label>
         </div>
         <img
           alt="X"
@@ -1667,7 +1720,8 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
         <button
           style={{ border: "none", backgroundColor: "transparent" }}
           className="schemeNav_items"
-          onClick={()=>{onClose();
+          onClick={() => {
+            onClose();
             setfrmid("");
             setfname("");
           }}
@@ -1788,7 +1842,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                 className="schRecTopdatasectionsrows sec3row"
                 style={{ width: "14vw" }}
               >
-                <label>Date</label>
+                <label >Date</label>
                 <input
                   value={schemeRecInfoData.date}
                   type="date"
@@ -1829,7 +1883,7 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                   <th className="schRecDataTableHeadgm">Gm</th>
                   <th className="schRecDataTableHeadnarration">Narration</th>
                   <th className="schRecDataTableHeadprintgm">Print Gm</th>
-                  <th className="schRecDataTableHeadprintgm" ></th>
+                  <th className="schRecDataTableHeadprintgm"></th>
                 </tr>
               </thead>
               <tbody className="schRecDataTableBodyStyle">
@@ -1910,7 +1964,6 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                             //     ? rowIndex - rowIndex / 2
                             //     : rowIndex
                             // );
-
                           }}
                         />
                       )}
@@ -2041,7 +2094,13 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                             //     : rowIndex
                             // )
                           }
-                          onBlur={(e) => fetchAccNoData(e, rowIndex, frmId?frmId:agentCode)}
+                          onBlur={(e) =>
+                            fetchAccNoData(
+                              e,
+                              rowIndex,
+                              frmId ? frmId : agentCode
+                            )
+                          }
                           inlineStyles={{ textAlign: "right" }}
                         />
                       )}
@@ -2069,8 +2128,10 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                           }}
                           onBlur={(e) => {
                             calculateGmvalue(e.target.value, rowIndex);
-                             dispTotalWt(rowIndex % 2 === 0 ? rowIndex / 2 + 1 : "",e)
-
+                            dispTotalWt(
+                              rowIndex % 2 === 0 ? rowIndex / 2 + 1 : "",
+                              e
+                            );
                           }}
                         />
                       )}
@@ -2149,7 +2210,12 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
                         />
                       )}
                     </td>
-                    <td className="schRecDataTableDataBoxRemoveItem" onClick={() => removeRow(rowIndex % 2 === 0 ? rowIndex / 2  : "")} >
+                    <td
+                      className="schRecDataTableDataBoxRemoveItem"
+                      onClick={() =>
+                        removeRow(rowIndex % 2 === 0 ? rowIndex / 2 : "")
+                      }
+                    >
                       {rowIndex % 2 === 0 && <img src={binImg} alt="binImg" />}
                     </td>
                   </tr>
@@ -2161,9 +2227,9 @@ function SchemeCashReceipt({ onClose,formId,formName }) {
           <div className="schRecDataTablefootertotal">
             <div className="oldwt">
               <label>TW</label>
-              <input value={dispWt} style={{height:'80%' ,border:"none"}} />
+              <input value={dispWt} style={{ height: "80%", border: "none" }} />
             </div>
-          
+
             <input
               className="schRecDataTablefootertotalamount"
               value={schemeRecInfoData.totalamt}

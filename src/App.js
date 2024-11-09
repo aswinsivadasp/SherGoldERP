@@ -40,6 +40,10 @@ import OpenCompany from './components/OpenCompany';
 import OpenCompanyMob from './pages/OpenCompanyMob';
 import EmailVerification from './components/EmailVerification';
 import SmsSettings from './components/SmsSettings';
+import CdbSettings from './components/CdbSettings';
+import Receipt from './components/CashReceipt';
+import CashReceipt from './components/CashReceipt';
+import WhatsAppSettings from './components/WhatsAppSettings';
 // import 'normalize.css';
 
 
@@ -67,6 +71,7 @@ function App() {
               <Route path="/opencompany" element={<ProtectedRoute element={<OpenCompany />} />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/verifyemail" element={<EmailVerification />} />
+              <Route path="/cdbsettings" element={<CdbSettings />} />
 
               <Route path="/signUp" element={<ProtectedRoute element={<SignUp />} />} />
 
@@ -112,11 +117,9 @@ function App() {
               <Route path="/agreport" element={<ProtectedRoute element={<AgentReport />} />} />
               <Route path="/agreportdia" element={<ProtectedRoute element={<AgentReportModel />} />} />
               <Route path="/smssettings" element={<ProtectedRoute element={<SmsSettings />} />} />
+              <Route path="/wtssettings" element={<ProtectedRoute element={<WhatsAppSettings />} />} />
 
-
-
-
-
+              <Route path="/cashreceipt" element={<ProtectedRoute element={<CashReceipt/>} />} />
 
             </Routes>
           </Router>

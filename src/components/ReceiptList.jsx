@@ -70,7 +70,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
     const fetchRegCname = async () => {
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/SchRec_schemeregisteredcustomers/${dbCode}`
+          `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers/${dbCode}`
         );
 
         // Assuming response.data is an array with objects and each object has a LedName property
@@ -97,7 +97,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
   const fetchRegCname = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRec_schemeregisteredcustomers/${dbCode}`
+        `${apiBaseUrl}/main/SchRec_schemeregisteredcustomers/${dbCode}`
       );
 
       // Assuming response.data is an array with objects and each object has a LedName property
@@ -121,7 +121,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
   const [agentobj, setAgentObj] = useState([]);
   const fetchAgname = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const AgName = response.data;
@@ -141,7 +141,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/schsalesmanNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/schsalesmanNames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -166,7 +166,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
 
   const fetchAccno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno/${dbCode}`);
 
       // Assuming response.data is an array with objects and each object has a LedName property
       const Accno = response.data;
@@ -187,7 +187,7 @@ function ReceiptList({ onClose, openReceiptListReport }) {
   useEffect(() => {
     const fetchAccno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchRec_Accno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchRec_Accno/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const Accno = response.data;

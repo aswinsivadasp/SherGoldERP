@@ -13,9 +13,36 @@ import html2canvas from "html2canvas";
 import axios from "axios";
 import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
+import { useDbContext } from "../context/DbContext";
 
 function Print({ printData, onClose, totalwt }) {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+  const { dbCode } = useDbContext();
+  const [companyName, setCompanyName] = useState("");
+
+  useEffect(() => {
+    fetchcompanydetails();
+  }, []);
+
+  
+    
+    const fetchcompanydetails = async () => {
+      try {
+        const response = await axios.get(
+          `${apiBaseUrl}/main/findCompanyDetails/${dbCode}`
+        );
+        const foundData = response.data[0];
+        setCompanyName(foundData.name || "SherGold");
+        console.log("found", foundData.name);
+
+        // setsupplierName(supplName);
+      } catch (error) {
+        console.error("Error fetching company datas:", error.message);
+        // alert(error.response.data);
+      }
+    };
+
+
   const printRef = useRef();
 
   const { schemeRecInfoData, tableData, index } = printData || {};
@@ -99,7 +126,7 @@ function Print({ printData, onClose, totalwt }) {
             RECEIPT
           </label>
           <label htmlFor="" className="receiptCompanyName">
-            CHUNDANGATHRA GOLD & DIAMONDS
+          {companyName}
           </label>
         </div>
         <div id="printContent" className="printContent">
@@ -203,7 +230,7 @@ function Print({ printData, onClose, totalwt }) {
                 >
                   ₹
                 </span>
-                <span className="RecPrintfontsize " style={{marginLeft:"0"}}>
+                <span className="RecPrintfontsize " style={{ marginLeft: "0" }}>
                   {schemeRecInfoData.rate}
                 </span>
               </div>
@@ -239,9 +266,17 @@ function Print({ printData, onClose, totalwt }) {
             </div>
           </div>
           {/* )} */}
-          <div className="printContentBodyfootersecsign " style={{width:"100%",textAlign:"right", height:"10%" }}>
-           {/* <p>    ---------------------------------------------   </p> */}
-            <span className="RecPrintfontsize " style={{marginRight:'10%',marginBottom:"2%"}}>Receiver Signature</span>
+          <div
+            className="printContentBodyfootersecsign "
+            style={{ width: "100%", textAlign: "right", height: "10%" }}
+          >
+            {/* <p>    ---------------------------------------------   </p> */}
+            <span
+              className="RecPrintfontsize "
+              style={{ marginRight: "10%", marginBottom: "2%" }}
+            >
+              Receiver Signature
+            </span>
           </div>
         </div>
       </div>

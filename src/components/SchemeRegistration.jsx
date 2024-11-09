@@ -88,7 +88,7 @@ function SchemeRegistration({ onClose, Open }) {
   useEffect(() => {
     const fetchSchEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/Sch_entryno/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/Sch_entryno/${dbCode}`);
         //  ////console.log("response =", response);
         const schemeentryNo = response.data.map((item) => item[""]);
 
@@ -108,7 +108,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchSchEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/Sch_entryno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/Sch_entryno/${dbCode}`);
       const schemeentryNo = response.data.map((item) => item[""]);
 
       setschemeRegData((prevData) => ({
@@ -124,7 +124,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchSchEntryno2 = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/Sch_entryno/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/Sch_entryno/${dbCode}`);
       const schemeentryNo = response.data.map((item) => item[""]);
 
       setschemeRegData((prevData) => ({
@@ -157,7 +157,7 @@ function SchemeRegistration({ onClose, Open }) {
   useEffect(() => {
     const fetchAccountNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/accountNames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/accountNames/${dbCode}`);
         const schemeDet = response.data;
         const AccNames = schemeDet.map((item) => [item.Ledcode, item.LedName]);
         const cnames = schemeDet.map((item) => item.Ledcode);
@@ -195,7 +195,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchAccountNames = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/accountNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/accountNames/${dbCode}`);
       const schemeDet = response.data;
       const AccNames = schemeDet.map((item) => [item.Ledcode, item.LedName]);
       const cnames = schemeDet.map((item) => item.Ledcode);
@@ -209,7 +209,7 @@ function SchemeRegistration({ onClose, Open }) {
   useEffect(() => {
     const fetchSchCurrentRate = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
         const currentrate = response.data[0]?.currentRate;
         setschemeRegData((prevData) => ({ ...prevData, rate: currentrate }));
       } catch (error) {
@@ -221,7 +221,7 @@ function SchemeRegistration({ onClose, Open }) {
   }, [apiBaseUrl]);
   const fetchSchCurrentRate = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/currentgoldRate/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/currentgoldRate/${dbCode}`);
       const currentrate = response.data[0]?.currentRate;
       setschemeRegData((prevData) => ({ ...prevData, rate: currentrate }));
     } catch (error) {
@@ -282,7 +282,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchUpdatedAccountNames = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/accountNames/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/accountNames/${dbCode}`);
       const schemeDet = response.data;
       const AccNames = schemeDet.map((item) => [item.Ledcode, item.LedName]);
       setANames(AccNames);
@@ -296,7 +296,7 @@ function SchemeRegistration({ onClose, Open }) {
   useEffect(() => {
     const fetchEmployeeNames = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/SchReg_empname/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/SchReg_empname/${dbCode}`);
 
         const empNames = response.data.map((item) => [item.Auto, item.name]);
 
@@ -314,7 +314,7 @@ function SchemeRegistration({ onClose, Open }) {
   useEffect(() => {
     const fetchschregisteredcustomers = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/registeredcustomers/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/registeredcustomers/${dbCode}`);
 
         const Names = response.data.map((item) => item.accname);
 
@@ -329,7 +329,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchupdschregisteredcustomers = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/registeredcustomers/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/registeredcustomers/${dbCode}`);
 
       const Names = response.data.map((item) => item.accname);
 
@@ -347,7 +347,7 @@ function SchemeRegistration({ onClose, Open }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/scheRegcustomerDetails/${e[0]}/${dbCode}`
+        `${apiBaseUrl}/main/scheRegcustomerDetails/${e[0]}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -406,6 +406,7 @@ function SchemeRegistration({ onClose, Open }) {
     // Calculate gm value after clearing the fields
     calculateGm();
     entryNoInputRef.current.focus();
+    fetchupdschregisteredcustomers()
   };
 
   const handleClearFind = () => {
@@ -498,7 +499,7 @@ function SchemeRegistration({ onClose, Open }) {
           };
           // Make a POST request to your server with the form data
           const response = await axios.post(
-            `${apiBaseUrl}/insertScheme/${dbCode}`,
+            `${apiBaseUrl}/main/insertScheme/${dbCode}`,
             updatedSchemeRegData
           );
 
@@ -559,7 +560,7 @@ function SchemeRegistration({ onClose, Open }) {
 
         // Make a GET request to your server with the selected name for finding data
         const response = await axios.get(
-          `${apiBaseUrl}/findbyAccname/${schemeRegData.accountName[0]}/${dbCode}`
+          `${apiBaseUrl}/main/findbyAccname/${schemeRegData.accountName[0]}/${dbCode}`
         );
 
         // Check the response status and handle accordingly
@@ -626,7 +627,7 @@ function SchemeRegistration({ onClose, Open }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/findbyAccno/${schemeRegData.accountNo}/${dbCode}`
+        `${apiBaseUrl}/main/findbyAccno/${schemeRegData.accountNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -679,7 +680,7 @@ function SchemeRegistration({ onClose, Open }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRegfindfirst/${schemeRegData.entryNo}/${dbCode}`
+        `${apiBaseUrl}/main/SchRegfindfirst/${schemeRegData.entryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -732,7 +733,7 @@ function SchemeRegistration({ onClose, Open }) {
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRegfindlast/${schemeRegData.entryNo}/${dbCode}`
+        `${apiBaseUrl}/main/SchRegfindlast/${schemeRegData.entryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -786,7 +787,7 @@ function SchemeRegistration({ onClose, Open }) {
 
   const fetchfirstandlast = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/ScheRegtopandlast/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/ScheRegtopandlast/${dbCode}`);
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
         setLastEno(response.data[0].lastentryno);
@@ -802,7 +803,7 @@ function SchemeRegistration({ onClose, Open }) {
     }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRegfindnext/${schemeRegData.entryNo}/${dbCode}`
+        `${apiBaseUrl}/main/SchRegfindnext/${schemeRegData.entryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -857,7 +858,7 @@ function SchemeRegistration({ onClose, Open }) {
     }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/SchRegfindprev/${schemeRegData.entryNo}/${dbCode}`
+        `${apiBaseUrl}/main/SchRegfindprev/${schemeRegData.entryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -932,7 +933,7 @@ function SchemeRegistration({ onClose, Open }) {
         };
         //  ////console.log("up", updatedSchemeRegData);
         const response = await axios.post(
-          `${apiBaseUrl}/updateScheme/${dbCode}`,
+          `${apiBaseUrl}/main/updateScheme/${dbCode}`,
           updatedSchemeRegData
         );
 
@@ -970,7 +971,7 @@ function SchemeRegistration({ onClose, Open }) {
   const fetchExist = async (e) => {
     // ////console.log("e",e);
     try {
-      const response = await axios.get(`${apiBaseUrl}/schUsedEntry/${e[0]}/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/schUsedEntry/${e[0]}/${dbCode}`);
       // ////console.log("count=", response.data[0].CountExists);
 
       setcountExist(response.data[0].CountExists);
@@ -995,7 +996,7 @@ function SchemeRegistration({ onClose, Open }) {
         }
 
         const response = await axios.delete(
-          `${apiBaseUrl}/deletebyAccname/${schemeRegData.accountName[0]}/${dbCode}`
+          `${apiBaseUrl}/main/deletebyAccname/${schemeRegData.accountName[0]}/${dbCode}`
         );
         if (response.status === 200) {
           // Swal.fire({
@@ -1172,7 +1173,7 @@ function SchemeRegistration({ onClose, Open }) {
           <div className="schemeRegBodyDatapart1">
             <div className="schemeRegBodyDataRows part1row">
               <div className="schemeRegBodyDataRowspart1 entrynodiv">
-                <label>Entry No</label>
+                <label className="font-Inter">Entry No</label>
 
                 <input
                   readOnly
@@ -1183,7 +1184,7 @@ function SchemeRegistration({ onClose, Open }) {
                 />
               </div>
               <div className="schemeRegBodyDataRowspart2 entrynodiv">
-                <label>Date</label>
+                <label className="font-Inter">Date</label>
                 <input
                   value={schemeRegData.date}
                   type="date"
@@ -1196,7 +1197,7 @@ function SchemeRegistration({ onClose, Open }) {
               </div>
             </div>
             <div className="schemeRegBodyDataRows SchAccName part1row">
-              <label className="accNameLabel">Account Name</label>
+              <label className="accNameLabel font-Inter">Account Name</label>
               {/* <input className="accNameinput" /> */}
               <ComboBox
                 findedValue={
@@ -1219,7 +1220,7 @@ function SchemeRegistration({ onClose, Open }) {
               />
             </div>
             <div className="schemeRegBodyDataRows SchAccName part1row">
-              <label className="accNameLabel">Agent</label>
+              <label className="accNameLabel font-Inter">Agent</label>
               {/* <input className="accNameinput" /> */}
               <ComboBox
                 findedValue={
@@ -1239,7 +1240,7 @@ function SchemeRegistration({ onClose, Open }) {
             </div>
             <div className="schemeRegBodyDataRows SchAccName part1row">
               <div className="durationdiv">
-                <label className="Durationlabel">Duration</label>
+                <label className="Durationlabel font-Inter">Duration</label>
                 <input
                   value={schemeRegData.duration}
                   type="number"
@@ -1255,7 +1256,7 @@ function SchemeRegistration({ onClose, Open }) {
                   }
                 />
               </div>
-              <label className="schemeRegBodyDataperclabel">%Perc</label>
+              <label className="schemeRegBodyDataperclabel font-Inter">%Perc</label>
               <input
                 value={schemeRegData.intperc}
                 onKeyDown={(e) => handleKeyDown(e, accountNoInputRef)}
@@ -1270,7 +1271,7 @@ function SchemeRegistration({ onClose, Open }) {
               />
               <div className="accNodiv ">
                 <div className="accNolabelDiv">
-                  <label className="accountNumberlabel">Account Number</label>
+                  <label className="accountNumberlabel font-Inter text-nowrap">Account Number</label>
                   <div className="accountNumberInputdiv">
                     <input
                       value={schemeRegData.accountNo}
@@ -1287,7 +1288,7 @@ function SchemeRegistration({ onClose, Open }) {
                       }
                     />
                     <button
-                      className="accountNumbersearchbutton"
+                      className="accountNumbersearchbutton font-Inter"
                       onClick={handleSearchByAccountNo}
                     >
                       Search
@@ -1305,7 +1306,7 @@ function SchemeRegistration({ onClose, Open }) {
           {/* /////////////////// */}
           <div className="schemeRegBodyDatapart2">
             <div className="schemeRegBodyDataRows addressdivmob">
-              <label className="schemeRegBodyDatapart2label1">Address 1</label>
+              <label className="schemeRegBodyDatapart2label1 font-Inter">Address 1</label>
               <input
                 value={schemeRegData.add1}
                 onKeyDown={(e) => handleKeyDown(e, address2InputRef)}
@@ -1315,7 +1316,7 @@ function SchemeRegistration({ onClose, Open }) {
                   setschemeRegData({ ...schemeRegData, add1: e.target.value })
                 }
               />
-              <label className="schemeRegBodyDatapart2label2">Address 2</label>
+              <label className="schemeRegBodyDatapart2label2 font-Inter">Address 2</label>
               <input
                 value={schemeRegData.add2}
                 onKeyDown={(e) => handleKeyDown(e, cityInputRef)}
@@ -1327,7 +1328,7 @@ function SchemeRegistration({ onClose, Open }) {
               />
             </div>
             <div className="schemeRegBodyDataRows">
-              <label className="schemeRegBodyDatapart2label1">City/Town</label>
+              <label className="schemeRegBodyDatapart2label1 font-Inter">City/Town</label>
               <input
                 value={schemeRegData.city}
                 onKeyDown={(e) => handleKeyDown(e, pincodeInputRef)}
@@ -1337,7 +1338,7 @@ function SchemeRegistration({ onClose, Open }) {
                   setschemeRegData({ ...schemeRegData, city: e.target.value })
                 }
               />
-              <label className="schemeRegBodyDatapart2label2">Pincode</label>
+              <label className="schemeRegBodyDatapart2label2 font-Inter">Pincode</label>
               <input
                 type="number"
                 value={schemeRegData.pincode}
@@ -1353,7 +1354,7 @@ function SchemeRegistration({ onClose, Open }) {
               />
             </div>
             <div className="schemeRegBodyDataRows">
-              <label className="schemeRegBodyDatapart2label1">
+              <label className="schemeRegBodyDatapart2label1 font-Inter">
                 Contact Person
               </label>
               <input
@@ -1368,7 +1369,7 @@ function SchemeRegistration({ onClose, Open }) {
                   })
                 }
               />
-              <label className="schemeRegBodyDatapart2label2">Email</label>
+              <label className="schemeRegBodyDatapart2label2 font-Inter">Email</label>
               {/* {emailError && <div className="error">{emailError}</div>} */}
               <input
                 value={schemeRegData.email}
@@ -1386,7 +1387,7 @@ function SchemeRegistration({ onClose, Open }) {
               />
             </div>
             <div className="schemeRegBodyDataRows">
-              <label className="schemeRegBodyDatapart2label1">Tele No.</label>
+              <label className="schemeRegBodyDatapart2label1 font-Inter">Tele No.</label>
               <input
                 value={schemeRegData.tele}
                 type="number"
@@ -1397,8 +1398,11 @@ function SchemeRegistration({ onClose, Open }) {
                   setschemeRegData({ ...schemeRegData, tele: e.target.value })
                 }
               />
-              <label className="schemeRegBodyDatapart2label2">Mobile</label>
+              
+              <label className="schemeRegBodyDatapart2label2 font-Inter" htmlFor="mobNo">Mobile</label>
               <input
+              id="mobNo"
+
                 value={schemeRegData.mobile}
                 type="number"
                 onKeyDown={(e) => handleKeyDown(e, narrationInputRef)}
@@ -1417,7 +1421,7 @@ function SchemeRegistration({ onClose, Open }) {
           {/* ///////////// */}
           <div className="schemeRegBodyDatapart3">
             <div className="schemeRegBodyDatapart3narration">
-              <label>Narration</label>
+              <label className="font-Inter">Narration</label>
               <input
                 value={schemeRegData.narration}
                 onKeyDown={(e) => handleKeyDown(e, saveButtonRef)}

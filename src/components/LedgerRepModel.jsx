@@ -98,7 +98,7 @@ function LedgerRepModel({ onClose, openReport }) {
   useEffect(() => {
     const fetchLgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/jvledgernames/${dbCode}`);
+        const response = await axios.get(`${apiBaseUrl}/main/jvledgernames/${dbCode}`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const LgName = response.data;
@@ -149,7 +149,7 @@ function LedgerRepModel({ onClose, openReport }) {
   useEffect(() => {
     const fetchLedgerheads = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/spledgerheads`);
+        const response = await axios.get(`${apiBaseUrl}/main/spledgerheads`);
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const LgName = response.data;

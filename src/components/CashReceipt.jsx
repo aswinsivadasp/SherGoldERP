@@ -1,7 +1,4 @@
-
-
-import "../styles/JournalEntry.css";
-import "../styles/ContraEntry.css";
+import "../styles/CashReceipt.css";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import "../styles/SchemeRegistration.css";
 import "../styles/SchemeCashReceipt.css";
@@ -24,16 +21,25 @@ import ComboBox from "./ComboBox";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Print from "./Print";
-import io from 'socket.io-client';
+import io from "socket.io-client";
 import { AuthContext } from "../context/AuthContext";
 import { useDbContext } from "../context/DbContext";
 
-function ContraEntry({ onClose,Open }) {
+function CashReceipt({ onClose, Open, ledgerJustClosed }) {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const { agentCode } = useContext(AuthContext);
+
   const { dbCode } = useDbContext();
 
+  const ledstatus = () => {
+    // ////console.log("ledstatus");
+  };
 
+  useEffect(() => {
+    if (ledgerJustClosed) {
+      ledstatus();
+    }
+  }, [ledgerJustClosed]);
 
   const agentCodeRef = useRef(agentCode);
 
@@ -92,8 +98,6 @@ function ContraEntry({ onClose,Open }) {
     return `${year}-${month}-${day}`;
   };
 
-
-
   ////////////////////////// form data states //////////
 
   const [tableData, setTableData] = useState([
@@ -105,7 +109,7 @@ function ContraEntry({ onClose,Open }) {
       narration: "",
     }),
   ]);
-//////console.log("tabledata",tableData);
+
   const openPrintModal = () => {
     fetchData();
     const slnoLimit = handleCheckSlno();
@@ -116,25 +120,26 @@ function ContraEntry({ onClose,Open }) {
 
     setPrintData({
       tableData: tableData,
-      cvInfoData: cvInfoData,
+      jvInfoData: jvInfoData,
       index: selectedSlNo,
     });
     setShowPrintModel(true);
   };
   // ////console.log("table data ===== ", tableData);
 
-  const [cvInfoData, setcvInfoData] = useState({
+  const [jvInfoData, setJvInfoData] = useState({
     EntryNo: "",
-    Branch: [1, "SHOP"],
+    Branch: [1, "CASH"],
     Salesman: "",
     date: getCurrentDate(),
     totalamt: "",
   });
 
-  // ////console.log("info data = ", cvInfoData);
+  //  ////console.log("info data = ", jvInfoData);
 
   ///////////////////////////////////////////////
   // const[accountTransaction,setAccountTransaction]=useState({
+
   // atDate:"",
   // atLedcode:"",
   // atType:"",
@@ -160,7 +165,6 @@ function ContraEntry({ onClose,Open }) {
       setTableData(newData); // Update the tableData state with the modified data
     }
   };
-
 
   const handleCellChangeinput = (event, rowIndex, field) => {
     const newData = [...tableData]; // Create a copy of the tableData array
@@ -209,6 +213,35 @@ function ContraEntry({ onClose,Open }) {
     }
   };
   const [RowIndex, setRowIndex] = useState(0);
+
+  const backtrackfocus = () => {
+    const rowIndex = sessionStorage.getItem("journalEntryRowIndex");
+    const columnIndex = sessionStorage.getItem("journalEntryColumnIndex");
+
+    const tableContainer = tableContainerRef.current;
+    const rows = tableContainer.querySelectorAll(
+      ".cashRecDataTableBodyStyletr"
+    );
+
+    // Check if the row at the specified index exists
+    if (rows[rowIndex]) {
+      // Determine the next column index
+      const nextColumnIndex =
+        columnIndex - 1 < rows[rowIndex].cells.length - 1 ? columnIndex : 0;
+
+      // Find the input field in the next column
+      const nextInput =
+        rows[rowIndex]?.cells[nextColumnIndex]?.querySelector("input");
+
+      if (nextInput) {
+        // Check if the current input field is the product name input field
+
+        nextInput.focus();
+      }
+    }
+    sessionStorage.removeItem("journalEntryRowIndex");
+    sessionStorage.removeItem("journalEntryColumnIndex");
+  };
   // ////console.log(RowIndex);
 
   const handleKeyDownTable = (event, rowIndex, columnIndex) => {
@@ -217,7 +250,7 @@ function ContraEntry({ onClose,Open }) {
 
       const tableContainer = tableContainerRef.current;
       const rows = tableContainer.querySelectorAll(
-        ".cventryDataTableBodyStyletr"
+        ".cashRecDataTableBodyStyletr"
       );
 
       // Check if the row at the specified index exists
@@ -235,7 +268,7 @@ function ContraEntry({ onClose,Open }) {
           const currentInputAccno = columnIndex === 1;
 
           if (currentInputAccno && !event.target.value.trim()) {
-            // If the product name input is empty, move focus to other charges input
+            // If the product name input is empty, move focus to save btn
 
             if (saveDisabled) {
               // If save button is disabled, move focus to edit button
@@ -261,11 +294,13 @@ function ContraEntry({ onClose,Open }) {
   useEffect(() => {
     const fetchSchEntryno = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/main/cv_entryno/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/jv_entryno/${dbCode}`
+        );
         //  ////console.log("response =", response);
         const schemeRecentryNo = response.data;
 
-        setcvInfoData((prevData) => ({
+        setJvInfoData((prevData) => ({
           ...prevData,
           EntryNo: schemeRecentryNo,
         }));
@@ -280,11 +315,13 @@ function ContraEntry({ onClose,Open }) {
 
   const fetchSchEntryno = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/main/cv_entryno/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/jv_entryno/${dbCode}`
+      );
       // ////console.log("response =", response);
       const schemeRecentryNo = response.data;
 
-      setcvInfoData((prevData) => ({
+      setJvInfoData((prevData) => ({
         ...prevData,
         EntryNo: schemeRecentryNo,
       }));
@@ -292,8 +329,6 @@ function ContraEntry({ onClose,Open }) {
       console.error("Error fetching entry no:", error.message);
     }
   };
-
-  
 
   //////////agent name///////////////
 
@@ -303,7 +338,9 @@ function ContraEntry({ onClose,Open }) {
   useEffect(() => {
     const fetchAgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/main/jvschsalesmanNames/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/jvschsalesmanNames/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const AgName = response.data;
@@ -323,7 +360,6 @@ function ContraEntry({ onClose,Open }) {
     fetchAgname();
   }, [apiBaseUrl]);
 
-
   // const fetchAgname = async (searchTerm = '') => {
   //   try {
   //     const response = await axios.get(`${apiBaseUrl}/main/jvschsalesmanNames?search=${encodeURIComponent(searchTerm)}`);
@@ -339,45 +375,15 @@ function ContraEntry({ onClose,Open }) {
   // };
 
   ////////////////////ledger/////////////////////
-  
-  const backtrackfocus=()=>{
-    const rowIndex = sessionStorage.getItem('contraEntryRowIndex');
-    const columnIndex = sessionStorage.getItem('contraEntryColumnIndex');
-
-    const tableContainer = tableContainerRef.current;
-    const rows = tableContainer.querySelectorAll(
-      ".cventryDataTableBodyStyletr"
-    );
-
-    // Check if the row at the specified index exists
-    if (rows[rowIndex]) {
-      // Determine the next column index
-      const nextColumnIndex =
-        columnIndex-1 < rows[rowIndex].cells.length - 1 ? columnIndex : 0;
-
-      // Find the input field in the next column
-      const nextInput =
-        rows[rowIndex]?.cells[nextColumnIndex]?.querySelector("input");
-
-      if (nextInput) {
-        // Check if the current input field is the product name input field
-       
-
-          nextInput.focus();
-        
-      }
-    }
-    sessionStorage.removeItem('contraEntryRowIndex');
-    sessionStorage.removeItem('contraEntryColumnIndex');
-
-  }
 
   const [LedgerName, setLedgerName] = useState([]);
 
   useEffect(() => {
     const fetchLgname = async () => {
       try {
-        const response = await axios.get(`${apiBaseUrl}/main/cvledgernames/${dbCode}`);
+        const response = await axios.get(
+          `${apiBaseUrl}/main/jvledgernames/${dbCode}`
+        );
 
         // Assuming response.data is an array with objects and each object has a LedName property
         const LgName = response.data;
@@ -386,7 +392,7 @@ function ContraEntry({ onClose,Open }) {
         // const supplName = cName.map((item) => item.LedName);
 
         const transformedData = LgName.map((item) => [
-          item.ledcode,
+          item.Ledcode,
           item.LedName,
         ]);
         setLedgerName(transformedData);
@@ -400,44 +406,36 @@ function ContraEntry({ onClose,Open }) {
 
     fetchLgname();
 
-
-        // Connect to the WebSocket server
+    // Connect to the WebSocket server
     const socket = io(apiBaseUrl); // Make sure the URL matches your backend server
-    socket.on('dataUpdated', () => {
-   //   ////console.log('Data updated, fetching new data...');
+    socket.on("dataUpdated", () => {
+      //   ////console.log('Data updated, fetching new data...');
       fetchLgname(); // Re-fetch the data when an update is detected
     });
 
     return () => {
       socket.disconnect(); // Clean up the socket connection on component unmount
-   //   ////console.log("socketdisconneccted");
+      //   ////console.log("socketdisconneccted");
     };
-
   }, [apiBaseUrl]);
 
-
-
-
-  const handleCheckLedger = (e,rowIndex,columnIndex) => {
+  const handleCheckLedger = (e, rowIndex, columnIndex) => {
     // ////console.log('regcustom',AcNames);
+    // ////console.log("index==",rowIndex,columnIndex);
 
     const targetValue = e.target.value;
 
     const isValuePresent = LedgerName.some((item) => item[1] === targetValue);
 
     if (!isValuePresent && e.target.value !== "") {
-
       if (!window.confirm("Ledger Does not Exists,Create New..?")) {
         return;
       }
-      Open(e,rowIndex,columnIndex);
+      Open(e, rowIndex, columnIndex);
     }
   };
 
-  
-
   ////////////////total calculations/////////////////////////////
-
 
   useEffect(() => {
     let totalAmount = 0;
@@ -446,7 +444,7 @@ function ContraEntry({ onClose,Open }) {
       totalAmount += parseFloat(rowData.amount || 0);
       totalGm += parseFloat(rowData.gm || 0);
     });
-    setcvInfoData((prevState) => ({
+    setJvInfoData((prevState) => ({
       ...prevState,
       totalamt: totalAmount.toFixed(3), // Update total amount
       totalgm: totalGm.toFixed(3), // Update total gm
@@ -464,8 +462,8 @@ function ContraEntry({ onClose,Open }) {
   const handleClear = () => {
     fetchSchEntryno();
 
-    setcvInfoData({
-      Branch: [1, "SHOP"],
+    setJvInfoData({
+      Branch: [1, "CASH"],
       Salesman: "",
       date: getCurrentDate(),
     });
@@ -492,7 +490,7 @@ function ContraEntry({ onClose,Open }) {
   };
 
   const handleClearfind = () => {
-    setcvInfoData({
+    setJvInfoData({
       Branch: [1, "SHOP"],
       Salesman: "",
       date: getCurrentDate(),
@@ -524,20 +522,21 @@ function ContraEntry({ onClose,Open }) {
     setSaveDisabled(true);
 
     try {
-
       const hasIncompleteData = tableData.some((row) => {
         return (
           Object.values(row).some((value) => value !== "") &&
-          (!row.debitAccount || !row.creditAccount || !row.amount|| !cvInfoData.Salesman)
+          (!row.debitAccount ||
+            !row.creditAccount ||
+            !row.amount ||
+            !jvInfoData.Salesman)
         );
       });
-  
+
       if (hasIncompleteData) {
         alert("Enter Data Correctly.");
         setSaveDisabled(false);
         return;
       }
-
 
       const hasData = tableData.some((row) => {
         return (
@@ -569,14 +568,17 @@ function ContraEntry({ onClose,Open }) {
         narration: row.narration || null,
       }));
       // ////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/main/savecventry/${dbCode}`, {
-        Branch: cvInfoData.Branch[0],
-        Salesman: cvInfoData.Salesman[0],
-        date: cvInfoData.date,
-        EntryNo: cvInfoData.EntryNo,
-        totalAmount: cvInfoData.totalamt,
-        type: transformedTableData, // Pass the entire tableData array
-      });
+      const response = await axios.post(
+        `${apiBaseUrl}/main/savejournal/${dbCode}`,
+        {
+          Branch: jvInfoData.Branch[0],
+          Salesman: jvInfoData.Salesman[0],
+          date: jvInfoData.date,
+          EntryNo: jvInfoData.EntryNo,
+          totalAmount: jvInfoData.totalamt,
+          type: transformedTableData, // Pass the entire tableData array
+        }
+      );
 
       if (response.data.success) {
         handleClear();
@@ -601,23 +603,23 @@ function ContraEntry({ onClose,Open }) {
 
   const handleEdit = async () => {
     try {
-
       const hasIncompleteData = tableData.some((row) => {
         return (
           Object.values(row).some((value) => value !== "") &&
-          (!row.debitAccount || !row.creditAccount || !row.amount|| !cvInfoData.Salesman)
+          (!row.debitAccount ||
+            !row.creditAccount ||
+            !row.amount ||
+            !jvInfoData.Salesman)
         );
       });
-  
+
       if (hasIncompleteData) {
         alert("Enter Data Correctly.");
         setSaveDisabled(false);
         return;
       }
 
-
-
-      if (!cvInfoData.Branch) {
+      if (!jvInfoData.Branch) {
         alert("Enter Data  Correctly.");
         return;
       }
@@ -651,13 +653,16 @@ function ContraEntry({ onClose,Open }) {
         narration: row.narration || null,
       }));
       //////console.log("transformedTableData", transformedTableData);
-      const response = await axios.post(`${apiBaseUrl}/main/cvupdate/${dbCode}`, {
-        Branch: cvInfoData.Branch[0],
-        Salesman: cvInfoData.Salesman[0],
-        date: cvInfoData.date,
-        EntryNo: cvInfoData.EntryNo,
-        type: transformedTableData, // Pass the entire tableData array
-      });
+      const response = await axios.post(
+        `${apiBaseUrl}/main/jvupdate/${dbCode}`,
+        {
+          Branch: jvInfoData.Branch[0],
+          Salesman: jvInfoData.Salesman[0],
+          date: jvInfoData.date,
+          EntryNo: jvInfoData.EntryNo,
+          type: transformedTableData, // Pass the entire tableData array
+        }
+      );
 
       if (response.data.success) {
         //   handleClear();
@@ -679,7 +684,6 @@ function ContraEntry({ onClose,Open }) {
     // handleClear();
   };
 
-
   //////console.log("datra",tableData[0].accountNumber);
 
   const [showFindDialog, setShowFindDialog] = useState(false); // State for controlling the visibility of the find dialog
@@ -687,7 +691,7 @@ function ContraEntry({ onClose,Open }) {
   const [showPrintDialog, setShowPrintDialog] = useState(false);
   const [selectedSlNo, setSelectedSlno] = useState("");
 
- // ////console.log(findEntryNo);
+  // ////console.log(findEntryNo);
   const openFindDialog = () => {
     setShowFindDialog(true);
   };
@@ -711,7 +715,9 @@ function ContraEntry({ onClose,Open }) {
 
   const fetchfirstandlast = async () => {
     try {
-      const response = await axios.get(`${apiBaseUrl}/main/cvtopandlast/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/jvtopandlast/${dbCode}`
+      );
       if (response.status === 200) {
         setFirstEno(response.data[0].firstentryno);
         setLastEno(response.data[0].lastentryno);
@@ -726,11 +732,14 @@ function ContraEntry({ onClose,Open }) {
   const handleFindbyentrynumber = async () => {
     handleClearfind();
     try {
-      const response = await axios.get(`${apiBaseUrl}/main/findcv/${findEntryNo}/${dbCode}`);
+      const response = await axios.get(
+        `${apiBaseUrl}/main/findjv/${findEntryNo}/${dbCode}`
+      );
 
       if (response.status === 200) {
         const foundData = response.data;
-          ////console.log("data =", foundData);
+        //   ////console.log(foundData);
+        //  ////console.log("data =", foundData);
         const newData = foundData.map((row) => ({
           //  SINo: row.Srp_entryno,
           debitAccount: LedgerName.find((item) => item[0] === row.Name),
@@ -740,8 +749,8 @@ function ContraEntry({ onClose,Open }) {
         }));
 
         const firstRowData = foundData[0]; // Assuming SrInfo data is the same for all rows
-        setcvInfoData({
-          ...cvInfoData,
+        setJvInfoData({
+          ...jvInfoData,
           Branch: [1, "SHOP"],
           EntryNo: firstRowData.EntryNo[0],
           Salesman: agentName.find((item) => item[0] === firstRowData.SalesMan),
@@ -781,7 +790,7 @@ function ContraEntry({ onClose,Open }) {
     }
     try {
       const response = await axios.delete(
-        `${apiBaseUrl}/main/deletecv/${cvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/deletejv/${jvInfoData.EntryNo}/${dbCode}`
       );
       if (response.status === 200) {
         // Swal.fire({
@@ -804,7 +813,7 @@ function ContraEntry({ onClose,Open }) {
 
   const handleFindprev = async (e) => {
     fetchfirstandlast();
-    if (cvInfoData.EntryNo > firstEno) {
+    if (jvInfoData.EntryNo > firstEno) {
       handleClearfind();
     }
     // else{
@@ -812,7 +821,7 @@ function ContraEntry({ onClose,Open }) {
     // }
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/main/cvprevs/${cvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/jvprevs/${jvInfoData.EntryNo}/${dbCode}`
       );
 
       //  ////console.log("response=",response.data);
@@ -829,8 +838,8 @@ function ContraEntry({ onClose,Open }) {
         }));
 
         const firstRowData = foundData[0]; // Assuming SrInfo data is the same for all rows
-        setcvInfoData({
-          ...cvInfoData,
+        setJvInfoData({
+          ...jvInfoData,
           Branch: [1, "SHOP"],
           EntryNo: firstRowData.EntryNo[0],
           Salesman: agentName.find((item) => item[0] === firstRowData.SalesMan),
@@ -857,13 +866,13 @@ function ContraEntry({ onClose,Open }) {
   };
   const handleFindnext = async () => {
     fetchfirstandlast();
-    if (cvInfoData.EntryNo < lastEno) {
+    if (jvInfoData.EntryNo < lastEno) {
       handleClearfind();
     }
 
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/main/cvnext/${cvInfoData.EntryNo}/${dbCode}`
+        `${apiBaseUrl}/main/jvnext/${jvInfoData.EntryNo}/${dbCode}`
       );
 
       if (response.status === 200) {
@@ -879,8 +888,8 @@ function ContraEntry({ onClose,Open }) {
         }));
 
         const firstRowData = foundData[0]; // Assuming SrInfo data is the same for all rows
-        setcvInfoData({
-          ...cvInfoData,
+        setJvInfoData({
+          ...jvInfoData,
           Branch: [1, "SHOP"],
           EntryNo: firstRowData.EntryNo[0],
           Salesman: agentName.find((item) => item[0] === firstRowData.SalesMan),
@@ -909,11 +918,11 @@ function ContraEntry({ onClose,Open }) {
   const handleFindfirst = async () => {
     handleClearfind();
     try {
-      const response = await axios.get(`${apiBaseUrl}/main/cvfirst/${dbCode}`);
+      const response = await axios.get(`${apiBaseUrl}/main/jvfirst/${dbCode}`);
 
       if (response.status === 200) {
         const foundData = response.data;
-      //  ////console.log(foundData);
+        //  ////console.log(foundData);
         //  ////console.log("data =", foundData);
         const newData = foundData.map((row) => ({
           //  SINo: row.Srp_entryno,
@@ -924,8 +933,8 @@ function ContraEntry({ onClose,Open }) {
         }));
 
         const firstRowData = foundData[0]; // Assuming SrInfo data is the same for all rows
-        setcvInfoData({
-          ...cvInfoData,
+        setJvInfoData({
+          ...jvInfoData,
           Branch: [1, "SHOP"],
           EntryNo: firstRowData.EntryNo[0],
           Salesman: agentName.find((item) => item[0] === firstRowData.SalesMan),
@@ -954,9 +963,7 @@ function ContraEntry({ onClose,Open }) {
   const handleFindlast = async () => {
     handleClearfind();
     try {
-      const response = await axios.get(
-        `${apiBaseUrl}/main/cvlast/${dbCode}`
-      );
+      const response = await axios.get(`${apiBaseUrl}/main/jvlast/${dbCode}`);
 
       if (response.status === 200) {
         const foundData = response.data;
@@ -971,8 +978,8 @@ function ContraEntry({ onClose,Open }) {
         }));
 
         const firstRowData = foundData[0]; // Assuming SrInfo data is the same for all rows
-        setcvInfoData({
-          ...cvInfoData,
+        setJvInfoData({
+          ...jvInfoData,
           Branch: [1, "SHOP"],
           EntryNo: firstRowData.EntryNo[0],
           Salesman: agentName.find((item) => item[0] === firstRowData.SalesMan),
@@ -1012,7 +1019,9 @@ function ContraEntry({ onClose,Open }) {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${apiBaseUrl}/main/totalweight/${tableData[selectedSlNo - 1 || 0].name[0]}/${dbCode}`
+        `${apiBaseUrl}/main/totalweight/${
+          tableData[selectedSlNo - 1 || 0].name[0]
+        }/${dbCode}`
       );
       //////console.log("res===",response.data);
       setaccumulatedWt(response.data[0].WeightDifference);
@@ -1023,14 +1032,14 @@ function ContraEntry({ onClose,Open }) {
 
   return (
     // <div className="regmodal-overlay">
-    <div className="regmodal ">
+    <div className="cashRecRoot ">
       <div className="schemecontrolls">
         {/* ///////// */}
         <div className="schemereg_headerLogo_Div">
           <div className="schemereg_headerLogo" onClick={handleCheckSlno}>
             <img src={headeLogo} alt="SherSoftLogo" />
           </div>
-          <label className="schemeReg_pageHead">Contra Entry</label>
+          <label className="schemeReg_pageHead">Cash Receipt</label>
         </div>
         <img
           alt="X"
@@ -1168,100 +1177,98 @@ function ContraEntry({ onClose,Open }) {
       </div>
       {/*............................ NavbarEnd.............................................. */}
 
-      <div className="cventryBody">
-        <div className="cventryBodyData">
-          <div className="cventryTopdata">
-            <div className="cventryTopdatasections cventrysec1">
-              <div className="cventryTopdatasectionsrows">
+      <div className="cashRecBody">
+        <div className="cashRecBodyData">
+          <div className="cashRecTopdata">
+            <div className="cashRecTopdatasections cashRecsec1">
+              <div className="cashRecTopdatasectionsrows cashrecentryno">
                 <label>Entry No</label>
                 <input
                   ref={entryNoInputRef}
                   readOnly
                   style={{ textAlign: "center" }}
-                  value={cvInfoData.EntryNo}
+                  value={jvInfoData.EntryNo}
                   onKeyDown={(e) => handleKeyDown(e, branchinputRef)}
                   onChange={(e) =>
-                    setcvInfoData({
-                      ...cvInfoData,
+                    setJvInfoData({
+                      ...jvInfoData,
                       EntryNo: e.target.value,
                     })
                   }
                 />
               </div>
-              <div className="cventryTopdatasectionsrows"></div>
+              <div className="cashRecTopdatasectionsrows"></div>
             </div>
-            <div className="cventryTopdatasections cventrysec2">
-              <div className="cventryTopdatasectionsrows sec2row">
-                <label>Select Branch</label>
+            <div className="cashRecTopdatasections cashRecsec2">
+              <div className="cashRecTopdatasectionsrows sec2row ">
+                <label className="cashRecsec2label">Select Cash A/c</label>
                 <ComboBox
                   //    findedValue={schemeRecInfoData.cashAcc[0]}
                   findedValue={
-                    Array.isArray(cvInfoData.Branch)
-                      ? cvInfoData.Branch[1]
-                      : cvInfoData.Branch
+                    Array.isArray(jvInfoData.Branch)
+                      ? jvInfoData.Branch[1]
+                      : jvInfoData.Branch
                   }
                   comboRef={branchinputRef}
                   // options={selectcashAcc}
-                  options={[[1, "SHOP"]]}
-                  className="cashaccCombo"
-                  inputClassName="cashaccComboinput"
+                  options={[[1, "CASH"]]}
+                  className="cashReccashaccCombo"
+                  inputClassName="cashReccashaccComboinput"
                   onKeyDown={(e) => {
                     handleKeyDown(e, salesmaninputRef);
                     // checkledgerExists(e);
                   }}
                   onInputChange={(e) =>
-                    setcvInfoData({ ...cvInfoData, Branch: e })
+                    setJvInfoData({ ...jvInfoData, Branch: e })
                   }
                 />
+                <label htmlFor="" className="cashrecamntlabel">
+                  Amount
+                </label>
+                <input type="text" className="cashrecamnt" />
               </div>
-              <div className="cventryTopdatasectionsrows sec2row">
-                <label>Select Salesman</label>
+              <div className="cashRecTopdatasectionsrows sec2row ">
+                <label className="cashRecsec2label">Select Salesman</label>
 
                 <ComboBox
                   //    findedValue={schemeRecInfoData.cashAcc[0]}
                   findedValue={
-                    Array.isArray(cvInfoData.Salesman)
-                      ? cvInfoData.Salesman[1]
-                      : cvInfoData.Salesman
+                    Array.isArray(jvInfoData.Salesman)
+                      ? jvInfoData.Salesman[1]
+                      : jvInfoData.Salesman
                   }
                   comboRef={salesmaninputRef}
                   options={agentName}
-                  className="cashaccCombo"
-                  inputClassName="cashaccComboinput"
+                  className="cashReccashaccCombo"
+                  inputClassName="cashReccashaccComboinput"
                   onKeyDown={(e) => {
                     handleKeyDown(e, dateInputRef);
                   }}
-                  onInputChange={(e) =>{
-                    setcvInfoData({ ...cvInfoData, Salesman: e });
-                  //  handleAgentSearch(e)
-                  
-                  }
-                    
-                  }
+                  onInputChange={(e) => {
+                    setJvInfoData({ ...jvInfoData, Salesman: e });
+                    //  handleAgentSearch(e)
+                  }}
                 />
               </div>
             </div>
-            <div className="cventryTopdatasections  cventrySec3">
-              <div
-                className="cventryTopdatasectionsrows sec3row"
-                style={{ width: "14vw" }}
-              >
+            <div className="cashRecTopdatasections  cashRecSec3">
+              <div className="cashRecTopdatasectionsrows cashRecsec3row">
                 <label>Date</label>
                 <input
-                  value={cvInfoData.date}
+                  value={jvInfoData.date}
                   type="date"
                   ref={dateInputRef}
                   onKeyDown={(e) => handleKeyDownTable(e, RowIndex, 0)}
                   onChange={(e) =>
-                    setcvInfoData({
-                      ...cvInfoData,
+                    setJvInfoData({
+                      ...jvInfoData,
                       date: e.target.value,
                     })
                   }
                 />
               </div>
               {/* <div
-                className="cventryTopdatasectionsrows sec3row"
+                className="cashRecTopdatasectionsrows sec3row"
                 style={{ backgroundColor: "blue" }}
               >
                 
@@ -1272,25 +1279,26 @@ function ContraEntry({ onClose,Open }) {
           {/*---------------- receipt data table.----------------------- */}
 
           <div
-            className="cventryDataTable"
+            className="cashRecDataTable"
             //  onScroll={handleScroll}
             ref={tableContainerRef}
           >
             <table>
-              <thead className="cventryDataTableHead">
+              <thead className="cashRecDataTableHead">
                 <tr>
-                  <th className="cventryDataTableHeadslno">SI No</th>
-                  <th className="cventryDataTableHeadDbAcc">
-                    Select Debit Account
+                  <th className="cashRecDataTableHeadslno">SI No</th>
+                  <th className="cashRecDataTableHeadDbAcc">
+                    Select A/c (Paid to)
                   </th>
-                  <th className="cventryDataTableHeadCbAcc">
-                    Select Credit Account
-                  </th>
-                  <th className="cventryDataTableHeadamount">Amount</th>
-                  <th className="cventryDataTableHeadnarration">Narration</th>
+
+                  <th className="cashRecDataTableHeadamount">Amount</th>
+                  <th className="cashRecDataTableHeadamount">Disc</th>
+                  <th className="cashRecDataTableHeadamount">Total</th>
+
+                  <th className="cashRecDataTableHeadnarration">Narration</th>
                 </tr>
               </thead>
-              <tbody className="cventryDataTableBodyStyle">
+              <tbody className="cashRecDataTableBodyStyle">
                 {tableData.map((rowData, rowIndex) => (
                   <tr
                     key={rowIndex}
@@ -1298,18 +1306,18 @@ function ContraEntry({ onClose,Open }) {
                       background:
                         rowIndex % 2 === 1 ? "#EBEBEB" : "transparent",
                     }}
-                    className="cventryDataTableBodyStyletr"
+                    className="cashRecDataTableBodyStyletr"
                   >
                     <td
-                      className="cventryDataTableDataBoxSlno"
+                      className="cashRecDataTableDataBoxSlno"
                       style={{ textAlign: "center" }}
                     >
                       {rowIndex % 2 === 0 ? rowIndex / 2 + 1 : ""}
                     </td>
 
                     <td
-                      className="cventryDataTableDataBoxDbAcc"
-                      style={{ width: "22%" }}
+                      className="cashRecDataTableDataBoxDbAcc"
+                      style={{ width: "29%" }}
                     >
                       {rowIndex % 2 === 0 && (
                         <ComboBox
@@ -1337,7 +1345,7 @@ function ContraEntry({ onClose,Open }) {
                                 ]?.debitAccount
                           }
                           options={LedgerName}
-                          className="cventryDataTableDataBox test"
+                          className="cashRecDataTableDataBox test"
                           inputClassName="dataBox"
                           comboRef={(ref) => `combo_${rowIndex}`}
                           onKeyDown={(e) => {
@@ -1347,57 +1355,12 @@ function ContraEntry({ onClose,Open }) {
                           onInputChange={(e) => {
                             handleCellChange(e, rowIndex, "debitAccount");
                           }}
-                          onBlur={(e) => handleCheckLedger(e,rowIndex,1)}
-
+                          onBlur={(e) => handleCheckLedger(e, rowIndex, 1)}
                         />
                       )}
                     </td>
 
-                    <td
-                      className="cventryDataTableDataBoxCdAcc"
-                      style={{ width: "22%" }}
-                    >
-                      {rowIndex % 2 === 0 && (
-                        <ComboBox
-                          findedValue={
-                            Array.isArray(
-                              tableData[
-                                rowIndex > 0 && rowIndex % 2 === 0
-                                  ? rowIndex - rowIndex / 2
-                                  : rowIndex
-                              ]?.creditAccount
-                            )
-                              ? tableData[
-                                  rowIndex > 0 && rowIndex % 2 === 0
-                                    ? rowIndex - rowIndex / 2
-                                    : rowIndex
-                                ]?.creditAccount?.[1] ?? ""
-                              : tableData[
-                                  rowIndex > 0 && rowIndex % 2 === 0
-                                    ? rowIndex - rowIndex / 2
-                                    : rowIndex
-                                ]?.creditAccount
-                          }
-                          options={LedgerName}
-                          className="cventryDataTableDataBox test"
-                          inputClassName="dataBox"
-                          comboRef={(ref) => `combo_${rowIndex}`}
-                          onKeyDown={(e) => {handleKeyDownTable(e, rowIndex, 2)
-
-                           // checkNameExists(e);
-
-                          }}
-                          onInputChange={(e) =>
-                            handleCellChange(e, rowIndex, "creditAccount")
-                          }
-                          //readOnly={true}
-                          onBlur={(e) => handleCheckLedger(e,rowIndex,2)}
-
-                        />
-                      )}
-                    </td>
-
-                    <td className="cventryDataTableDataBoxamount">
+                    <td className="cashRecDataTableDataBoxamount">
                       {rowIndex % 2 === 0 && (
                         <input
                           value={
@@ -1407,7 +1370,7 @@ function ContraEntry({ onClose,Open }) {
                                 : rowIndex
                             ]["amount"]
                           }
-                          className="cventryDataTableDataBox textalignRight"
+                          className="cashRecDataTableDataBox textalignRight"
                           style={{ textAlign: "right" }}
                           onChange={(e) => {
                             handleCellChangeinput(e, rowIndex, "amount");
@@ -1420,7 +1383,53 @@ function ContraEntry({ onClose,Open }) {
                       )}
                     </td>
 
-                    <td className="cventryDataTableDataBoxStonenarration">
+                    <td className="cashRecDataTableDataBoxamount">
+                      {rowIndex % 2 === 0 && (
+                        <input
+                          value={
+                            tableData[
+                              rowIndex > 0 && rowIndex % 2 === 0
+                                ? rowIndex - rowIndex / 2
+                                : rowIndex
+                            ]["amount"]
+                          }
+                          className="cashRecDataTableDataBox textalignRight"
+                          style={{ textAlign: "right" }}
+                          onChange={(e) => {
+                            handleCellChangeinput(e, rowIndex, "amount");
+                          }}
+                          onKeyDown={(e) => {
+                            handleKeyDownTable(e, rowIndex, 3);
+                          }}
+                          type="number"
+                        />
+                      )}
+                    </td>
+
+                    <td className="cashRecDataTableDataBoxamount">
+                      {rowIndex % 2 === 0 && (
+                        <input
+                          value={
+                            tableData[
+                              rowIndex > 0 && rowIndex % 2 === 0
+                                ? rowIndex - rowIndex / 2
+                                : rowIndex
+                            ]["amount"]
+                          }
+                          className="cashRecDataTableDataBox textalignRight"
+                          style={{ textAlign: "right" }}
+                          onChange={(e) => {
+                            handleCellChangeinput(e, rowIndex, "amount");
+                          }}
+                          onKeyDown={(e) => {
+                            handleKeyDownTable(e, rowIndex, 3);
+                          }}
+                          type="number"
+                        />
+                      )}
+                    </td>
+
+                    <td className="cashRecDataTableDataBoxStonenarration">
                       {rowIndex % 2 === 0 && (
                         <input
                           value={
@@ -1430,7 +1439,7 @@ function ContraEntry({ onClose,Open }) {
                                 : rowIndex
                             ]["narration"]
                           }
-                          className="cventryDataTableDataBox textalignRight"
+                          className="cashRecDataTableDataBox textalignRight"
                           onKeyDown={(e) => {
                             addRow();
                             handleKeyDownTable(e, rowIndex + 2, 0);
@@ -1447,31 +1456,66 @@ function ContraEntry({ onClose,Open }) {
             </table>
           </div>
 
-          <div className="cventryDataTablefootertotal">
+          <div className="cashRecDataTablefootertotal  ">
+            {/* <div className="cashRecfooterbtn">Edit Item</div>
+            <div className="cashRecfooterbtn">Delete Item</div> */}
+
             <input
-              className="cventryDataTablefootertotalamount"
-              value={cvInfoData.totalamt}
+              className="cashRecDataTablefootertotalamount  ml-[38.8%]"
+              value={jvInfoData.totalamt}
               style={{ textAlign: "right" }}
               onChange={(e) =>
-                cvInfoData({
-                  ...cvInfoData,
+                jvInfoData({
+                  ...jvInfoData,
+                  totalamt: e.target.value,
+                })
+              }
+              readOnly
+            />
+            <input
+              className="cashRecDataTablefootertotalamount "
+              value={jvInfoData.totalamt}
+              style={{ textAlign: "right" }}
+              onChange={(e) =>
+                jvInfoData({
+                  ...jvInfoData,
+                  totalamt: e.target.value,
+                })
+              }
+              readOnly
+            />
+            <input
+              className="cashRecDataTablefootertotalamount"
+              value={jvInfoData.totalamt}
+              style={{ textAlign: "right" }}
+              onChange={(e) =>
+                jvInfoData({
+                  ...jvInfoData,
                   totalamt: e.target.value,
                 })
               }
               readOnly
             />
 
+           <div className="h-full w-[20%]  flex justify-end items-center ml-5">
+              <label htmlFor="printob" className="font-Inter ">Print Ob</label>
+              <input type="checkbox" id="printob" />
+           </div>
             {/* <input
-              className="cventryDataTablefootertotalGm"
-              value={cvInfoData.totalgm}
+              className="cashRecDataTablefootertotalGm"
+              value={jvInfoData.totalgm}
               style={{ textAlign: "right" }}
               onChange={(e) =>
-                setcvInfoData({
-                  ...cvInfoData,
+                setJvInfoData({
+                  ...jvInfoData,
                   totalgm: e.target.value,
                 })
               }
             /> */}
+          </div>
+
+          <div className="cashRecCurrentBalance">
+            Current Balance of Cash :0.00
           </div>
         </div>
       </div>
@@ -1547,4 +1591,4 @@ function ContraEntry({ onClose,Open }) {
   );
 }
 
-export default ContraEntry;
+export default CashReceipt;

@@ -5,6 +5,6 @@
   force = true
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 301
+from="/*"
+to="/index.html"
+status=200
